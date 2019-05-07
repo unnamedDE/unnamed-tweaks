@@ -1,0 +1,21 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "iii",
+        "ici",
+        "iii"
+    ],
+    "key": {
+        "i": {
+            "item": "minecraft:iron_ingot"
+        },
+        "c": {
+            "item": "minecraft:crafting_table"
+        }
+    },
+    "result": {
+        "item": "minecraft:structure_void",
+        "count": 1
+    },
+    "group": "ac_lib"
+}

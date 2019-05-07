@@ -1,0 +1,7 @@
+#file: ./hopper_minecarts
+
+asat(@a) {
+  asat(@e[type=hopper_minecart,distance=..20,nbt={Enabled:0b}]) {
+    /particle minecraft:dust 1 0 0 1 ~ ~.2 ~ .25 .2 .25 1 1
+  }
+}

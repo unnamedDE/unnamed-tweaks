@@ -1,0 +1,9 @@
+
+#file: ./load
+
+// here goes your load content
+
+/scoreboard objectives add smash_anvil dummy "Smashed by anvil"
+/scoreboard objectives add smash_anvil_cool dummy "Anvil smash cooldown"
+/scoreboard objectives add smash_piston dummy "Smashed by piston"
+/scoreboard objectives add smash_pston_cool dummy "Piston smash cooldown"

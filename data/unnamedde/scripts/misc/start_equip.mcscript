@@ -1,0 +1,18 @@
+#file: ./start_equip/on_join
+
+if('score start_equip ud_options matches 1..') {
+  /function unnamedde:misc/start_equip/equip
+}
+
+#file: ./start_equip/equip
+
+/replaceitem entity @s armor.head minecraft:leather_helmet
+/replaceitem entity @s armor.chest minecraft:leather_chestplate
+/replaceitem entity @s armor.legs minecraft:leather_leggings
+/replaceitem entity @s armor.feet minecraft:leather_boots
+
+/replaceitem entity @s hotbar.0 minecraft:wooden_sword
+/replaceitem entity @s hotbar.1 minecraft:wooden_pickaxe
+/replaceitem entity @s hotbar.2 minecraft:wooden_axe
+/replaceitem entity @s hotbar.3 minecraft:wooden_shovel
+/replaceitem entity @s hotbar.8 minecraft:bread 32

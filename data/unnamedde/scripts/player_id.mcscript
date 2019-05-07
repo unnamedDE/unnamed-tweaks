@@ -1,0 +1,122 @@
+#file: ./player_id/first_join
+
+
+as(@a) {
+  if('score @s player_id = @s group_id') {
+    /scoreboard players enable @s kick_player
+    /scoreboard players enable @s invite_player
+    /scoreboard players reset @s leave_group
+  } else {
+    /scoreboard players reset @s kick_player
+    /scoreboard players reset @s invite_player
+    /scoreboard players enable @s leave_group
+  }
+}
+
+/tag @s add ud_id_set
+/scoreboard players add #count player_id 1
+/scoreboard players operation @s player_id = #count player_id
+/scoreboard players operation @s group_id = @s player_id
+/function #unnamedde:on_first_join
+if('score @s player_id matches 1') {
+  /tellraw @s ""
+  /function #unnamedde:on_first_player_join
+}
+
+#file: ./player_id/join
+
+/scoreboard players reset @s accept_invite
+
+#file: ./player_id/main
+
+asat(@a[scores={invite_player=1..}]) {
+  if('score @s group_id = @s player_id') {
+    /function unnamedde:player_id/invite
+  }
+  /scoreboard players reset @s invite_player
+}
+
+asat(@a[scores={accept_invite=1}]) {
+  if('score @s invite_id matches 1..') {
+    /function unnamedde:player_id/accept_invite
+  }
+  /scoreboard players reset @s accept_invite
+}
+asat(@a[scores={accept_invite=2}]) {
+  if('score @s invite_id matches 1..') {
+    /function unnamedde:player_id/deny_invite
+  }
+  /scoreboard players reset @s accept_invite
+}
+
+asat(@a[scores={leave_group=1..}]) {
+  /function unnamedde:player_id/leave
+}
+asat(@a[scores={kick_player=1..}]) {
+  if('score @s group_id = @s player_id') {
+    /function unnamedde:player_id/kick
+  }
+  /scoreboard players reset @s kick_player
+}
+
+asat(@a), at(@a[distance=.1..20]), if('score @p group_id = @s group_id') {
+  /function unnamedde:player_id/visuals
+}
+
+#file: ./player_id/visuals
+
+/particle minecraft:dust 0 1 0 1 ~ ~1 ~ .25 .4 .25 .5 1 normal @s
+
+#file: ./player_id/invite
+
+/scoreboard players operation @p[distance=.1..] invite_id = @s group_id
+/scoreboard players enable @p[distance=.1..] accept_invite
+/tellraw @s [{"text":"Invited "},{"selector":"@p[distance=.1..]","color":"aqua"},{"text":" to your group"}]
+/tellraw @p[distance=.1..] [{"text":"You were invited by "},{"selector":"@s","color":"aqua"},{"text":" to his group"}]
+asat(@p[distance=.1..]) {
+  /tellraw @s [{"text":"[Accept]","color":"dark_green","hoverEvent":{"action":"show_text","value":"Click to accept"},"clickEvent":{"action":"run_command","value":"/trigger accept_invite set 1"}},{"text":" "},{"text":"[Deny]","color":"dark_red","hoverEvent":{"action":"show_text","value":"Click to deny"},"clickEvent":{"action":"run_command","value":"/trigger accept_invite set 2"}}]
+}
+
+#file: ./player_id/accept_invite
+
+as(@a), if('score @s player_id = @p invite_id') {
+  /tellraw @s [{"selector":"@p","color":"aqua"},{"text":" accepted your invite", "color":"dark_green"}]
+}
+
+/scoreboard players operation @s group_id = @s invite_id
+/scoreboard players reset @s invite_id
+/tellraw @s [{"text":"Accepted Invite", "color":"dark_green"}]
+
+#file: ./player_id/deny_invite
+
+as(@a), if('score @s player_id = @p invite_id') {
+  /tellraw @s [{"selector":"@p","color":"aqua"},{"text":" denied your invite", "color":"dark_red"}]
+}
+
+/scoreboard players reset @s invite_id
+/tellraw @s [{"text":"Denied Invite", "color":"dark_red"}]
+
+#file: ./player_id/leave
+
+if('score @s group_id = @s player_id') {
+  /tellraw @s [{"text":"You can't leave your own group", "color":"dark_red"}]
+} else {
+  /tellraw @s [{"text":"Left your group", "color":"dark_red"}]
+  as(@a[distance=.1..]), if('score @s group_id = @p group_id') {
+    /tellraw @s [{"selector":"@p","color":"aqua"},{"text":" left your group", "color":"dark_red"}]
+  }
+  /scoreboard players operation @s group_id = @s player_id
+}
+/scoreboard players reset @s leave_group
+
+#file: ./player_id/kick
+
+as(@p[distance=.1..]), if('score @s group_id = @p group_id') {
+  /tellraw @p [{"text":"Kicked ", "color":"dark_red"},{"selector":"@s","color":"aqua"}]
+  /function unnamedde:player_id/kicked
+}
+
+#file: ./player_id/kicked
+
+/tellraw @s [{"text":"You were kicked by the group leader", "color":"dark_red"}]
+/scoreboard players operation @s group_id = @s player_id

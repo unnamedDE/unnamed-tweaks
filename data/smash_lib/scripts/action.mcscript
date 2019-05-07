@@ -1,0 +1,51 @@
+
+#file: ./action/main
+
+/function smash_lib:action/clear
+#
+asat(@e[scores={smash_anvil=1..}]) {
+  /function smash_lib:action/anvil
+}
+#
+/scoreboard players remove @e[scores={smash_anvil_cool=1..}] smash_anvil_cool 1
+#
+/tag @e[scores={smash_anvil_cool=49}] add smash_anvil
+/tag @e[tag=smash_anvil,scores={smash_anvil_cool=..48}] remove smash_anvil
+##
+##
+asat('@e[scores={smash_piston=1..}]') {
+  /function smash_lib:action/piston
+}
+#
+/scoreboard players remove @e[scores={smash_pston_cool=1..}] smash_pston_cool 1
+#
+/tag @e[scores={smash_pston_cool=49}] add smash_piston
+/tag @e[tag=smash_piston,scores={smash_pston_cool=..48}] remove smash_piston
+
+#file: ./action/clear
+
+as('@e[scores={smash_anvil=0}]') {
+  /scoreboard players reset @s smash_anvil
+}
+#
+as('@e[scores={smash_anvil_cool=0}]') {
+  /scoreboard players reset @s smash_anvil_cool
+}
+##
+as('@e[scores={smash_piston=0}]') {
+  /scoreboard players reset @s smash_piston
+}
+#
+as('@e[scores={smash_pston_cool=0}]') {
+  /scoreboard players reset @s smash_pston_cool
+}
+
+#file: ./action/anvil
+
+/scoreboard players set @s smash_anvil_cool 50
+/scoreboard players remove @s smash_anvil 1
+
+#file: ./action/piston
+
+/scoreboard players set @s smash_pston_cool 50
+/scoreboard players remove @s smash_piston 1

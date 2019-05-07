@@ -1,0 +1,25 @@
+{
+    "display": {
+        "title": {
+            "text": "Night is coming",
+            "color": "white"
+        },
+        "description": {
+            "text": "Maybe take a nap?",
+            "color": "gray"
+        },
+        "icon": {
+            "item": "minecraft:red_bed"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": false,
+        "hidden": true,
+        "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+    },
+    "criteria": {
+        "impossible": {
+            "trigger": "minecraft:impossible"
+        }
+    }
+}

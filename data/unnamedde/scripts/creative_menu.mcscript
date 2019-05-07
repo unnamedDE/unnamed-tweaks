@@ -1,0 +1,57 @@
+#file: ./creative_menu
+
+/tellraw @s {"text":""}
+/tellraw @s {"text":""}
+/tellraw @s [{"text":"<===== ","color":"aqua"},{"text":"Select datapack to display menu","color":"red"},{"text":" =====>","color":"aqua"}]
+/tellraw @s {"text":""}
+/function #unnamedde:creative_menu
+/tellraw @s {"text":""}
+/tellraw @s {"text":""}
+
+#file: ./creative_menu/main
+
+as(@a) {
+  /function unnamedde:creative_menu/give
+}
+
+#file: ./creative_menu/select
+
+/tellraw @s [{"text":" ► ","color":"green"},{"text":"unnamedDE's Lib","hoverEvent":{"action":"show_text","value":"Click to select"},"clickEvent":{"action":"run_command","value":"/function unnamedde:creative_menu/menu"}}]
+
+#file: ./creative_menu/menu
+
+/tellraw @s {"text":""}
+/tellraw @s {"text":""}
+/tellraw @s [{"text":"<===== ","color":"aqua"},{"text":"unnamedDE's Lib","color":"red"},{"text":" =====>","color":"aqua"}]
+/tellraw @s {"text":""}
+
+#Content
+#
+#Advanced Crafter
+/tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 11"}},{"text":"] [","color":"reset"},{"text":"16","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 21"}},{"text":"] ","color":"reset"},{"text":"Advanced Crafter"}]
+#Multitool
+/tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 12"}},{"text":"]      ","color":"reset"},{"text":" ","color":"reset"},{"text":"Multitool"}]
+
+
+/tellraw @s {"text":""}
+/tellraw @s [{"text":" ↑ ","color":"red"},{"text":"Return to main menu","hoverEvent":{"action":"show_text","value":"Click to return"},"clickEvent":{"action":"run_command","value":"/function unnamedde:creative_menu"}}]
+/tellraw @s {"text":""}
+/tellraw @s {"text":""}
+
+#file: ./creative_menu/give
+
+modal creativeMenu(id,item,count = 64) {
+  if('score @s ud_creative_menu matches 1$(id)') {
+    /give @s $(item) 1
+    /scoreboard players reset @s ud_creative_menu
+  }
+  if('score @s ud_creative_menu matches 2$(id)') {
+    /give @s $(item) $(count)
+    /scoreboard players reset @s ud_creative_menu
+  }
+}
+
+#Advanced Crafter
+creativeMenu(1,'minecraft:armor_stand{display:{Name:"{\\"text\\":\\"Advanced Crafter\\",\\"italic\\":false}",Lore:["{\\"translate\\":\\"Right-click to place\\",\\"color\\":\\"dark_green\\",\\"italic\\":false}"]},CustomModelData:701001,ac_lib:{id:"advanced_crafter"},EntityTag:{NoGravity:1b,Invulnerable:1b,Small:1b,Marker:1b,Invisible:1b,PersistenceRequired:1b,Tags:["ac_lib_advanced_crafter","ac_lib_advanced_crafter_init"],DisabledSlots:4144959}}',16)
+#Multitool
+creativeMenu(2,'minecraft:diamond_pickaxe{Unbreakable: 1b, CustomModelData: 854321, display: {Name: "{\\"text\\":\\"Multitool\\",\\"color\\":\\"dark_purple\\",\\"italic\\":\\"false\\"}"}, Enchantments: [{lvl: 10, id: "minecraft:looting"}, {lvl: 10, id: "minecraft:efficiency"}, {lvl: 10, id: "minecraft:silk_touch"}], Damage: 0, AttributeModifiers: [{UUIDMost: 117779, UUIDLeast: 3407, Amount: 100000, Slot: "mainhand", AttributeName: "generic.attackDamage", Operation: 0, Name: "generic.attackDamage"}, {UUIDMost: 151577, UUIDLeast: 445375, Amount: 100000, Slot: "mainhand", AttributeName: "generic.attackSpeed", Operation: 0, Name: "generic.attackSpeed"}]}',1)

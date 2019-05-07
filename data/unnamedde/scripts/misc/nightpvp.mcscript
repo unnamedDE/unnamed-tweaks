@@ -1,0 +1,17 @@
+#file: ./nightpvp/main
+
+if('score daytime ud_misc matches 0..12999') {
+  /function unnamedde:misc/nightpvp/disable
+} else {
+  /function unnamedde:misc/nightpvp/enable
+}
+
+#file: ./nightpvp/enable
+
+/team empty nopvp
+
+#file: ./nightpvp/disable
+
+as(@a[team=,]) {
+  /team join nopvp
+}

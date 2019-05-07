@@ -1,0 +1,60 @@
+#file: ./set_scoreboards/player
+
+/execute store result score @s x_pos run data get entity @s Pos[0]
+/execute store result score @s y_pos run data get entity @s Pos[1]
+/execute store result score @s z_pos run data get entity @s Pos[2]
+/execute store result score @s x_rot run data get entity @s Rotation[0]
+/execute store result score @s y_rot run data get entity @s Rotation[1]
+
+if(!'score @s ud_deathtime_m matches 0..') {
+  /scoreboard players add @s ud_deathtime_m 0
+}
+if(!'score @s ud_deathtime_h matches 0..') {
+  /scoreboard players add @s ud_deathtime_h 0
+}
+if(!'score @s ud_timeplayed_m matches 0..') {
+  /scoreboard players add @s ud_timeplayed_m 0
+}
+if(!'score @s ud_timeplayed_h matches 0..') {
+  /scoreboard players add @s ud_timeplayed_h 0
+}
+
+if('score @s ud_deathtime matches 1200..') {
+  /scoreboard players add @s ud_deathtime_m 1
+  /scoreboard players remove @s ud_deathtime 1200
+  /function unnamedde:misc/tooltips/set_scoreboards
+}
+
+if('score @s ud_deathtime_m matches 60..') {
+  /scoreboard players add @s ud_deathtime_h 1
+  /scoreboard players remove @s ud_deathtime_m 60
+  /function unnamedde:misc/tooltips/set_scoreboards
+}
+if('score @s ud_timeplayed matches 1200..') {
+  /scoreboard players add @s ud_timeplayed_m 1
+  /scoreboard players remove @s ud_timeplayed 1200
+  /function unnamedde:misc/tooltips/set_scoreboards
+}
+
+if('score @s ud_timeplayed_m matches 60..') {
+  /scoreboard players add @s ud_timeplayed_h 1
+  /scoreboard players remove @s ud_timeplayed_m 60
+  /function unnamedde:misc/tooltips/set_scoreboards
+}
+
+#file: ./set_scoreboards/world
+
+/scoreboard players operation real_daytime ud_misc = daytime ud_misc
+/scoreboard players add real_daytime ud_misc 6000
+if('score real_daytime ud_misc matches 24000..') {
+  /scoreboard players remove real_daytime ud_misc 24000
+}
+/scoreboard players operation real_daytime% ud_misc = real_daytime ud_misc
+/scoreboard players operation real_daytime% ud_misc /= 240 ud_const
+/scoreboard players operation real_day ud_misc = day ud_misc
+/scoreboard players add real_day ud_misc 1
+
+#file: ./set_scoreboards/on_death
+
+/scoreboard players reset @s ud_deathtime_m
+/scoreboard players reset @s ud_deathtime_h

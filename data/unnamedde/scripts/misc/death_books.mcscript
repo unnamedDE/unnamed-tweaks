@@ -1,0 +1,44 @@
+#file: ./death_books/main
+
+asat(@a[scores={ud_deaths=1..},nbt={DeathTime:0s}]) {
+  if('entity @s[tag=is_dead]') {
+    /function unnamedde:misc/death_books/after_death
+  } else {
+    /function unnamedde:misc/death_books/on_death
+  }
+}
+
+#file: ./death_books/on_death
+
+/tag @s add is_dead
+/function #unnamedde:on_death
+
+#file: ./death_books/after_death
+
+/tag @s remove is_dead
+/scoreboard players reset @s ud_deaths
+/function #unnamedde:after_death
+
+#file: ./death_books/death_sound
+
+if('score death_books ud_options matches 1..') {
+  /playsound minecraft:entity.wolf.howl ambient @s
+}
+
+#file: ./death_books/reviving_sound
+
+if('score death_books ud_options matches 1..') {
+  /playsound minecraft:block.beacon.power_select master @s
+}
+
+#file: ./death_books/set_coordinations
+
+/execute store result score @s death_x run data get entity @s Pos[0]
+/execute store result score @s death_y run data get entity @s Pos[1]
+/execute store result score @s death_z run data get entity @s Pos[2]
+
+#file: ./death_books/give_book
+
+if('score death_books ud_options matches 1..') {
+  /give @s minecraft:written_book{unnamedDE:{id:"book_of_death"},title:"Book of Death",author:"the death",generation:3,pages:["[{\"selector\":\"@s\",\"color\":\"dark_red\"},{\"text\":\" died on day \",\"color\":\"reset\"},{\"score\":{\"name\":\"real_day\",\"objective\":\"ud_misc\"},\"color\":\"reset\"},{\"text\":\" at X: \",\"color\":\"reset\"},{\"score\":{\"name\":\"@s\",\"objective\":\"death_x\"},\"color\":\"dark_red\"},{\"text\":\" Y: \",\"color\":\"reset\"},{\"score\":{\"name\":\"@s\",\"objective\":\"death_y\"},\"color\":\"dark_red\"},{\"text\":\" Z: \",\"color\":\"reset\"},{\"score\":{\"name\":\"@s\",\"objective\":\"death_z\"},\"color\":\"dark_red\"},{\"text\":\".\",\"color\":\"reset\"}]"]} 1
+}

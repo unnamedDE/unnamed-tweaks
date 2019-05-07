@@ -1,0 +1,7 @@
+#file: ./example
+
+asat(@e[type=armor_stand,tag=aclib_craftingtable]) {
+  if('block ~ ~ ~ minecraft:dropper{Items:[{Slot: 0b, id: "minecraft:oak_planks", Count: 1b}, {Slot: 1b, id: "minecraft:oak_planks", Count: 1b}, {Slot: 2b, id: "minecraft:oak_planks", Count: 1b}, {Slot: 3b, id: "minecraft:oak_planks", Count: 1b}, {Slot: 4b, id: "minecraft:oak_planks", Count: 1b}, {Slot: 5b, id: "minecraft:oak_planks", Count: 1b}, {Slot: 6b, id: "minecraft:oak_planks", Count: 1b}, {Slot: 7b, id: "minecraft:oak_planks", Count: 1b}, {Slot: 8b, id: "minecraft:oak_planks", Count: 1b}]}') {
+    /data merge block ~ ~ ~ {Items:[{Slot: 4b, id: "minecraft:armor_stand", Count: 1b, tag: {CustomModelData: 70201, HideFlags: 1, display: {Lore: ["{\"text\":\"Right-click to place\",\"color\":\"dark_green\",\"italic\":\"false\"}"], Name: "{\"text\":\"Advanced Crafing Table\",\"color\":\"yellow\",\"italic\":\"false\"}"}, Enchantments: [{lvl: 1, id: "minecraft:unbreaking"}], EntityTag: {Small: 1b, DisabledSlots: 4144959, PersistenceRequired: 1b, Marker: 1b, Invisible: 1b, Tags: ["aclib_craftingtable", "aclib_craftingtable_init"]}}}]}
+  }
+}

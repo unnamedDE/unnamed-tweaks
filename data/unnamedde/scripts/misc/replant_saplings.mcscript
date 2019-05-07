@@ -1,0 +1,83 @@
+#file: ./replant_saplings/main
+
+asat(@e[type=item,nbt={Item:{id:"minecraft:oak_sapling",Count:1b}}]) {
+  if('score @s ud_counter matches 600..') {
+    if('block ~ ~-1 ~ #unnamedde:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
+      /function unnamedde:misc/replant_saplings/replant
+    }
+  } else {
+    /scoreboard players add @s ud_counter 1
+  }
+}
+asat(@e[type=item,nbt={Item:{id:"minecraft:spruce_sapling",Count:1b}}]) {
+  if('score @s ud_counter matches 600..') {
+    if('block ~ ~-1 ~ #unnamedde:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
+      /function unnamedde:misc/replant_saplings/replant
+    }
+  } else {
+    /scoreboard players add @s ud_counter 1
+  }
+}
+asat(@e[type=item,nbt={Item:{id:"minecraft:birch_sapling",Count:1b}}]) {
+  if('score @s ud_counter matches 600..') {
+    if('block ~ ~-1 ~ #unnamedde:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
+      /function unnamedde:misc/replant_saplings/replant
+    }
+  } else {
+    /scoreboard players add @s ud_counter 1
+  }
+}
+asat(@e[type=item,nbt={Item:{id:"minecraft:jungle_sapling",Count:1b}}]) {
+  if('score @s ud_counter matches 600..') {
+    if('block ~ ~-1 ~ #unnamedde:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
+      /function unnamedde:misc/replant_saplings/replant
+    }
+  } else {
+    /scoreboard players add @s ud_counter 1
+  }
+}
+asat(@e[type=item,nbt={Item:{id:"minecraft:acacia_sapling",Count:1b}}]) {
+  if('score @s ud_counter matches 600..') {
+    if('block ~ ~-1 ~ #unnamedde:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
+      /function unnamedde:misc/replant_saplings/replant
+    }
+  } else {
+    /scoreboard players add @s ud_counter 1
+  }
+}
+asat(@e[type=item,nbt={Item:{id:"minecraft:dark_oak_sapling",Count:1b}}]) {
+  if('score @s ud_counter matches 600..') {
+    if('block ~ ~-1 ~ #unnamedde:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
+      /function unnamedde:misc/replant_saplings/replant
+    }
+  } else {
+    /scoreboard players add @s ud_counter 1
+  }
+}
+
+#file: ./replant_saplings/replant
+
+if('entity @s[nbt={Item:{id:"minecraft:oak_sapling"}}]') {
+  /setblock ~ ~ ~ minecraft:oak_sapling
+  /kill @s
+}
+if('entity @s[nbt={Item:{id:"minecraft:spruce_sapling"}}]') {
+  /setblock ~ ~ ~ minecraft:spruce_sapling
+  /kill @s
+}
+if('entity @s[nbt={Item:{id:"minecraft:birch_sapling"}}]') {
+  /setblock ~ ~ ~ minecraft:birch_sapling
+  /kill @s
+}
+if('entity @s[nbt={Item:{id:"minecraft:jungle_sapling"}}]') {
+  /setblock ~ ~ ~ minecraft:jungle_sapling
+  /kill @s
+}
+if('entity @s[nbt={Item:{id:"minecraft:acacia_sapling"}}]') {
+  /setblock ~ ~ ~ minecraft:acacia_sapling
+  /kill @s
+}
+if('entity @s[nbt={Item:{id:"minecraft:dark_oak_sapling"}}]') {
+  /setblock ~ ~ ~ minecraft:dark_oak_sapling
+  /kill @s
+}

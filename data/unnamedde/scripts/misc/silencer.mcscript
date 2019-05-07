@@ -1,0 +1,18 @@
+#file: ./silencer/main
+
+as(@e[type=!player,name="silence me",tag=!silenced]) {
+  /function unnamedde:misc/silencer/silence
+}
+as(@e[type=!player,name=!silenced,tag=silenced]) {
+  /function unnamedde:misc/silencer/unsilence
+}
+
+#file: ./silencer/silence
+
+/tag @s add silenced
+/data merge entity @s {Silent:1b,CustomName:"{\"text\":\"silenced\",\"color\":\"dark_gray\"}"}
+
+#file: ./silencer/unsilence
+
+/tag @s remove silenced
+/data merge entity @s {Silent:0b}

@@ -1,0 +1,15 @@
+#file: ./create/main
+
+/function ac_lib:create/craftingtable/detect
+
+#file: ./create/craftingtable/detect
+
+asat(@e[type=armor_stand,tag=aclib_craftingtable,tag=aclib_craftingtable_init]) {
+  /function ac_lib:create/craftingtable/place
+}
+
+#file: ./create/craftingtable/place
+
+/tag @s remove aclib_craftingtable_init
+/playsound minecraft:block.anvil.land block @a ~ ~ ~
+/setblock ~ ~ ~ minecraft:dropper[facing=down]{CustomName:"{\"text\":\"Advanced Crafting Table\",\"italic\":\"false\"}"} replace

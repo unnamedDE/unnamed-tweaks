@@ -1,0 +1,15 @@
+#file: ./invulnerable/main
+
+as('@e[type=item,tag=smash_lib_invulnerable]'), if(!'entity @s[scores={smash_anvil_cool=0..}]') {
+  /function smash_lib:invulnerable/vulnerable
+}
+
+#file: ./invulnerable/invulnerable
+
+/tag @s add smash_lib_invulnerable
+/data merge entity @s[type=item] {Invulnerable:1b}
+
+#file: ./invulnerable/vulnerable
+
+/tag @s remove smash_lib_invulnerable
+/data merge entity @s[type=item] {Invulnerable:0b}

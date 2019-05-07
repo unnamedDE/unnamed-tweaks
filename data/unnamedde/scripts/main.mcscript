@@ -1,0 +1,46 @@
+
+#file: ./main
+// here goes your main content
+// executes 20 times a second
+
+/execute store result score daytime ud_misc run time query daytime
+/execute store result score day ud_misc run time query day
+
+asat(@r[tag=!ud_id_set]) {
+  /function unnamedde:player_id/first_join
+}
+as(@a[scores={ud_leave=1..}]) {
+  /scoreboard players reset @s ud_leave
+}
+
+/function unnamedde:set_scoreboards/world
+
+asat(@a) {
+  /function unnamedde:set_scoreboards/player
+}
+
+/function unnamedde:creative_menu/main
+/function unnamedde:player_id/main
+/function unnamedde:misc/deaths/main
+
+if('score money ud_options matches 1..') {
+  /function unnamedde:money/main
+}
+if('score hopper_minecarts ud_options matches 1..') {
+  /function unnamedde:misc/hopper_minecarts
+}
+if('score concrete_in_water ud_options matches 1..') {
+  /function unnamedde:misc/concrete_in_water
+}
+if('score nightpvp ud_options matches 1..') {
+  /function unnamedde:misc/nightpvp/main
+}
+if('score tooltips ud_options matches 1..') {
+  /function unnamedde:misc/tooltips/main
+}
+if('score silencer ud_options matches 1..') {
+  /function unnamedde:misc/silencer/main
+}
+if('score replant_saplings ud_options matches 1..') {
+  /function unnamedde:misc/replant_saplings/main
+}

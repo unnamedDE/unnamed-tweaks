@@ -1,0 +1,7 @@
+#file: ./greeting
+
+/tellraw @s {"text":"Welcome to the server!","color":"yellow"}
+
+#file: ./admin_greeting
+
+/tellraw @s [{"text":"You are the first player joining this server! To change the starting balance run ","color":"blue"},{"text":"/scoreboard players set #startValue money ","color":"white"},{"text":"AMOUNT","color":"gray","italic":true},{"text":". To change your own balance run ","color":"blue"},{"text":"/scoreboard players set @s money ","color":"white"},{"text":"AMOUNT","color":"gray","italic":true},{"text":".","color":"blue"}]

@@ -1,0 +1,9 @@
+#file: ./example
+
+as('@e[tag=smash_anvil,type=item,nbt={Item:{id:"minecraft:iron_block",Count:1b}}]') {
+  /data merge entity @s {Item:{id:"minecraft:heavy_weighted_pressure_plate",Count:5b}}
+}
+
+as('@e[tag=smash_piston,type=item,nbt={Item:{id:"minecraft:iron_block",Count:1b}}]') {
+  /data merge entity @s {Item:{id:"minecraft:iron_ingot",Count:9b}}
+}
