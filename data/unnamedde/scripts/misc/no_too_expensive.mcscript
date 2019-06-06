@@ -1,0 +1,7 @@
+#file: ./no_too_expensive
+
+for(0,26) {
+  if('data entity @s Inventory[{Slot:$(i)b}].tag.RepairCost') {
+    /data remove entity @s Inventory[{Slot:$(i)b}].tag.RepairCost
+  }
+}

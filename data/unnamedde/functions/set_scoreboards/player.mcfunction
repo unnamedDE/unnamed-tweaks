@@ -9,6 +9,7 @@ execute store result score @s y_pos run data get entity @s Pos[1]
 execute store result score @s z_pos run data get entity @s Pos[2]
 execute store result score @s x_rot run data get entity @s Rotation[0]
 execute store result score @s y_rot run data get entity @s Rotation[1]
+execute store result score @s dim run data get entity @s Dimension
 execute unless score @s ud_deathtime_m matches 0.. run scoreboard players add @s ud_deathtime_m 0
 
 execute unless score @s ud_deathtime_h matches 0.. run scoreboard players add @s ud_deathtime_h 0
@@ -33,3 +34,11 @@ execute if score @s ud_timeplayed_m matches 60.. run scoreboard players add @s u
 execute if score @s ud_timeplayed_m matches 60.. run scoreboard players remove @s ud_timeplayed_m 60
 execute if score @s ud_timeplayed_m matches 60.. run function unnamedde:misc/tooltips/set_scoreboards
 
+execute store result score @s ud_arrowcount run clear @s minecraft:arrow 0
+execute store result score @s ud_temp run clear @s minecraft:tipped_arrow 0
+scoreboard players operation @s ud_arrowcount += @s ud_temp
+execute store result score @s ud_temp run clear @s minecraft:spectral_arrow 0
+scoreboard players operation @s ud_arrowcount += @s ud_temp
+scoreboard players reset @s ud_temp
+execute store result score @s ud_torchcount run clear @s minecraft:torch 0
+execute store result score @s ud_xp run xp query @s levels

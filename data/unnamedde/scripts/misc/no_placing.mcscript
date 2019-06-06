@@ -1,0 +1,18 @@
+#file: ./no_placing/main
+
+asat(@a[gamemode=survival,tag=!ud_NoPlacing,nbt={SelectedItem:{tag:{unnamedDE:{NoPlacing:1}}}}]) {
+  /function unnamedde:misc/no_placing/no_placing
+}
+asat(@a[gamemode=adventure,tag=ud_NoPlacing]), if(!'entity @s[nbt={SelectedItem:{tag:{unnamedDE:{NoPlacing:1}}}}]') {
+  /function unnamedde:misc/no_placing/placing
+}
+
+#file: ./no_placing/no_placing
+
+/gamemode adventure
+/tag @s add ud_NoPlacing
+
+#file: ./no_placing/placing
+
+/gamemode survival
+/tag @s remove ud_NoPlacing

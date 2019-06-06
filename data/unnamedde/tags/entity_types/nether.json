@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+	"minecraft:enderman",
+	"minecraft:zombie_pigman",
+	"minecraft:endermite",
+	"minecraft:skeleton",
+	"minecraft:arrow",
+	"minecraft:blaze",
+	"minecraft:ghast",
+	"minecraft:magma_cube",
+	"minecraft:wither_skeleton",
+	"minecraft:fireball"
+  ]
+}

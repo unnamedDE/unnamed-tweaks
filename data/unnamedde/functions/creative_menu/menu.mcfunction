@@ -6,7 +6,7 @@
 ######
 tellraw @s {"text":""}
 tellraw @s {"text":""}
-tellraw @s [{"text":"<===== ","color":"aqua"},{"text":"unnamedDE's Lib","color":"red"},{"text":" =====>","color":"aqua"}]
+tellraw @s [{"text":"<===== ","color":"aqua"},{"text":"unnamed Core","color":"red"},{"text":" =====>","color":"aqua"}]
 tellraw @s {"text":""}
 #Content
 
@@ -14,6 +14,10 @@ tellraw @s {"text":""}
 tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 11"}},{"text":"] [","color":"reset"},{"text":"16","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 21"}},{"text":"] ","color":"reset"},{"text":"Advanced Crafter"}]
 #Multitool
 tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 12"}},{"text":"]      ","color":"reset"},{"text":" ","color":"reset"},{"text":"Multitool"}]
+#XP Container
+tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 13"}},{"text":"] [","color":"reset"},{"text":"64","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 23"}},{"text":"] ","color":"reset"},{"text":"XP Container"}]
+#Bonsai Upgrade
+tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 14"}},{"text":"] [","color":"reset"},{"text":"64","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 24"}},{"text":"] ","color":"reset"},{"text":"Bonsai Upgrade"}]
 tellraw @s {"text":""}
 tellraw @s [{"text":" ↑ ","color":"red"},{"text":"Return to main menu","hoverEvent":{"action":"show_text","value":"Click to return"},"clickEvent":{"action":"run_command","value":"/function unnamedde:creative_menu"}}]
 tellraw @s {"text":""}

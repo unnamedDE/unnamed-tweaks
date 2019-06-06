@@ -1,0 +1,264 @@
+#file: ./wireless_redstone/main
+
+asat(@e[tag=ud_wireless,type=item_frame]), if(!'entity @s[nbt={Item:{tag:{unnamedDE:{id:"wireless_upgrade"}}}}]') {
+  /function unnamedde:misc/wireless_redstone/remove
+}
+
+asat(@e[type=item_frame,nbt={Item:{tag:{unnamedDE:{id:"wireless_upgrade"}}}}]) {
+  if('entity @s[nbt={Facing:4b}]') {
+    positioned('~1 ~ ~') {
+      if('block ~ ~ ~ #unnamedde:wireless_redstone_base') {
+        /function unnamedde:misc/wireless_redstone/main_
+      } else if('entity @s[tag=ud_wireless]') {
+        /function unnamedde:misc/wireless_redstone/remove
+      }
+    }
+  }
+  if('entity @s[nbt={Facing:5b}]') {
+    positioned('~-1 ~ ~') {
+      if('block ~ ~ ~ #unnamedde:wireless_redstone_base') {
+        /function unnamedde:misc/wireless_redstone/main_
+      } else if('entity @s[tag=ud_wireless]') {
+        /function unnamedde:misc/wireless_redstone/remove
+      }
+    }
+  }
+  if('entity @s[nbt={Facing:3b}]') {
+    positioned('~ ~ ~-1') {
+      if('block ~ ~ ~ #unnamedde:wireless_redstone_base') {
+        /function unnamedde:misc/wireless_redstone/main_
+      } else if('entity @s[tag=ud_wireless]') {
+        /function unnamedde:misc/wireless_redstone/remove
+      }
+    }
+  }
+  if('entity @s[nbt={Facing:2b}]') {
+    positioned('~ ~ ~1') {
+      if('block ~ ~ ~ #unnamedde:wireless_redstone_base') {
+        /function unnamedde:misc/wireless_redstone/main_
+      } else if('entity @s[tag=ud_wireless]') {
+        /function unnamedde:misc/wireless_redstone/remove
+      }
+    }
+  }
+  if('entity @s[nbt={Facing:1b}]') {
+    positioned('~ ~-1 ~') {
+      if('block ~ ~ ~ #unnamedde:wireless_redstone_base') {
+        /function unnamedde:misc/wireless_redstone/main_
+      } else if('entity @s[tag=ud_wireless]') {
+        /function unnamedde:misc/wireless_redstone/remove
+      }
+    }
+  }
+  if('entity @s[nbt={Facing:0b}]') {
+    positioned('~ ~1 ~') {
+      if('block ~ ~ ~ #unnamedde:wireless_redstone_base') {
+        /function unnamedde:misc/wireless_redstone/main_
+      } else if('entity @s[tag=ud_wireless]') {
+        /function unnamedde:misc/wireless_redstone/remove
+      }
+    }
+  }
+}
+
+asat(@a[scores={set_frequency=1..}]) {
+  /scoreboard players operation @e[tag=ud_wireless,limit=1,sort=nearest,type=item_frame] ud_counter = @s set_frequency
+  /scoreboard players reset @s set_frequency
+}
+asat(@a[scores={set_frequency=..-1}]) {
+  /scoreboard players reset @a[scores={set_frequency=..-1}] set_frequency
+}
+asat(@a[scores={set_frequency=0}]), if(!'entity @e[tag=ud_wireless,type=item_frame,distance=..5]') {
+  /scoreboard players reset @s set_frequency
+}
+
+
+#Facing NBT-Data
+#file: ./wireless_redstone/main_
+
+if('entity @s[tag=!ud_activated]' && 'block ~ ~ ~ minecraft:redstone_block') {
+  /setblock ~ ~ ~ minecraft:redstone_lamp
+}
+
+/tag @s[tag=ud_activated] remove ud_activated
+
+
+asat(@a[distance=..5]) {
+  /scoreboard players enable @s set_frequency
+}
+
+if('entity @s[tag=!ud_wireless]') {
+  /function unnamedde:misc/wireless_redstone/init
+}
+
+if('block ~ ~ ~ redstone_lamp[lit=true]' && 'score @s ud_counter matches 1..') {
+  /tag @s add ud_active
+  at(@e[type=item_frame,tag=ud_wireless,limit=1,sort=nearest]) {
+    at(@e[type=item_frame,tag=ud_wireless,distance=.1..,tag=!ud_activated]) {
+      /function unnamedde:misc/wireless_redstone/activate
+    }
+  }
+} else if('entity @s[tag=ud_active]') {
+  /tag @s remove ud_active
+}
+
+#file: ./wireless_redstone/init
+
+/tellraw @p [{"text":"Click ","color":"green"},{"text":"here","color":"blue","underlined":true,"clickEvent":{"action":"suggest_command","value":"/trigger set_frequency set <frequency>"}},{"text":" to set the frequency","color":"green"}]
+/setblock ~ ~ ~ redstone_lamp
+/tag @s add ud_wireless
+/scoreboard players set @s ud_counter 0
+
+#file: ./wireless_redstone/remove
+
+/tag @s remove ud_wireless
+/scoreboard players reset @s ud_counter
+
+#file: ./wireless_redstone/activate
+
+if('score @e[limit=1,sort=nearest,type=item_frame,tag=ud_wireless] ud_counter = @s ud_counter') {
+  as(@e[limit=1,sort=nearest,type=item_frame,tag=ud_wireless]) {
+    if('entity @s[nbt={Facing:4b}]') {
+      positioned('~1 ~ ~') {
+        /function unnamedde:misc/wireless_redstone/activated
+      }
+    }
+    if('entity @s[nbt={Facing:5b}]') {
+      positioned('~-1 ~ ~') {
+        /function unnamedde:misc/wireless_redstone/activated
+      }
+    }
+    if('entity @s[nbt={Facing:3b}]') {
+      positioned('~ ~ ~-1') {
+        /function unnamedde:misc/wireless_redstone/activated
+      }
+    }
+    if('entity @s[nbt={Facing:2b}]') {
+      positioned('~ ~ ~1') {
+        /function unnamedde:misc/wireless_redstone/activated
+      }
+    }
+    if('entity @s[nbt={Facing:1b}]') {
+      positioned('~ ~-1 ~') {
+        /function unnamedde:misc/wireless_redstone/activated
+      }
+    }
+    if('entity @e[nbt={Facing:0b}]' && !'entity @s[nbt={Facing:1b}]' && !'entity @s[nbt={Facing:2b}]' && !'entity @s[nbt={Facing:3b}]' && !'entity @s[nbt={Facing:4b}]' && !'entity @s[nbt={Facing:5b}]') {
+      positioned('~ ~1 ~') {
+        /function unnamedde:misc/wireless_redstone/activated
+      }
+    }
+  }
+}
+
+#file: ./wireless_redstone/activated
+
+/tag @s add ud_activated
+/particle minecraft:portal ~ ~ ~ .1 .1 .1 1 1
+/setblock ~ ~ ~ minecraft:redstone_block
+
+#file: ./wireless_redstone/deactivate
+
+if('score @e[limit=1,sort=nearest,type=item_frame,tag=ud_wireless] ud_counter = @s ud_counter') {
+  /particle dust 1 0 0 1 ~ ~ ~ 0 0 0 0 10
+  /tag @e[limit=1,sort=nearest,type=item_frame,tag=ud_wireless] remove ud_activated
+  if('entity @s[nbt={Facing:4b}]') {
+    positioned('~1 ~ ~') {
+      /setblock ~ ~ ~ redstone_lamp
+    }
+  }
+  if('entity @s[nbt={Facing:5b}]') {
+    positioned('~-1 ~ ~') {
+      /setblock ~ ~ ~ redstone_lamp
+    }
+  }
+  if('entity @s[nbt={Facing:3b}]') {
+    positioned('~ ~ ~-1') {
+      /setblock ~ ~ ~ redstone_lamp
+    }
+  }
+  if('entity @s[nbt={Facing:2b}]') {
+    positioned('~ ~ ~1') {
+      /setblock ~ ~ ~ redstone_lamp
+    }
+  }
+  if('entity @s[nbt={Facing:1b}]') {
+    positioned('~ ~-1 ~') {
+      /setblock ~ ~ ~ redstone_lamp
+    }
+  }
+  if('entity @s[nbt={Facing:0b}]') {
+    positioned('~ ~1 ~') {
+      /setblock ~ ~ ~ redstone_lamp
+    }
+  }
+}
+
+
+#file: ./wireless_redstone/craft
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:redstone_torch"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:ender_pearl"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b,id:"minecraft:redstone_torch"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:redstone_block"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:ender_pearl"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b,id:"minecraft:redstone_block"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {
+  /function unnamedde:misc/wireless_redstone/craft/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_wireless_upgrade]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:redstone_torch"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:ender_pearl"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b,id:"minecraft:redstone_torch"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:redstone_block"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:ender_pearl"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b,id:"minecraft:redstone_block"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:2b,id:"minecraft:dead_bubble_coral",tag:{display:{Name:"{\\"text\\":\\"Wireless Upgrade\\",\\"color\\":\\"yellow\\",\\"italic\\":false}",Lore:["{\\"text\\":\\"Put in a item frame next to a\\",\\"color\\":\\"green\\",\\"italic\\":false}","{\\"text\\":\\"redstone block\\",\\"color\\":\\"green\\",\\"italic\\":false}"]},CustomModelData:701003,unnamedDE:{id:"wireless_upgrade"},Enchantments:[{id:"enchant",lvl:1s}]}}]}') {
+  /function unnamedde:misc/wireless_redstone/craft/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_wireless_upgrade]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:redstone_torch"}]}') {
+    /function unnamedde:misc/wireless_redstone/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:ender_pearl"}]}') {
+    /function unnamedde:misc/wireless_redstone/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b,id:"minecraft:redstone_torch"}]}') {
+    /function unnamedde:misc/wireless_redstone/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:redstone_block"}]}') {
+    /function unnamedde:misc/wireless_redstone/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:ender_pearl"}]}') {
+    /function unnamedde:misc/wireless_redstone/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b,id:"minecraft:redstone_block"}]}') {
+    /function unnamedde:misc/wireless_redstone/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+    /function unnamedde:misc/wireless_redstone/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
+    /function unnamedde:misc/wireless_redstone/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+    /function unnamedde:misc/wireless_redstone/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+    /function unnamedde:misc/wireless_redstone/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+    /function unnamedde:misc/wireless_redstone/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+    /function unnamedde:misc/wireless_redstone/craft/3
+  }
+}
+
+#file: ./wireless_redstone/craft/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:dead_bubble_coral{display:{Name:"{\"text\":\"Wireless Upgrade\",\"color\":\"yellow\",\"italic\":false}",Lore:["{\"text\":\"Put in a item frame next to a\",\"color\":\"green\",\"italic\":false}","{\"text\":\"redstone block\",\"color\":\"green\",\"italic\":false}"]},CustomModelData:701003,unnamedDE:{id:"wireless_upgrade"},Enchantments:[{id:"enchant",lvl:1s}]} 2
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_wireless_upgrade
+
+#file: ./wireless_redstone/craft/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add replacements here
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_wireless_upgrade
+
+#file: ./wireless_redstone/craft/3
+
+/replaceitem block ~ ~ ~ container.7 minecraft:air
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+/replaceitem block ~ ~ ~ container.25 minecraft:air
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_wireless_upgrade

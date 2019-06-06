@@ -1,42 +1,63 @@
 #file: ./uninstall
 
+#SmashLib
 /scoreboard objectives remove smash_anvil
 /scoreboard objectives remove smash_anvil_cool
 /scoreboard objectives remove smash_piston
 /scoreboard objectives remove smash_p_cool
 
-/scoreboard objectives add installed_packs
+#AdvancedCrafting Lib
+/scoreboard objectives remove ac_temp
 
-/scoreboard objectives add ud_const
-/scoreboard objectives add money
-/scoreboard objectives add pay_money
-/scoreboard objectives add check_money
-/scoreboard objectives add player_id
-/scoreboard objectives add group_id
-/scoreboard objectives add invite_id
-/scoreboard objectives add invite_player
-/scoreboard objectives add accept_invite
-/scoreboard objectives add leave_group
-/scoreboard objectives add kick_player
-/scoreboard objectives add ud_creative_menu
-/scoreboard objectives add ud_misc
-/scoreboard objectives add ud_counter
-/scoreboard objectives add ud_leave
-/scoreboard objectives add x_pos
-/scoreboard objectives add y_pos
-/scoreboard objectives add z_pos
-/scoreboard objectives add death_x
-/scoreboard objectives add death_y
-/scoreboard objectives add death_z
-/scoreboard objectives add x_rot
-/scoreboard objectives add y_rot
-/scoreboard objectives add deaths
-/scoreboard objectives add ud_deaths deathCount
-/scoreboard objectives add ud_deathtime minecraft.custom:minecraft.time_since_death
-/scoreboard objectives add ud_timeplayed minecraft.custom:minecraft.play_one_minute
-/scoreboard objectives add ud_deathtime_h
-/scoreboard objectives add ud_deathtime_m
-/scoreboard objectives add ud_timeplayed_h
-/scoreboard objectives add ud_timeplayed_m
+#unnamedDE's Lib
+/scoreboard objectives remove installed_packs
+
+/scoreboard objectives remove ud_temp
+/scoreboard objectives remove ud_const
+/scoreboard objectives remove money
+/scoreboard objectives remove pay_money
+/scoreboard objectives remove check_money
+/scoreboard objectives remove player_id
+/scoreboard objectives remove group_id
+/scoreboard objectives remove ud_owner_id
+/scoreboard objectives remove invite_id
+/scoreboard objectives remove invite_player
+/scoreboard objectives remove accept_invite
+/scoreboard objectives remove leave_group
+/scoreboard objectives remove kick_player
+/scoreboard objectives remove ud_sneak
+/scoreboard objectives remove ud_jump
+/scoreboard objectives remove ud_creative_menu
+/scoreboard objectives remove ud_misc
+/scoreboard objectives remove ud_counter
+/scoreboard objectives remove ud_leave
+/scoreboard objectives remove x_pos
+/scoreboard objectives remove y_pos
+/scoreboard objectives remove z_pos
+/scoreboard objectives remove death_x
+/scoreboard objectives remove death_y
+/scoreboard objectives remove death_z
+/scoreboard objectives remove x_rot
+/scoreboard objectives remove y_rot
+/scoreboard objectives remove deaths
+/scoreboard objectives remove ud_deaths
+/scoreboard objectives remove ud_deathtime
+/scoreboard objectives remove ud_timeplayed
+/scoreboard objectives remove ud_deathtime_h
+/scoreboard objectives remove ud_deathtime_m
+/scoreboard objectives remove ud_timeplayed_h
+/scoreboard objectives remove ud_timeplayed_m
+/scoreboard objectives remove ud_arrowcount
+/scoreboard objectives remove ud_torchcount
+/scoreboard objectives remove store_xp
+/scoreboard objectives remove extract_xp
+/scoreboard objectives remove check_xp
+/scoreboard objectives remove ud_xp
+/scoreboard objectives remove ud_stored_xp
+/scoreboard objectives remove set_frequency
+/scoreboard objectives remove ud_mine_quartz
+/scoreboard objectives remove ud_eat_pork_c
+/scoreboard objectives remove ud_eat_pork_r
+/scoreboard objectives remove ud_age
 
 /team remove nopvp

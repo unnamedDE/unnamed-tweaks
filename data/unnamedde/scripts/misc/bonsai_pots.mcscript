@@ -1,0 +1,193 @@
+#file: ./bonsai_pots/main
+
+asat(@e[tag=!ud_bonsai,type=item_frame,nbt={Item:{tag:{unnamedDE:{id:"bonsai_upgrade"}}}}]) {
+  /tag @s add ud_bonsai
+}
+
+asat(@e[type=item_frame,scores={ud_counter=0..},tag=ud_bonsai]) {
+  if(!'entity @s[nbt={Item:{tag:{unnamedDE:{id:"bonsai_upgrade"}}}}]') {
+    /scoreboard players reset @s ud_counter
+    /tag @s remove ud_bonsai
+  }
+}
+
+asat(@e[type=item_frame,nbt={Item:{tag:{unnamedDE:{id:"bonsai_upgrade"}}}},tag=ud_bonsai]) {
+  /scoreboard players add @s ud_counter 1
+  if('score @s ud_counter >= bonsai_pots_cool ud_options') {
+    if('entity @s[nbt={Rotation:[0.0f,0.0f]}]') {
+      positioned('~ ~ ~-1'), if('block ~ ~ ~ #unnamedde:has_inventory' && 'block ~ ~1 ~ #minecraft:flower_pots') {
+        /function unnamedde:misc/bonsai_pots/action
+      }
+    }
+    if('entity @s[nbt={Rotation:[90.0f,0.0f]}]') {
+      positioned('~1 ~ ~'), if('block ~ ~ ~ #unnamedde:has_inventory' && 'block ~ ~1 ~ #minecraft:flower_pots') {
+        /function unnamedde:misc/bonsai_pots/action
+      }
+    }
+    if('entity @s[nbt={Rotation:[180.0f,0.0f]}]') {
+      positioned('~ ~ ~1'), if('block ~ ~ ~ #unnamedde:has_inventory' && 'block ~ ~1 ~ #minecraft:flower_pots') {
+        /function unnamedde:misc/bonsai_pots/action
+      }
+    }
+    if('entity @s[nbt={Rotation:[270.0f,0.0f]}]') {
+      positioned('~-1 ~ ~'), if('block ~ ~ ~ #unnamedde:has_inventory' && 'block ~ ~1 ~ #minecraft:flower_pots') {
+        /function unnamedde:misc/bonsai_pots/action
+      }
+    }
+  /scoreboard players reset @s ud_counter
+  }
+}
+
+#file: ./bonsai_pots/action
+
+/playsound minecraft:item.axe.strip block @a
+##
+#Trees
+if('block ~ ~1 ~ minecraft:potted_oak_sapling') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/oak
+}
+if('block ~ ~1 ~ minecraft:potted_spruce_sapling') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/spruce
+}
+if('block ~ ~1 ~ minecraft:potted_birch_sapling') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/birch
+}
+if('block ~ ~1 ~ minecraft:potted_jungle_sapling') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/jungle
+}
+if('block ~ ~1 ~ minecraft:potted_acacia_sapling') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/acacia
+}
+if('block ~ ~1 ~ minecraft:potted_dark_oak_sapling') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/dark_oak
+}
+
+if('block ~ ~1 ~ minecraft:potted_bamboo') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/bamboo
+}
+if('block ~ ~1 ~ minecraft:potted_cactus') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/cactus
+}
+
+if('block ~ ~1 ~ minecraft:potted_brown_mushroom') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/brown_mushroom
+}
+if('block ~ ~1 ~ minecraft:potted_red_mushroom') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/red_mushroom
+}
+
+if('block ~ ~1 ~ minecraft:potted_dead_bush') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/dead_bush
+}
+if('block ~ ~1 ~ minecraft:potted_fern') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/fern
+}
+
+#Flowers
+if('block ~ ~1 ~ minecraft:potted_dandelion') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/dandelion
+}
+if('block ~ ~1 ~ minecraft:potted_poppy') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/poppy
+}
+if('block ~ ~1 ~ minecraft:potted_blue_orchid') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/blue_orchid
+}
+if('block ~ ~1 ~ minecraft:potted_allium') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/allium
+}
+if('block ~ ~1 ~ minecraft:potted_azure_bluet') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/azure_bluet
+}
+if('block ~ ~1 ~ minecraft:potted_red_tulip') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/red_tulip
+}
+if('block ~ ~1 ~ minecraft:potted_orange_tulip') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/orange_tulip
+}
+if('block ~ ~1 ~ minecraft:potted_white_tulip') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/white_tulip
+}
+if('block ~ ~1 ~ minecraft:potted_pink_tulip') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/pink_tulip
+}
+if('block ~ ~1 ~ minecraft:potted_oxeye_daisy') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/oxeye_daisy
+}
+if('block ~ ~1 ~ minecraft:potted_cornflower') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/cornflower
+}
+if('block ~ ~1 ~ minecraft:potted_lily_of_the_valley') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/lily_of_the_valley
+}
+if('block ~ ~1 ~ minecraft:potted_wither_rose') {
+  /loot insert ~ ~ ~ loot unnamedde:bonsai_pots/wither_rose
+}
+
+#file: ./bonsai_pots/craft
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:flower_pot"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:diamond_axe"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:golden_apple"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {
+  /function unnamedde:misc/bonsai_pots/craft/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_bonsai_upgrade]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:flower_pot"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:diamond_axe"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:golden_apple"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:dead_bubble_coral",tag:{display:{Name:"{\\"text\\":\\"Bonsai Upgrade\\",\\"color\\":\\"yellow\\",\\"italic\\":false}",Lore:["{\\"text\\":\\"Put in a item frame next to a\\",\\"color\\":\\"green\\",\\"italic\\":false}","{\\"text\\":\\"block with an inventory and place a flower pot\\",\\"color\\":\\"green\\",\\"italic\\":false}","{\\"text\\":\\"with your desired plant on top\\",\\"color\\":\\"green\\",\\"italic\\":false}"]},CustomModelData:701002,unnamedDE:{id:"bonsai_upgrade"},Enchantments:[{id:"enchant",lvl:1s}]}}]}') {
+  /function unnamedde:misc/bonsai_pots/craft/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_bonsai_upgrade]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:flower_pot"}]}') {
+    /function unnamedde:misc/bonsai_pots/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:diamond_axe"}]}') {
+    /function unnamedde:misc/bonsai_pots/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+    /function unnamedde:misc/bonsai_pots/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:golden_apple"}]}') {
+    /function unnamedde:misc/bonsai_pots/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}') {
+    /function unnamedde:misc/bonsai_pots/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}') {
+    /function unnamedde:misc/bonsai_pots/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+    /function unnamedde:misc/bonsai_pots/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
+    /function unnamedde:misc/bonsai_pots/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+    /function unnamedde:misc/bonsai_pots/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+    /function unnamedde:misc/bonsai_pots/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+    /function unnamedde:misc/bonsai_pots/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+    /function unnamedde:misc/bonsai_pots/craft/3
+  }
+}
+
+#file: ./bonsai_pots/craft/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:dead_bubble_coral{display:{Name:"{\"text\":\"Bonsai Upgrade\",\"color\":\"yellow\",\"italic\":false}",Lore:["{\"text\":\"Put in a item frame next to a\",\"color\":\"green\",\"italic\":false}","{\"text\":\"block with an inventory and place a flower pot\",\"color\":\"green\",\"italic\":false}","{\"text\":\"with your desired plant on top\",\"color\":\"green\",\"italic\":false}"]},CustomModelData:701002,unnamedDE:{id:"bonsai_upgrade"},Enchantments:[{id:"enchant",lvl:1s}]} 1
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_bonsai_upgrade
+
+#file: ./bonsai_pots/craft/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add replacements here
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_bonsai_upgrade
+
+#file: ./bonsai_pots/craft/3
+
+/replaceitem block ~ ~ ~ container.7 minecraft:air
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+/replaceitem block ~ ~ ~ container.25 minecraft:air
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_bonsai_upgrade

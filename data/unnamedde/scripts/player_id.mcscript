@@ -5,10 +5,10 @@ as(@a) {
   if('score @s player_id = @s group_id') {
     /scoreboard players enable @s kick_player
     /scoreboard players enable @s invite_player
-    /scoreboard players reset @s leave_group
+    /scoreboard players reset @s[scores={leave_group=0}] leave_group
   } else {
-    /scoreboard players reset @s kick_player
-    /scoreboard players reset @s invite_player
+    /scoreboard players reset @s[scores={kick_player=0}] kick_player
+    /scoreboard players reset @s[scores={invite_player=0}] invite_player
     /scoreboard players enable @s leave_group
   }
 }

@@ -450,68 +450,68 @@ craftedUtility(23)
 
 #file: ./advanced_crafter/recipes/test
 
-if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:stone"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b,id:"minecraft:diamond"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b,id:"minecraft:diamond"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b,id:"minecraft:diamond"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {
-  /function ac_lib:advanced_crafter/recipes/test/1
-}
-if('entity @s[tag=ac_lib_advanced_crafter_crafted_test]' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:stone"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b,id:"minecraft:diamond"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b,id:"minecraft:diamond"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b,id:"minecraft:diamond"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:diamond_ore",tag:{display:{Name:"{\\"text\\":\\"The Ore\\"}"}}}]}') {
-  /function ac_lib:advanced_crafter/recipes/test/2
-}
-if('entity @s[tag=ac_lib_advanced_crafter_crafted_test]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
-  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b}]}') {
-    /function ac_lib:advanced_crafter/recipes/test/3
-  }
-  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b}]}') {
-    /function ac_lib:advanced_crafter/recipes/test/3
-  }
-  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
-    /function ac_lib:advanced_crafter/recipes/test/3
-  }
-  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}') {
-    /function ac_lib:advanced_crafter/recipes/test/3
-  }
-  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:stone"}]}') {
-    /function ac_lib:advanced_crafter/recipes/test/3
-  }
-  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}') {
-    /function ac_lib:advanced_crafter/recipes/test/3
-  }
-  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
-    /function ac_lib:advanced_crafter/recipes/test/3
-  }
-  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
-    /function ac_lib:advanced_crafter/recipes/test/3
-  }
-  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
-    /function ac_lib:advanced_crafter/recipes/test/3
-  }
-  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b,id:"minecraft:diamond"}]}') {
-    /function ac_lib:advanced_crafter/recipes/test/3
-  }
-  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b,id:"minecraft:diamond"}]}') {
-    /function ac_lib:advanced_crafter/recipes/test/3
-  }
-  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b,id:"minecraft:diamond"}]}') {
-    /function ac_lib:advanced_crafter/recipes/test/3
-  }
-}
+// if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:stone"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b,id:"minecraft:diamond"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b,id:"minecraft:diamond"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b,id:"minecraft:diamond"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {
+//   /function ac_lib:advanced_crafter/recipes/test/1
+// }
+// if('entity @s[tag=ac_lib_advanced_crafter_crafted_test]' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:stone"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b,id:"minecraft:diamond"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b,id:"minecraft:diamond"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b,id:"minecraft:diamond"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:diamond_ore",tag:{display:{Name:"{\\"text\\":\\"The Ore\\"}"}}}]}') {
+//   /function ac_lib:advanced_crafter/recipes/test/2
+// }
+// if('entity @s[tag=ac_lib_advanced_crafter_crafted_test]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+//   if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b}]}') {
+//     /function ac_lib:advanced_crafter/recipes/test/3
+//   }
+//   if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b}]}') {
+//     /function ac_lib:advanced_crafter/recipes/test/3
+//   }
+//   if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+//     /function ac_lib:advanced_crafter/recipes/test/3
+//   }
+//   if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}') {
+//     /function ac_lib:advanced_crafter/recipes/test/3
+//   }
+//   if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:stone"}]}') {
+//     /function ac_lib:advanced_crafter/recipes/test/3
+//   }
+//   if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}') {
+//     /function ac_lib:advanced_crafter/recipes/test/3
+//   }
+//   if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+//     /function ac_lib:advanced_crafter/recipes/test/3
+//   }
+//   if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
+//     /function ac_lib:advanced_crafter/recipes/test/3
+//   }
+//   if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+//     /function ac_lib:advanced_crafter/recipes/test/3
+//   }
+//   if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b,id:"minecraft:diamond"}]}') {
+//     /function ac_lib:advanced_crafter/recipes/test/3
+//   }
+//   if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b,id:"minecraft:diamond"}]}') {
+//     /function ac_lib:advanced_crafter/recipes/test/3
+//   }
+//   if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b,id:"minecraft:diamond"}]}') {
+//     /function ac_lib:advanced_crafter/recipes/test/3
+//   }
+// }
 
 #file: ./advanced_crafter/recipes/test/1
 
-/replaceitem block ~ ~ ~ container.16 minecraft:diamond_ore{display:{Name:"{\"text\":\"The Ore\"}"}} 1
-/tag @s add ac_lib_advanced_crafter_crafted
-/tag @s add ac_lib_advanced_crafter_crafted_test
+// /replaceitem block ~ ~ ~ container.16 minecraft:diamond_ore{display:{Name:"{\"text\":\"The Ore\"}"}} 1
+// /tag @s add ac_lib_advanced_crafter_crafted
+// /tag @s add ac_lib_advanced_crafter_crafted_test
 
 #file: ./advanced_crafter/recipes/test/2
 
-/function ac_lib:advanced_crafter/crafted
-//Add replacements here
-/tag @s remove ac_lib_advanced_crafter_crafted
-/tag @s remove ac_lib_advanced_crafter_crafted_test
+// /function ac_lib:advanced_crafter/crafted
+// //Add replacements here
+// /tag @s remove ac_lib_advanced_crafter_crafted
+// /tag @s remove ac_lib_advanced_crafter_crafted_test
 
 #file: ./advanced_crafter/recipes/test/3
 
-/replaceitem block ~ ~ ~ container.7 minecraft:air
-/replaceitem block ~ ~ ~ container.16 minecraft:air
-/replaceitem block ~ ~ ~ container.25 minecraft:air
-/tag @s remove ac_lib_advanced_crafter_crafted
-/tag @s remove ac_lib_advanced_crafter_crafted_test
+// /replaceitem block ~ ~ ~ container.7 minecraft:air
+// /replaceitem block ~ ~ ~ container.16 minecraft:air
+// /replaceitem block ~ ~ ~ container.25 minecraft:air
+// /tag @s remove ac_lib_advanced_crafter_crafted
+// /tag @s remove ac_lib_advanced_crafter_crafted_test

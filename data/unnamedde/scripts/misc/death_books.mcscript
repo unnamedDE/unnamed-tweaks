@@ -40,5 +40,75 @@ if('score death_books ud_options matches 1..') {
 #file: ./death_books/give_book
 
 if('score death_books ud_options matches 1..') {
-  /give @s minecraft:written_book{unnamedDE:{id:"book_of_death"},title:"Book of Death",author:"the death",generation:3,pages:["[{\"selector\":\"@s\",\"color\":\"dark_red\"},{\"text\":\" died on day \",\"color\":\"reset\"},{\"score\":{\"name\":\"real_day\",\"objective\":\"ud_misc\"},\"color\":\"reset\"},{\"text\":\" at X: \",\"color\":\"reset\"},{\"score\":{\"name\":\"@s\",\"objective\":\"death_x\"},\"color\":\"dark_red\"},{\"text\":\" Y: \",\"color\":\"reset\"},{\"score\":{\"name\":\"@s\",\"objective\":\"death_y\"},\"color\":\"dark_red\"},{\"text\":\" Z: \",\"color\":\"reset\"},{\"score\":{\"name\":\"@s\",\"objective\":\"death_z\"},\"color\":\"dark_red\"},{\"text\":\".\",\"color\":\"reset\"}]"]} 1
+  //give @s minecraft:written_book{unnamedDE:{id:"death_book"},title:"Book of Death",author:"the death",generation:3,pages:["[{\"selector\":\"@s\",\"color\":\"dark_red\"},{\"text\":\" died on day \",\"color\":\"reset\"},{\"score\":{\"name\":\"real_day\",\"objective\":\"ud_misc\"},\"color\":\"reset\"},{\"text\":\" at X: \",\"color\":\"reset\"},{\"score\":{\"name\":\"@s\",\"objective\":\"death_x\"},\"color\":\"dark_red\"},{\"text\":\" Y: \",\"color\":\"reset\"},{\"score\":{\"name\":\"@s\",\"objective\":\"death_y\"},\"color\":\"dark_red\"},{\"text\":\" Z: \",\"color\":\"reset\"},{\"score\":{\"name\":\"@s\",\"objective\":\"death_z\"},\"color\":\"dark_red\"},{\"text\":\".\",\"color\":\"reset\"}]"]} 1
+  /give @s minecraft:written_book{unnamedDE:{id:"death_book"},title:"Book of Death",author:"the death",generation:3,resolved:1b,pages:["{\"text\":\"qwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnmqwertzuiopüasdfghjklöäyxcvbnm\",\"obfuscated\":true}"]} 1
+  /tellraw @s [{"text":"You died at ","color":"red"},{"score":{"name":"@s","objective":"death_x"},"color":"blue"},{"text":" "},{"score":{"name":"@s","objective":"death_y"},"color":"blue"},{"text":" "},{"score":{"name":"@s","objective":"death_z"},"color":"blue"},{"text":" on day ","color":"red"},{"score":{"name":"real_day","objective":"ud_misc"},"color":"blue"}]
 }
+
+#file: ./death_books/craft_book
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:bone"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:book"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {
+  /function unnamedde:misc/death_books/craft_book/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_death_book]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:bone"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:book"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:written_book",tag:{unnamedDE:{id:"death_book"},title:"Book of Death",author:"the death",generation:3,pages:["[{\\"selector\\":\\"@s\\",\\"color\\":\\"dark_red\\"},{\\"text\\":\\" died on day \\",\\"color\\":\\"reset\\"},{\\"score\\":{\\"name\\":\\"real_day\\",\\"objective\\":\\"ud_misc\\"},\\"color\\":\\"reset\\"},{\\"text\\":\\" at X: \\",\\"color\\":\\"reset\\"},{\\"score\\":{\\"name\\":\\"@s\\",\\"objective\\":\\"death_x\\"},\\"color\\":\\"dark_red\\"},{\\"text\\":\\" Y: \\",\\"color\\":\\"reset\\"},{\\"score\\":{\\"name\\":\\"@s\\",\\"objective\\":\\"death_y\\"},\\"color\\":\\"dark_red\\"},{\\"text\\":\\" Z: \\",\\"color\\":\\"reset\\"},{\\"score\\":{\\"name\\":\\"@s\\",\\"objective\\":\\"death_z\\"},\\"color\\":\\"dark_red\\"},{\\"text\\":\\".\\",\\"color\\":\\"reset\\"}]"]}}]}') {
+  /function unnamedde:misc/death_books/craft_book/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_death_book]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:bone"}]}') {
+    /function unnamedde:misc/death_books/craft_book/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b}]}') {
+    /function unnamedde:misc/death_books/craft_book/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+    /function unnamedde:misc/death_books/craft_book/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:book"}]}') {
+    /function unnamedde:misc/death_books/craft_book/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}') {
+    /function unnamedde:misc/death_books/craft_book/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}') {
+    /function unnamedde:misc/death_books/craft_book/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+    /function unnamedde:misc/death_books/craft_book/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
+    /function unnamedde:misc/death_books/craft_book/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+    /function unnamedde:misc/death_books/craft_book/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+    /function unnamedde:misc/death_books/craft_book/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+    /function unnamedde:misc/death_books/craft_book/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+    /function unnamedde:misc/death_books/craft_book/3
+  }
+}
+
+#file: ./death_books/craft_book/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:written_book{unnamedDE:{id:"death_book"},title:"Book of Death",author:"the death",generation:3,pages:["[{\"selector\":\"@s\",\"color\":\"dark_red\"},{\"text\":\" died on day \",\"color\":\"reset\"},{\"score\":{\"name\":\"real_day\",\"objective\":\"ud_misc\"},\"color\":\"reset\"},{\"text\":\" at X: \",\"color\":\"reset\"},{\"score\":{\"name\":\"@s\",\"objective\":\"death_x\"},\"color\":\"dark_red\"},{\"text\":\" Y: \",\"color\":\"reset\"},{\"score\":{\"name\":\"@s\",\"objective\":\"death_y\"},\"color\":\"dark_red\"},{\"text\":\" Z: \",\"color\":\"reset\"},{\"score\":{\"name\":\"@s\",\"objective\":\"death_z\"},\"color\":\"dark_red\"},{\"text\":\".\",\"color\":\"reset\"}]"]} 1
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_death_book
+
+#file: ./death_books/craft_book/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add replacements here
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_death_book
+
+#file: ./death_books/craft_book/3
+
+/replaceitem block ~ ~ ~ container.7 minecraft:air
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+/replaceitem block ~ ~ ~ container.25 minecraft:air
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_death_book

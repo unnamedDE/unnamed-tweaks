@@ -1,9 +1,0 @@
-
-#file: ./main
-// here goes your main content
-// executes 20 times a second
-
-/function ac_lib:crafting/main
-/function ac_lib:create/main
-/function ac_lib:remove/main
-/function ac_lib:example

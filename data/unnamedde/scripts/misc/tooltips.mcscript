@@ -1,16 +1,32 @@
 #file: ./tooltips/main
 
-as(@a[tag=ud_tooltip_compass]), if(!'entity @s[nbt={SelectedItem:{id:"minecraft:compass"}}]') {
+as(@a[tag=ud_tooltip_elytra]), if(!'entity @s[gamemode=!spectator,nbt={FallFlying:1b,Inventory:[{Slot:102b,id:"minecraft:elytra"},{id:"minecraft:compass"}]}]') {
   /title @s actionbar ""
 }
-as(@a[tag=ud_tooltip_clock]), if(!'entity @s[nbt={SelectedItem:{id:"minecraft:clock"}}]') {
+as(@a[tag=ud_tooltip_compass]), if(!'entity @s[gamemode=!spectator,nbt={SelectedItem:{id:"minecraft:compass"}}]') {
   /title @s actionbar ""
 }
-as(@a[tag=ud_tooltip_bone]), if(!'entity @s[nbt={SelectedItem:{id:"minecraft:bone"}}]') {
+as(@a[tag=ud_tooltip_clock]), if(!'entity @s[gamemode=!spectator,nbt={SelectedItem:{id:"minecraft:clock"}}]') {
+  /title @s actionbar ""
+}
+as(@a[tag=ud_tooltip_death_book]), if(!'entity @s[gamemode=!spectator,nbt={SelectedItem:{tag:{unnamedDE:{id:"death_book"}}}}]') {
+  /title @s actionbar ""
+}
+as(@a[tag=ud_tooltip_bow]), if(!'entity @s[gamemode=!spectator,nbt={SelectedItem:{id:"minecraft:bow"}}]' && !'entity @s[gamemode=!spectator,nbt={SelectedItem:{id:"minecraft:crossbow"}}]') {
+  /title @s actionbar ""
+}
+as(@a[tag=ud_tooltip_torch]), if(!'entity @s[gamemode=!spectator,nbt={SelectedItem:{id:"minecraft:torch"}}]') {
   /title @s actionbar ""
 }
 
-asat(@a) {
+asat(@a[gamemode=!spectator]) {
+  if('entity @s[nbt={FallFlying:1b,Inventory:[{Slot:102b,id:"minecraft:elytra"},{id:"minecraft:compass"}]}]') {
+    if(!'entity @s[nbt={SelectedItem:{id:"minecraft:torch"}}]' || !'entity @s[nbt={SelectedItem:{id:"minecraft:bow"}}]' || !'entity @s[nbt={SelectedItem:{id:"minecraft:crossbow"}}]' || !'entity @s[nbt={SelectedItem:{id:"minecraft:clock"}}]' || !'entity @s[nbt={SelectedItem:{tag:{unnamedDE:{id:"death_book"}}}}]') {
+      /function unnamedde:misc/tooltips/display/elytra
+    }
+  } else {
+    /tag @s remove ud_tooltip_elytra
+  }
   if('entity @s[nbt={SelectedItem:{id:"minecraft:compass"}}]') {
     /function unnamedde:misc/tooltips/display/compass
   } else {
@@ -21,13 +37,24 @@ asat(@a) {
   } else {
     /tag @s remove ud_tooltip_clock
   }
-  if('entity @s[nbt={SelectedItem:{id:"minecraft:bone"}}]') {
-    /function unnamedde:misc/tooltips/display/bone
+  if('entity @s[nbt={SelectedItem:{tag:{unnamedDE:{id:"death_book"}}}}]') {
+    /function unnamedde:misc/tooltips/display/death_book
   } else {
-    /tag @s remove ud_tooltip_bone
+    /tag @s remove ud_tooltip_death_book
+  }
+  if('entity @s[nbt={SelectedItem:{id:"minecraft:bow"}}]' || 'entity @s[nbt={SelectedItem:{id:"minecraft:crossbow"}}]') {
+    /function unnamedde:misc/tooltips/display/bow
+  }
+  if(!'entity @s[nbt={SelectedItem:{id:"minecraft:bow"}}]' && !'entity @s[nbt={SelectedItem:{id:"minecraft:crossbow"}}]') {
+    /tag @s remove ud_tooltip_bow
+  }
+  if('entity @s[nbt={SelectedItem:{id:"minecraft:torch"}}]') {
+    /function unnamedde:misc/tooltips/display/torch
+  } else {
+    /tag @s remove ud_tooltip_torch
   }
 
-  if('entity @s[tag=!ud_tooltip_clock_notify,nbt={Inventory:[{id:"minecraft:clock"}]}]' && 'score daytime ud_misc matches 13000..') {
+  if('entity @s[tag=!ud_tooltip_clock_notify,nbt={Dimension:0b,Inventory:[{id:"minecraft:clock"}]}]' && 'score daytime ud_misc matches 13000..') {
     /function unnamedde:misc/tooltips/notify/clock
   }
   if(!'score daytime ud_misc matches 13000..' && 'entity @s[tag=ud_tooltip_clock_notify]') {
@@ -41,17 +68,54 @@ asat(@a) {
 #file: ./tooltips/display/compass
 
 /tag @s add ud_tooltip_compass
-/title @s actionbar [{"text":"Coordinates: X: ","color":"green"},{"score":{"name":"@s","objective":"x_pos"},"color":"yellow"},{"text":" Y: ","color":"green"},{"score":{"name":"@s","objective":"y_pos"},"color":"yellow"},{"text":" Z: ","color":"green"},{"score":{"name":"@s","objective":"z_pos"},"color":"yellow"},{"text":" | ","color":"red"},{"text":"Rotation: X: ","color":"green"},{"score":{"name":"@s","objective":"x_rot"},"color":"blue"},{"text":" Y: ","color":"green"},{"score":{"name":"@s","objective":"y_rot"},"color":"blue"}]
+if(!'entity @s[nbt={FallFlying:1b,Inventory:[{Slot:102b,id:"minecraft:elytra"}]}]') {
+  /title @s actionbar [{"text":"Coordinates: X: ","color":"green"},{"score":{"name":"@s","objective":"x_pos"},"color":"yellow"},{"text":" Y: ","color":"green"},{"score":{"name":"@s","objective":"y_pos"},"color":"yellow"},{"text":" Z: ","color":"green"},{"score":{"name":"@s","objective":"z_pos"},"color":"yellow"},{"text":" | ","color":"red"},{"text":"Rotation: X: ","color":"green"},{"score":{"name":"@s","objective":"x_rot"},"color":"blue"},{"text":" Y: ","color":"green"},{"score":{"name":"@s","objective":"y_rot"},"color":"blue"}]
+} else {
+  if('score @s y_rot matches ..-1') {
+    /title @s actionbar [{"text":"Coordinates: X: ","color":"green"},{"score":{"name":"@s","objective":"x_pos"},"color":"yellow"},{"text":" Y: ","color":"green"},{"score":{"name":"@s","objective":"y_pos"},"color":"yellow"},{"text":" Z: ","color":"green"},{"score":{"name":"@s","objective":"z_pos"},"color":"yellow"},{"text":" | ","color":"red"},{"text":"Rotation: X: ","color":"green"},{"score":{"name":"@s","objective":"x_rot"},"color":"blue"},{"text":" Y: ","color":"green"},{"score":{"name":"@s","objective":"y_rot"},"color":"blue"},{"text":" ↑","color":"yellow"}]
+  } else {
+    /title @s actionbar [{"text":"Coordinates: X: ","color":"green"},{"score":{"name":"@s","objective":"x_pos"},"color":"yellow"},{"text":" Y: ","color":"green"},{"score":{"name":"@s","objective":"y_pos"},"color":"yellow"},{"text":" Z: ","color":"green"},{"score":{"name":"@s","objective":"z_pos"},"color":"yellow"},{"text":" | ","color":"red"},{"text":"Rotation: X: ","color":"green"},{"score":{"name":"@s","objective":"x_rot"},"color":"blue"},{"text":" Y: ","color":"green"},{"score":{"name":"@s","objective":"y_rot"},"color":"blue"},{"text":" ↓","color":"yellow"}]
+  }
+}
+
 
 #file: ./tooltips/display/clock
 
 /tag @s add ud_tooltip_clock
-/title @s actionbar [{"text":"Time: ","color":"green"},{"score":{"name":"real_daytime","objective":"ud_misc"},"color":"yellow"},{"text":" (","color":"yellow"},{"score":{"name":"real_daytime%","objective":"ud_misc"},"color":"yellow"},{"text":"%)","color":"yellow"},{"text":" Day: ","color":"green"},{"score":{"name":"real_day","objective":"ud_misc"},"color":"yellow"}]
+if('entity @s[nbt={Dimension:0}]') {
+  /title @s actionbar [{"text":"Time: ","color":"green"},{"score":{"name":"real_daytime","objective":"ud_misc"},"color":"yellow"},{"text":" (","color":"yellow"},{"score":{"name":"real_daytime%","objective":"ud_misc"},"color":"yellow"},{"text":"%)","color":"yellow"},{"text":" Day: ","color":"green"},{"score":{"name":"real_day","objective":"ud_misc"},"color":"yellow"}]
+} else if('entity @s[nbt={Dimension:-1}]') {
+  /title @s actionbar [{"text":"Time: ","color":"green","obfuscated":false},{"text":"00000","color":"yellow","obfuscated":true},{"text":" (","color":"yellow","obfuscated":false},{"text":"20","color":"yellow","obfuscated":true},{"text":"%)","color":"yellow","obfuscated":false},{"text":" Day: ","color":"green","obfuscated":false},{"text":"00","color":"yellow","obfuscated":true}]
+} else {
+  /title @s actionbar [{"text":"Time: ","color":"green","obfuscated":false},{"text":"It is the END","color":"yellow"}]
+}
 
-#file: ./tooltips/display/bone
 
-/tag @s add ud_tooltip_bone
+#file: ./tooltips/display/death_book
+
+/tag @s add ud_tooltip_death_book
 /title @s actionbar [{"text":"You died ","color":"green"},{"score":{"name":"@s","objective":"deaths"},"color":"yellow"},{"text":" times. You stayed alive for ","color":"green"},{"score":{"name":"@s","objective":"ud_deathtime_h"},"color":"yellow"},{"text":"h ","color":"yellow"},{"score":{"name":"@s","objective":"ud_deathtime_m"},"color":"yellow"},{"text":"m","color":"yellow"},{"text":". Your total playtime is ","color":"green"},{"score":{"name":"@s","objective":"ud_timeplayed_h"},"color":"yellow"},{"text":"h ","color":"yellow"},{"score":{"name":"@s","objective":"ud_timeplayed_m"},"color":"yellow"},{"text":"m","color":"yellow"},{"text":".","color":"green"}]
+
+#file: ./tooltips/display/bow
+
+/tag @s add ud_tooltip_bow
+/title @s actionbar [{"text":"You have ","color":"green"},{"score":{"name":"@s","objective":"ud_arrowcount"},"color":"blue"},{"text":" arrows in your inventory","color":"green"}]
+
+#file: ./tooltips/display/torch
+
+/tag @s add ud_tooltip_torch
+/title @s actionbar [{"text":"You have ","color":"green"},{"score":{"name":"@s","objective":"ud_torchcount"},"color":"blue"},{"text":" torches in your inventory","color":"green"}]
+
+#file: ./tooltips/display/elytra
+
+/tag @s add ud_tooltip_elytra
+if(!'entity @s[nbt={SelectedItem:{id:"minecraft:compass"}}]') {
+  if('score @s y_rot matches ..-1') {
+    /title @p actionbar [{"text":"Pitch: ","color":"green"},{"score":{"name":"@s","objective":"y_rot"},"color":"blue"},{"text":" ↑","color":"yellow"}]
+  } else {
+    /title @p actionbar [{"text":"Pitch: ","color":"green"},{"score":{"name":"@s","objective":"y_rot"},"color":"blue"},{"text":" ↓","color":"yellow"}]
+  }
+}
 
 #file: ./tooltips/notify/clock
 

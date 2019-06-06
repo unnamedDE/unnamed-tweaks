@@ -1,0 +1,149 @@
+#file: ./xp_containers/main
+
+asat(@a) {
+  if('entity @s[nbt={SelectedItem:{Count:1b,tag:{unnamedDE:{id:"xp_container"}}}}]') {
+    /execute store result score @s ud_stored_xp run data get entity @s SelectedItem.tag.unnamedDE.storedXP
+    if('score @s ud_xp matches 1..') {
+      /scoreboard players enable @s store_xp
+    }
+    if('score @s ud_stored_xp matches 1..') {
+      /scoreboard players enable @s extract_xp
+    }
+    /scoreboard players enable @s check_xp
+    if('score @s store_xp matches 1..' && 'score @s store_xp <= @s ud_xp') {
+      /function unnamedde:misc/xp_containers/store_xp
+    }
+    if('score @s extract_xp matches 1..' && 'score @s extract_xp <= @s ud_stored_xp') {
+      /function unnamedde:misc/xp_containers/extract_xp
+    }
+    if('score @s check_xp matches 1..') {
+      /function unnamedde:misc/xp_containers/check_xp
+    }
+  } else {
+    if('score @s store_xp matches 0') {
+      /scoreboard players reset @s store_xp
+    }
+    if('score @s extract_xp matches 0') {
+      /scoreboard players reset @s extract_xp
+    }
+    if('score @s check_xp matches 0') {
+      /scoreboard players reset @s check_xp
+    }
+    /scoreboard players reset @s ud_stored_xp
+  }
+}
+
+#file: ./xp_containers/store_xp
+
+/execute store result score @s ud_temp run data get entity @s SelectedItem.tag.unnamedDE.storedXP
+/scoreboard players operation @s ud_temp += @s store_xp
+/execute store result entity @s SelectedItem.tag.unnamedDE.storedXP int 1 run scoreboard players get @s ud_temp
+/scoreboard players reset @s ud_temp
+/scoreboard players operation @s ud_temp = @s store_xp
+/function unnamedde:misc/xp_containers/remove_xp
+/scoreboard players reset @s ud_temp
+/scoreboard players reset @s store_xp
+
+#file: ./xp_containers/remove_xp
+
+/xp add @s -1 levels
+/scoreboard players remove @s ud_temp 1
+
+if('score @s ud_temp matches 1..') {
+  /function unnamedde:misc/xp_containers/remove_xp
+}
+
+#file: ./xp_containers/extract_xp
+
+/execute store result score @s ud_temp run data get entity @s SelectedItem.tag.unnamedDE.storedXP
+/scoreboard players operation @s ud_temp -= @s extract_xp
+/execute store result entity @s SelectedItem.tag.unnamedDE.storedXP int 1 run scoreboard players get @s ud_temp
+/scoreboard players reset @s ud_temp
+/scoreboard players operation @s ud_temp = @s extract_xp
+/function unnamedde:misc/xp_containers/add_xp
+/scoreboard players reset @s ud_temp
+/scoreboard players reset @s extract_xp
+
+#file: ./xp_containers/add_xp
+
+/xp add @s 1 levels
+/scoreboard players remove @s ud_temp 1
+
+if('score @s ud_temp matches 1..') {
+  /function unnamedde:misc/xp_containers/add_xp
+}
+
+#file: ./xp_containers/check_xp
+
+/execute store result score @s ud_temp run data get entity @s SelectedItem.tag.unnamedDE.storedXP
+/tellraw @s [{"score":{"name":"@s","objective":"ud_temp"},"color":"green"},{"text":" levels are being stored in this container","color":"reset"}]
+/scoreboard players reset @s ud_temp
+/scoreboard players reset @s check_xp
+
+#file: ./xp_containers/craft
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:iron_ingot"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:iron_ingot"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:experience_bottle"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b,id:"minecraft:iron_ingot"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b,id:"minecraft:iron_ingot"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {
+  /function unnamedde:misc/xp_containers/craft/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_xp_container]' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:iron_ingot"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:iron_ingot"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:experience_bottle"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b,id:"minecraft:iron_ingot"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b,id:"minecraft:iron_ingot"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:dead_bubble_coral",tag:{CustomModelData:701001,unnamedDE:{id:"xp_container",storedXP:0,NoPlacing:1},display:{Name:"{\\"text\\":\\"XP Container\\",\\"color\\":\\"yellow\\",\\"italic\\":false}",Lore:["{\\"text\\":\\"Used to store XP\\",\\"color\\":\\"dark_green\\",\\"italic\\":false}"]},HideFlags:1,Enchantments:[{id:"minecraft:protection",lvl:1}]}}]}') {
+  /function unnamedde:misc/xp_containers/craft/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_xp_container]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b}]}') {
+    /function unnamedde:misc/xp_containers/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:iron_ingot"}]}') {
+    /function unnamedde:misc/xp_containers/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+    /function unnamedde:misc/xp_containers/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:iron_ingot"}]}') {
+    /function unnamedde:misc/xp_containers/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:experience_bottle"}]}') {
+    /function unnamedde:misc/xp_containers/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b,id:"minecraft:iron_ingot"}]}') {
+    /function unnamedde:misc/xp_containers/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+    /function unnamedde:misc/xp_containers/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b,id:"minecraft:iron_ingot"}]}') {
+    /function unnamedde:misc/xp_containers/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+    /function unnamedde:misc/xp_containers/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+    /function unnamedde:misc/xp_containers/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+    /function unnamedde:misc/xp_containers/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+    /function unnamedde:misc/xp_containers/craft/3
+  }
+}
+
+#file: ./xp_containers/craft/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:dead_bubble_coral{CustomModelData:701001,unnamedDE:{id:"xp_container",storedXP:0,NoPlacing:1},display:{Name:"{\"text\":\"XP Container\",\"color\":\"yellow\",\"italic\":false}",Lore:["{\"text\":\"Used to store XP\",\"color\":\"dark_green\",\"italic\":false}"]},HideFlags:1,Enchantments:[{id:"minecraft:protection",lvl:1}]} 1
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_xp_container
+
+#file: ./xp_containers/craft/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add replacements here
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_xp_container
+
+#file: ./xp_containers/craft/3
+
+/replaceitem block ~ ~ ~ container.7 minecraft:air
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+/replaceitem block ~ ~ ~ container.25 minecraft:air
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_xp_container

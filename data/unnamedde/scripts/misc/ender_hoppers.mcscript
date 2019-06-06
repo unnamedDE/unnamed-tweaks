@@ -1,0 +1,188 @@
+#file: ./ender_hoppers/main
+
+asat(@e[tag=ud_enderhopper,type=item_frame]), if(!'entity @s[nbt={Item:{tag:{unnamedDE:{id:"ender_upgrade"}}}}]') {
+  /tag @s remove ud_enderhopper
+}
+
+asat(@e[type=item_frame,nbt={Item:{tag:{unnamedDE:{id:"ender_upgrade"}}}}]) {
+  if('entity @s[nbt={Facing:4b}]') {
+    positioned('~1 ~ ~') {
+      if('block ~ ~ ~ minecraft:hopper') {
+        /function unnamedde:misc/ender_hoppers/main_
+      } else if('entity @s[tag=ud_enderhopper]') {
+        /tag @s remove ud_enderhopper
+      }
+    }
+  }
+  if('entity @s[nbt={Facing:5b}]') {
+    positioned('~-1 ~ ~') {
+      if('block ~ ~ ~ minecraft:hopper') {
+        /function unnamedde:misc/ender_hoppers/main_
+      } else if('entity @s[tag=ud_enderhopper]') {
+        /tag @s remove ud_enderhopper
+      }
+    }
+  }
+  if('entity @s[nbt={Facing:3b}]') {
+    positioned('~ ~ ~-1') {
+      if('block ~ ~ ~ minecraft:hopper') {
+        /function unnamedde:misc/ender_hoppers/main_
+      } else if('entity @s[tag=ud_enderhopper]') {
+        /tag @s remove ud_enderhopper
+      }
+    }
+  }
+  if('entity @s[nbt={Facing:2b}]') {
+    positioned('~ ~ ~1') {
+      if('block ~ ~ ~ minecraft:hopper') {
+        /function unnamedde:misc/ender_hoppers/main_
+      } else if('entity @s[tag=ud_enderhopper]') {
+        /tag @s remove ud_enderhopper
+      }
+    }
+  }
+  if('entity @s[nbt={Facing:1b}]') {
+    positioned('~ ~-1 ~') {
+      if('block ~ ~ ~ minecraft:hopper') {
+        /function unnamedde:misc/ender_hoppers/main_
+      } else if('entity @s[tag=ud_enderhopper]') {
+        /tag @s remove ud_enderhopper
+      }
+    }
+  }
+  if('entity @s[nbt={Facing:0b}]') {
+    positioned('~ ~1 ~') {
+      if('block ~ ~ ~ minecraft:hopper') {
+        /function unnamedde:misc/ender_hoppers/main_
+      } else if('entity @s[tag=ud_enderhopper]') {
+        /tag @s remove ud_enderhopper
+      }
+    }
+  }
+}
+
+#file: ./ender_hoppers/main_
+
+if('entity @s[tag=!ud_enderhopper]') {
+  /playsound minecraft:block.end_portal_frame.fill block @a[distance=..8]
+  /tag @s add ud_enderhopper
+}
+if(!'data block ~ ~ ~ Items[4]') {
+  as(@e[type=item,tag=!no_pickup,distance=..8,limit=1,sort=nearest,nbt={OnGround:1b}]) {
+    /function unnamedde:misc/ender_hoppers/collect_item
+  }
+}
+
+#file: ./ender_hoppers/collect_item
+
+
+//if(!'data block ~ ~ ~ Items[{Slot:0b}]') {
+//  /function unnamedde:misc/ender_hoppers/insert_item/0
+//} else if(!'data block ~ ~ ~ Items[{Slot:1b}]') {
+//  /function unnamedde:misc/ender_hoppers/insert_item/1
+//} else if(!'data block ~ ~ ~ Items[{Slot:2b}]') {
+//  /function unnamedde:misc/ender_hoppers/insert_item/2
+//} else if(!'data block ~ ~ ~ Items[{Slot:3b}]') {
+//  /function unnamedde:misc/ender_hoppers/insert_item/3
+//} else if(!'data block ~ ~ ~ Items[{Slot:4b}]') {
+//  /function unnamedde:misc/ender_hoppers/insert_item/4
+//}
+
+/execute if data block ~ ~ ~ Items[{Slot:0b}] if data block ~ ~ ~ Items[{Slot:1b}] if data block ~ ~ ~ Items[{Slot:2b}] if data block ~ ~ ~ Items[{Slot:3b}] unless data block ~ ~ ~ Items[{Slot:4b}] run function unnamedde:misc/ender_hoppers/insert_item/4
+/execute if data block ~ ~ ~ Items[{Slot:0b}] if data block ~ ~ ~ Items[{Slot:1b}] if data block ~ ~ ~ Items[{Slot:2b}] unless data block ~ ~ ~ Items[{Slot:3b}] run function unnamedde:misc/ender_hoppers/insert_item/3
+/execute if data block ~ ~ ~ Items[{Slot:0b}] if data block ~ ~ ~ Items[{Slot:1b}] unless data block ~ ~ ~ Items[{Slot:2b}] run function unnamedde:misc/ender_hoppers/insert_item/2
+/execute if data block ~ ~ ~ Items[{Slot:0b}] unless data block ~ ~ ~ Items[{Slot:1b}] run function unnamedde:misc/ender_hoppers/insert_item/1
+/execute unless data block ~ ~ ~ Items[{Slot:0b}] run function unnamedde:misc/ender_hoppers/insert_item/0
+
+/kill @s[type=item]
+
+modal insertItem(i) {
+  #file: ./ender_hoppers/insert_item/$(i)
+
+  /replaceitem block ~ ~ ~ container.$(i) arrow
+  /data modify block ~ ~ ~ Items[{Slot:$(i)b}].id set from entity @s Item.id
+  /data modify block ~ ~ ~ Items[{Slot:$(i)b}].Count set from entity @s Item.Count
+  /data modify block ~ ~ ~ Items[{Slot:$(i)b}].tag set from entity @s Item.tag
+}
+
+insertItem(0)
+insertItem(1)
+insertItem(2)
+insertItem(3)
+insertItem(4)
+/*
+#file: ./ender_hoppers/init
+
+/tag @s add ud_enderhopper
+
+#file: ./ender_hoppers/remove
+
+/tag @s remove ud_enderhopper
+*/
+#file: ./ender_hoppers/craft
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:obsidian"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:ender_pearl"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b,id:"minecraft:obsidian"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:ender_eye"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:hopper"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b,id:"minecraft:ender_eye"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b,id:"minecraft:obsidian"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b,id:"minecraft:ender_pearl"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b,id:"minecraft:obsidian"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {
+/function unnamedde:misc/ender_hoppers/craft/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_ender_upgrade]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:obsidian"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:ender_pearl"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b,id:"minecraft:obsidian"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:ender_eye"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:hopper"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b,id:"minecraft:ender_eye"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b,id:"minecraft:obsidian"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b,id:"minecraft:ender_pearl"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b,id:"minecraft:obsidian"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:dead_bubble_coral",tag:{display:{Name:"{\\"text\\":\\"Ender Upgrade\\",\\"color\\":\\"yellow\\",\\"italic\\":false}",Lore:["{\\"text\\":\\"Put in a item frame on a hopper to\\",\\"color\\":\\"green\\",\\"italic\\":false}","{\\"text\\":\\"enable ender pickup of all items around\\",\\"color\\":\\"green\\",\\"italic\\":false}"]},CustomModelData:701005,unnamedDE:{id:"ender_upgrade"},Enchantments:[{id:"enchant",lvl:1s}]}}]}') {
+/function unnamedde:misc/ender_hoppers/craft/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_ender_upgrade]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:obsidian"}]}') {
+/function unnamedde:misc/ender_hoppers/craft/3
+}
+if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:ender_pearl"}]}') {
+/function unnamedde:misc/ender_hoppers/craft/3
+}
+if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b,id:"minecraft:obsidian"}]}') {
+/function unnamedde:misc/ender_hoppers/craft/3
+}
+if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:ender_eye"}]}') {
+/function unnamedde:misc/ender_hoppers/craft/3
+}
+if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:hopper"}]}') {
+/function unnamedde:misc/ender_hoppers/craft/3
+}
+if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b,id:"minecraft:ender_eye"}]}') {
+/function unnamedde:misc/ender_hoppers/craft/3
+}
+if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b,id:"minecraft:obsidian"}]}') {
+/function unnamedde:misc/ender_hoppers/craft/3
+}
+if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b,id:"minecraft:ender_pearl"}]}') {
+/function unnamedde:misc/ender_hoppers/craft/3
+}
+if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b,id:"minecraft:obsidian"}]}') {
+/function unnamedde:misc/ender_hoppers/craft/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+/function unnamedde:misc/ender_hoppers/craft/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+/function unnamedde:misc/ender_hoppers/craft/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+/function unnamedde:misc/ender_hoppers/craft/3
+}
+}
+
+#file: ./ender_hoppers/craft/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:dead_bubble_coral{display:{Name:"{\"text\":\"Ender Upgrade\",\"color\":\"yellow\",\"italic\":false}",Lore:["{\"text\":\"Put in a item frame on a hopper to\",\"color\":\"green\",\"italic\":false}","{\"text\":\"enable ender pickup of all items around\",\"color\":\"green\",\"italic\":false}"]},CustomModelData:701005,unnamedDE:{id:"ender_upgrade"},Enchantments:[{id:"enchant",lvl:1s}]} 1
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_ender_upgrade
+
+#file: ./ender_hoppers/craft/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add replacements here
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_ender_upgrade
+
+#file: ./ender_hoppers/craft/3
+
+/replaceitem block ~ ~ ~ container.7 minecraft:air
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+/replaceitem block ~ ~ ~ container.25 minecraft:air
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_ender_upgrade

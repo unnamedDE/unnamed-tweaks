@@ -1,0 +1,458 @@
+#file: ./plated_elytras/main
+
+
+#file: ./plated_elytras/craft/leather
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:leather_chestplate"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}' && !'data block ~ ~ ~ Items[{Slot:1b}].tag.unnamedDE.platedElytras.tier') {
+  /function unnamedde:misc/plated_elytras/craft/leather/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_leather_elytra]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:leather_chestplate"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:elytra"}]}') {
+  /function unnamedde:misc/plated_elytras/craft/leather/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_leather_elytra]' && !'data block ~ ~ ~ Items[{Slot:16b,tag:{unnamedDE:{platedElytras:{tier:"leather"}}}}]') {
+  /function unnamedde:misc/plated_elytras/craft/leather/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_leather_elytra]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra"}]}') {
+    /function unnamedde:misc/plated_elytras/craft/leather/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:leather_chestplate"}]}') {
+    /function unnamedde:misc/plated_elytras/craft/leather/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/leather/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/leather/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/leather/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/leather/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/leather/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/leather/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/leather/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/leather/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/leather/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/leather/3
+  }
+}
+
+#file: ./plated_elytras/craft/leather/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:elytra 1
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag set from block ~ ~ ~ Items[{Slot:1b}].tag
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.Enchantments set from block ~ ~ ~ Items[{Slot:2b}].tag.Enchantments
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.AttributeModifiers set value [{AttributeName:"generic.armor",Name:"generic.armor",Amount:3,Operation:0,UUIDLeast:794246,UUIDMost:813632,Slot:"chest"}]
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.display.Lore append value "{\"text\":\"Leather Plated\",\"color\":\"gray\",\"italic\":false}"
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.platedElytras.tier set value "leather"
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_leather_elytra
+
+#file: ./plated_elytras/craft/leather/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add replacements here
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_leather_elytra
+
+#file: ./plated_elytras/craft/leather/3
+
+/replaceitem block ~ ~ ~ container.7 minecraft:air
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+/replaceitem block ~ ~ ~ container.25 minecraft:air
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_leather_elytra
+
+
+#file: ./plated_elytras/craft/chainmail
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:chainmail_chestplate"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}' && !'data block ~ ~ ~ Items[{Slot:1b}].tag.unnamedDE.platedElytras.tier') {
+  /function unnamedde:misc/plated_elytras/craft/chainmail/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_chainmail_elytra]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:chainmail_chestplate"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:elytra"}]}') {
+  /function unnamedde:misc/plated_elytras/craft/chainmail/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_chainmail_elytra]' && !'data block ~ ~ ~ Items[{Slot:16b,tag:{unnamedDE:{platedElytras:{tier:"chainmail"}}}}]') {
+  /function unnamedde:misc/plated_elytras/craft/chainmail/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_chainmail_elytra]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra"}]}') {
+    /function unnamedde:misc/plated_elytras/craft/chainmail/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:chainmail_chestplate"}]}') {
+    /function unnamedde:misc/plated_elytras/craft/chainmail/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/chainmail/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/chainmail/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/chainmail/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/chainmail/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/chainmail/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/chainmail/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/chainmail/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/chainmail/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/chainmail/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/chainmail/3
+  }
+}
+
+#file: ./plated_elytras/craft/chainmail/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:elytra 1
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag set from block ~ ~ ~ Items[{Slot:1b}].tag
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.Enchantments set from block ~ ~ ~ Items[{Slot:2b}].tag.Enchantments
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.AttributeModifiers set value [{AttributeName:"generic.armor",Name:"generic.armor",Amount:5,Operation:0,UUIDLeast:794246,UUIDMost:813632,Slot:"chest"}]
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.display.Lore append value "{\"text\":\"Chain Plated\",\"color\":\"gray\",\"italic\":false}"
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.platedElytras.tier set value "chainmail"
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_chainmail_elytra
+
+#file: ./plated_elytras/craft/chainmail/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add replacements here
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_chainmail_elytra
+
+#file: ./plated_elytras/craft/chainmail/3
+
+/replaceitem block ~ ~ ~ container.7 minecraft:air
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+/replaceitem block ~ ~ ~ container.25 minecraft:air
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_chainmail_elytra
+
+#file: ./plated_elytras/craft/iron
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:iron_chestplate"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}' && !'data block ~ ~ ~ Items[{Slot:1b}].tag.unnamedDE.platedElytras.tier') {
+  /function unnamedde:misc/plated_elytras/craft/iron/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_iron_elytra]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:iron_chestplate"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:elytra"}]}') {
+  /function unnamedde:misc/plated_elytras/craft/iron/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_iron_elytra]' && !'data block ~ ~ ~ Items[{Slot:16b,tag:{unnamedDE:{platedElytras:{tier:"iron"}}}}]') {
+  /function unnamedde:misc/plated_elytras/craft/iron/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_iron_elytra]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra"}]}') {
+    /function unnamedde:misc/plated_elytras/craft/iron/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:iron_chestplate"}]}') {
+    /function unnamedde:misc/plated_elytras/craft/iron/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/iron/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/iron/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/iron/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/iron/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/iron/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/iron/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/iron/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/iron/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/iron/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/iron/3
+  }
+}
+
+#file: ./plated_elytras/craft/iron/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:elytra 1
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag set from block ~ ~ ~ Items[{Slot:1b}].tag
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.Enchantments set from block ~ ~ ~ Items[{Slot:2b}].tag.Enchantments
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.AttributeModifiers set value [{AttributeName:"generic.armor",Name:"generic.armor",Amount:6,Operation:0,UUIDLeast:794246,UUIDMost:813632,Slot:"chest"}]
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.display.Lore append value "{\"text\":\"Iron Plated\",\"color\":\"gray\",\"italic\":false}"
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.platedElytras.tier set value "iron"
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_iron_elytra
+
+#file: ./plated_elytras/craft/iron/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add replacements here
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_iron_elytra
+
+#file: ./plated_elytras/craft/iron/3
+
+/replaceitem block ~ ~ ~ container.7 minecraft:air
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+/replaceitem block ~ ~ ~ container.25 minecraft:air
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_iron_elytra
+
+
+#file: ./plated_elytras/craft/gold
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:golden_chestplate"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}' && !'data block ~ ~ ~ Items[{Slot:1b}].tag.unnamedDE.platedElytras.tier') {
+  /function unnamedde:misc/plated_elytras/craft/gold/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_gold_elytra]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:golden_chestplate"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:elytra"}]}') {
+  /function unnamedde:misc/plated_elytras/craft/gold/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_gold_elytra]' && !'data block ~ ~ ~ Items[{Slot:16b,tag:{unnamedDE:{platedElytras:{tier:"gold"}}}}]') {
+  /function unnamedde:misc/plated_elytras/craft/gold/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_gold_elytra]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra"}]}') {
+    /function unnamedde:misc/plated_elytras/craft/gold/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:golden_chestplate"}]}') {
+    /function unnamedde:misc/plated_elytras/craft/gold/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/gold/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/gold/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/gold/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/gold/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/gold/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/gold/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/gold/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/gold/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/gold/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/gold/3
+  }
+}
+
+#file: ./plated_elytras/craft/gold/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:elytra 1
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag set from block ~ ~ ~ Items[{Slot:1b}].tag
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.Enchantments set from block ~ ~ ~ Items[{Slot:2b}].tag.Enchantments
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.AttributeModifiers set value [{AttributeName:"generic.armor",Name:"generic.armor",Amount:5,Operation:0,UUIDLeast:794246,UUIDMost:813632,Slot:"chest"}]
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.display.Lore append value "{\"text\":\"Gold Plated\",\"color\":\"gray\",\"italic\":false}"
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.platedElytras.tier set value "gold"
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_gold_elytra
+
+#file: ./plated_elytras/craft/gold/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add replacements here
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_gold_elytra
+
+#file: ./plated_elytras/craft/gold/3
+
+/replaceitem block ~ ~ ~ container.7 minecraft:air
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+/replaceitem block ~ ~ ~ container.25 minecraft:air
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_gold_elytra
+
+#file: ./plated_elytras/craft/diamond
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:diamond_chestplate"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}' && !'data block ~ ~ ~ Items[{Slot:1b}].tag.unnamedDE.platedElytras.tier') {
+  /function unnamedde:misc/plated_elytras/craft/diamond/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_diamond_elytra]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:diamond_chestplate"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:elytra"}]}') {
+  /function unnamedde:misc/plated_elytras/craft/diamond/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_diamond_elytra]' && !'data block ~ ~ ~ Items[{Slot:16b,tag:{unnamedDE:{platedElytras:{tier:"diamond"}}}}]') {
+  /function unnamedde:misc/plated_elytras/craft/diamond/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_diamond_elytra]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra"}]}') {
+    /function unnamedde:misc/plated_elytras/craft/diamond/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:diamond_chestplate"}]}') {
+    /function unnamedde:misc/plated_elytras/craft/diamond/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/diamond/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/diamond/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/diamond/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/diamond/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/diamond/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/diamond/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/diamond/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/diamond/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/diamond/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/diamond/3
+  }
+}
+
+#file: ./plated_elytras/craft/diamond/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:elytra 1
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag set from block ~ ~ ~ Items[{Slot:1b}].tag
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.Enchantments set from block ~ ~ ~ Items[{Slot:2b}].tag.Enchantments
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.AttributeModifiers set value [{AttributeName:"generic.armor",Name:"generic.armor",Amount:8,Operation:0,UUIDLeast:794246,UUIDMost:813632,Slot:"chest"},{AttributeName:"generic.armorToughness",Name:"generic.armorToughness",Amount:2,Operation:0,UUIDLeast:202984,UUIDMost:266326,Slot:"chest"}]
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.display.Lore append value "{\"text\":\"Diamond Plated\",\"color\":\"gray\",\"italic\":false}"
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.platedElytras.tier set value "diamond"
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_diamond_elytra
+
+#file: ./plated_elytras/craft/diamond/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add replacements here
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_diamond_elytra
+
+#file: ./plated_elytras/craft/diamond/3
+
+/replaceitem block ~ ~ ~ container.7 minecraft:air
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+/replaceitem block ~ ~ ~ container.25 minecraft:air
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_diamond_elytra
+
+#file: ./plated_elytras/craft/unbreakable
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra",tag:{Damage:0}}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:nether_star"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}' && !'data block ~ ~ ~ Items[{Slot:1b}].tag.unnamedDE.platedElytras.Unbreakable') {
+  /function unnamedde:misc/plated_elytras/craft/unbreakable/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_unbreakable_elytra]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra",tag:{Damage:0}}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:nether_star"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:elytra"}]}') {
+  /function unnamedde:misc/plated_elytras/craft/unbreakable/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_unbreakable_elytra]' && !'data block ~ ~ ~ Items[{Slot:16b,tag:{unnamedDE:{platedElytras:{Unbreakable:1}}}}]') {
+  /function unnamedde:misc/plated_elytras/craft/unbreakable/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_unbreakable_elytra]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:elytra",tag:{Damage:0}}]}') {
+    /function unnamedde:misc/plated_elytras/craft/unbreakable/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:nether_star"}]}') {
+    /function unnamedde:misc/plated_elytras/craft/unbreakable/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/unbreakable/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/unbreakable/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/unbreakable/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/unbreakable/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/unbreakable/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/unbreakable/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/unbreakable/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/unbreakable/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/unbreakable/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+    /function unnamedde:misc/plated_elytras/craft/unbreakable/3
+  }
+}
+
+#file: ./plated_elytras/craft/unbreakable/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:elytra 1
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag set from block ~ ~ ~ Items[{Slot:1b}].tag
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.Unbreakable set value 1
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.platedElytras.Unbreakable set value 1
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_unbreakable_elytra
+
+#file: ./plated_elytras/craft/unbreakable/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add replacements here
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_unbreakable_elytra
+
+#file: ./plated_elytras/craft/unbreakable/3
+
+/replaceitem block ~ ~ ~ container.7 minecraft:air
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+/replaceitem block ~ ~ ~ container.25 minecraft:air
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_unbreakable_elytra

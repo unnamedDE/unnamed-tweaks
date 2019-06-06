@@ -1,0 +1,150 @@
+#file: ./graves/main
+
+asat(@e[type=item]) {
+  /execute store result score @s ud_age run data get entity @s Age
+}
+
+asat(@a[scores={ud_jump=1..,ud_sneak=1..}]), if('entity @e[tag=ud_grave,distance=...5]') {
+  /function unnamedde:misc/graves/player_open_grave
+}
+
+#file: ./graves/death
+
+asat(@e[type=item]) {
+  /execute store result score @s ud_age run data get entity @s Age
+}
+
+if('score graves ud_options matches 1..' && 'entity @e[scores={ud_age=0},type=item,nbt=!{Item:{tag:{DroppedPlayerhead:1b}}},distance=..2.5]') {
+  /function unnamedde:misc/graves/init_grave
+}
+//say @e[scores={ud_age=0},type=item,nbt=!{Item:{tag:{DroppedPlayerhead:1b}}}]
+
+#file: ./graves/init_grave
+
+if('score @s y_pos matches ..255') {
+  if('block ~ ~ ~ minecraft:air' && !'entity @e[tag=ud_grave,type=armor_stand,distance=..1.5]') {
+    /function unnamedde:misc/graves/place_grave
+  }
+  if(!'block ~ ~ ~ minecraft:air') {
+    positioned('~ ~1 ~') {
+      /function unnamedde:misc/graves/init_grave
+    }
+  } else if('entity @e[tag=ud_grave,type=armor_stand,distance=..1.5]') {
+    positioned('~ ~1 ~') {
+      /function unnamedde:misc/graves/init_grave
+    }
+  }
+} else {
+  positioned('~ 255 ~') {
+    if('block ~ ~ ~ minecraft:air') {
+      /function unnamedde:misc/graves/place_grave
+    }
+  }
+}
+
+#file: ./graves/place_grave
+
+//if('entity @e[scores={ud_age=0},type=item,nbt=!{Item:{tag:{DroppedPlayerhead:1b}}}]') {
+  align('xyz') {
+    /summon armor_stand ~.5 ~ ~.5 {NoGravity:1b,Invulnerable:1b,Small:0b,Marker:1b,Invisible:1b,PersistenceRequired:1b,Tags:["ud_grave","ud_grave_init"],DisabledSlots:4144959,ArmorItems:[{},{},{},{id:"minecraft:dead_tube_coral",Count:1b,tag:{CustomModelData:701001,unnamedDE:{graveMode:0,graveItems:[]}}}]}
+  }
+  as(@e[tag=ud_grave_init,limit=1,sort=nearest,distance=..2.5]) {
+    /function unnamedde:misc/graves/rotate
+  }
+  if('entity @s[nbt={Dimension:-1}]') {
+    /data modify entity @e[tag=ud_grave_init,limit=1,sort=nearest,distance=..2.5] ArmorItems[-1].tag.CustomModelData set value 701002
+  }
+  if('entity @s[nbt={Dimension:1}]') {
+    /data modify entity @e[tag=ud_grave_init,limit=1,sort=nearest,distance=..2.5] ArmorItems[-1].tag.CustomModelData set value 701003
+  }
+  if('score grave_mode ud_options matches 1') {
+    /scoreboard players operation @e[tag=ud_grave_init,limit=1,sort=nearest,distance=..2.5] ud_owner_id = @s group_id
+    /data modify entity @e[tag=ud_grave_init,limit=1,sort=nearest,distance=..2.5] ArmorItems[-1].tag.unnamedDE.graveMode set value 1
+  }
+  if('score grave_mode ud_options matches 2..') {
+    /scoreboard players operation @e[tag=ud_grave_init,limit=1,sort=nearest,distance=..2.5] ud_owner_id = @s player_id
+    /data modify entity @e[tag=ud_grave_init,limit=1,sort=nearest,distance=..2.5] ArmorItems[-1].tag.unnamedDE.graveMode set value 2
+  }
+  as(@e[scores={ud_age=0},type=item,nbt=!{Item:{tag:{DroppedPlayerhead:1b}}}]) {
+    /function unnamedde:misc/graves/insert_item
+  }
+//}
+at(@e[tag=ud_grave_init,limit=1,sort=nearest,distance=..2.5]) {
+  if('block ~ ~-1 ~ air' && 'data entity @e[tag=ud_grave_init,limit=1,sort=nearest,distance=..2.5] ArmorItems[-1].tag.unnamedDE.graveItems[0]') {
+    if('entity @s[nbt={Dimension:0}]') {
+      /setblock ~ ~-1 ~ minecraft:podzol
+    }
+    if('entity @s[nbt={Dimension:-1}]') {
+      /setblock ~ ~-1 ~ minecraft:soul_sand
+    }
+    if('entity @s[nbt={Dimension:1}]') {
+      /setblock ~ ~-1 ~ minecraft:end_stone
+    }
+  }
+}
+if(!'data entity @e[tag=ud_grave_init,limit=1,sort=nearest,distance=..2.5] ArmorItems[-1].tag.unnamedDE.graveItems[0]') {
+  /kill @e[tag=ud_grave_init,limit=1,sort=nearest,distance=..2.5,type=armor_stand]
+}
+
+/tag @e[tag=ud_grave_init,limit=1,sort=nearest] remove ud_grave_init
+
+#file: ./graves/rotate
+//0.0000000002328306436538696
+/execute store result score @s ud_temp run data get entity @s UUIDMost 0.0000000002328306436538696
+/scoreboard players operation @s ud_temp %= 4 ud_const
+if('score @s ud_temp matches 1') {
+  /data modify entity @s Rotation[0] set value 90.0f
+}
+if('score @s ud_temp matches 2') {
+  /data modify entity @s Rotation[0] set value 180.0f
+}
+if('score @s ud_temp matches 3') {
+  /data modify entity @s Rotation[0] set value -90.0f
+}
+/scoreboard players reset @s ud_temp
+
+#file: ./graves/insert_item
+
+/data modify entity @e[tag=ud_grave_init,limit=1,sort=nearest] ArmorItems[-1].tag.unnamedDE.graveItems append from entity @s Item
+/kill @s[type=item]
+
+#file: ./graves/admin_open_grave
+
+asat(@e[tag=ud_grave,limit=1,sort=nearest,distance=..2.5]) {
+  /function unnamedde:misc/graves/open_grave
+}
+
+#file: ./graves/player_open_grave
+
+if('entity @e[tag=ud_grave,limit=1,sort=nearest,distance=..1,nbt={ArmorItems:[{},{},{},{tag:{unnamedDE:{graveMode:1}}}]}]') {
+  if('score @e[tag=ud_grave,limit=1,sort=nearest,distance=..1] ud_owner_id = @s group_id') {
+    asat(@e[tag=ud_grave,limit=1,sort=nearest,distance=..1]) {
+      /function unnamedde:misc/graves/open_grave
+    }
+  }
+}
+if('entity @e[tag=ud_grave,limit=1,sort=nearest,distance=..1,nbt={ArmorItems:[{},{},{},{tag:{unnamedDE:{graveMode:2}}}]}]') {
+  if('score @e[tag=ud_grave,limit=1,sort=nearest,distance=..1] ud_owner_id = @s player_id') {
+    asat(@e[tag=ud_grave,limit=1,sort=nearest,distance=..1]) {
+      /function unnamedde:misc/graves/open_grave
+    }
+  }
+}
+
+#file: ./graves/open_grave
+
+if('data entity @s ArmorItems[-1].tag.unnamedDE.graveItems[0]') {
+  /summon item ~ ~ ~ {Motion:[0.0d,0.3d,0.0d],Item:{id:"minecraft:arrow",Count:1b},Tags:["ud_grave_item"]}
+  as(@e[type=item,tag=ud_grave_item,limit=1,sort=nearest]) {
+    /function unnamedde:misc/graves/extract_item
+  }
+  /function unnamedde:misc/graves/open_grave
+} else {
+  /kill @s
+}
+
+#file: ./graves/extract_item
+
+/data modify entity @s Item set from entity @e[tag=ud_grave,limit=1,sort=nearest,type=minecraft:armor_stand] ArmorItems[-1].tag.unnamedDE.graveItems[0]
+/data remove entity @e[tag=ud_grave,limit=1,sort=nearest,type=minecraft:armor_stand] ArmorItems[-1].tag.unnamedDE.graveItems[0]
+/tag @s remove ud_grave_item

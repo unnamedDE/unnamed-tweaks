@@ -6,9 +6,9 @@
 ######
 execute as @a if score @s player_id = @s group_id run scoreboard players enable @s kick_player
 execute as @a if score @s player_id = @s group_id run scoreboard players enable @s invite_player
-execute as @a if score @s player_id = @s group_id run scoreboard players reset @s leave_group
-execute as @a unless score @s player_id = @s group_id run scoreboard players reset @s kick_player
-execute as @a unless score @s player_id = @s group_id run scoreboard players reset @s invite_player
+execute as @a if score @s player_id = @s group_id run scoreboard players reset @s[scores={leave_group=0}] leave_group
+execute as @a unless score @s player_id = @s group_id run scoreboard players reset @s[scores={kick_player=0}] kick_player
+execute as @a unless score @s player_id = @s group_id run scoreboard players reset @s[scores={invite_player=0}] invite_player
 execute as @a unless score @s player_id = @s group_id run scoreboard players enable @s leave_group
 tag @s add ud_id_set
 scoreboard players add #count player_id 1

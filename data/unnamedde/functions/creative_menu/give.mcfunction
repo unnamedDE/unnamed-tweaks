@@ -18,3 +18,17 @@ execute if score @s ud_creative_menu matches 12 run scoreboard players reset @s 
 
 execute if score @s ud_creative_menu matches 22 run give @s minecraft:diamond_pickaxe{Unbreakable: 1b, CustomModelData: 854321, display: {Name: "{\"text\":\"Multitool\",\"color\":\"dark_purple\",\"italic\":\"false\"}"}, Enchantments: [{lvl: 10, id: "minecraft:looting"}, {lvl: 10, id: "minecraft:efficiency"}, {lvl: 10, id: "minecraft:silk_touch"}], Damage: 0, AttributeModifiers: [{UUIDMost: 117779, UUIDLeast: 3407, Amount: 100000, Slot: "mainhand", AttributeName: "generic.attackDamage", Operation: 0, Name: "generic.attackDamage"}, {UUIDMost: 151577, UUIDLeast: 445375, Amount: 100000, Slot: "mainhand", AttributeName: "generic.attackSpeed", Operation: 0, Name: "generic.attackSpeed"}]} 1
 execute if score @s ud_creative_menu matches 22 run scoreboard players reset @s ud_creative_menu
+
+#XP Container
+execute if score @s ud_creative_menu matches 13 run give @s minecraft:dead_bubble_coral{CustomModelData:701001,unnamedDE:{id:"xp_container",storedXP:0,NoPlacing:1},display:{Name:"{\"text\":\"XP Container\",\"color\":\"yellow\",\"italic\":false}",Lore:["{\"text\":\"Used to store XP\",\"color\":\"dark_green\",\"italic\":false}"]},HideFlags:1,Enchantments:[{id:"minecraft:protection",lvl:1}]} 1
+execute if score @s ud_creative_menu matches 13 run scoreboard players reset @s ud_creative_menu
+
+execute if score @s ud_creative_menu matches 23 run give @s minecraft:dead_bubble_coral{CustomModelData:701001,unnamedDE:{id:"xp_container",storedXP:0,NoPlacing:1},display:{Name:"{\"text\":\"XP Container\",\"color\":\"yellow\",\"italic\":false}",Lore:["{\"text\":\"Used to store XP\",\"color\":\"dark_green\",\"italic\":false}"]},HideFlags:1,Enchantments:[{id:"minecraft:protection",lvl:1}]} 64
+execute if score @s ud_creative_menu matches 23 run scoreboard players reset @s ud_creative_menu
+
+#Bonsai Upgrade
+execute if score @s ud_creative_menu matches 14 run give @s minecraft:dead_bubble_coral{display:{Name:"{\"text\":\"Bonsai Upgrade\",\"color\":\"yellow\",\"italic\":false}",Lore:["{\"text\":\"Put in a item frame next to a\",\"color\":\"green\",\"italic\":false}","{\"text\":\"block with an inventory and place a flower pot\",\"color\":\"green\",\"italic\":false}","{\"text\":\"with your desired sapling on top\",\"color\":\"green\",\"italic\":false}"]},CustomModelData:701002,unnamedDE:{id:"bonsai_upgrade"},Enchantments:[{id:"enchant",lvl:1s}]} 1
+execute if score @s ud_creative_menu matches 14 run scoreboard players reset @s ud_creative_menu
+
+execute if score @s ud_creative_menu matches 24 run give @s minecraft:dead_bubble_coral{display:{Name:"{\"text\":\"Bonsai Upgrade\",\"color\":\"yellow\",\"italic\":false}",Lore:["{\"text\":\"Put in a item frame next to a\",\"color\":\"green\",\"italic\":false}","{\"text\":\"block with an inventory and place a flower pot\",\"color\":\"green\",\"italic\":false}","{\"text\":\"with your desired sapling on top\",\"color\":\"green\",\"italic\":false}"]},CustomModelData:701002,unnamedDE:{id:"bonsai_upgrade"},Enchantments:[{id:"enchant",lvl:1s}]} 64
+execute if score @s ud_creative_menu matches 24 run scoreboard players reset @s ud_creative_menu

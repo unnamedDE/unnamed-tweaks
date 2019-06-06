@@ -1,0 +1,89 @@
+#file: ./magnifying_glass/main
+
+asat(@a[nbt={SelectedItem:{tag:{unnamedDE:{id:"magnifying_glass"}}}}]) {
+  if(!'data entity @s ActiveEffects[{Id:2b,ShowParticles:1b}]') {
+    /function unnamedde:misc/magnifying_glass/activate
+  }
+}
+
+asat(@a[tag=ud_magnified,nbt=!{SelectedItem:{tag:{unnamedDE:{id:"magnifying_glass"}}}}]) {
+  /function unnamedde:misc/magnifying_glass/deactivate
+}
+
+#file: ./magnifying_glass/activate
+
+/tag @s[tag=!ud_magnified] add ud_magnified
+/effect give @s minecraft:slowness 1 9 true
+
+#file: ./magnifying_glass/deactivate
+
+/tag @s[tag=ud_magnified] remove ud_magnified
+/effect clear @s minecraft:slowness
+
+#file: ./magnifying_glass/craft
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:iron_ingot"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:iron_ingot"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:glass_pane"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b,id:"minecraft:iron_ingot"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b,id:"minecraft:iron_ingot"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b,id:"minecraft:stick"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {
+  /function unnamedde:misc/magnifying_glass/craft/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_magnifying_glass]' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:iron_ingot"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:iron_ingot"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:glass_pane"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b,id:"minecraft:iron_ingot"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b,id:"minecraft:iron_ingot"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b,id:"minecraft:stick"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:dead_bubble_coral",tag:{display:{Name:"{\\"text\\":\\"Magnifying glass\\",\\"italic\\":false}",Lore:["{\\"text\\":\\"Hold to zoom in\\",\\"color\\":\\"green\\",\\"italic\\":false}"]},CustomModelData:701004,unnamedDE:{id:"magnifying_glass",NoPlacing:1}}}]}') {
+  /function unnamedde:misc/magnifying_glass/craft/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_magnifying_glass]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b}]}') {
+    /function unnamedde:misc/magnifying_glass/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:iron_ingot"}]}') {
+    /function unnamedde:misc/magnifying_glass/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+    /function unnamedde:misc/magnifying_glass/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:iron_ingot"}]}') {
+    /function unnamedde:misc/magnifying_glass/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:glass_pane"}]}') {
+    /function unnamedde:misc/magnifying_glass/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b,id:"minecraft:iron_ingot"}]}') {
+    /function unnamedde:misc/magnifying_glass/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+    /function unnamedde:misc/magnifying_glass/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b,id:"minecraft:iron_ingot"}]}') {
+    /function unnamedde:misc/magnifying_glass/craft/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b,id:"minecraft:stick"}]}') {
+    /function unnamedde:misc/magnifying_glass/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+    /function unnamedde:misc/magnifying_glass/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+    /function unnamedde:misc/magnifying_glass/craft/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+    /function unnamedde:misc/magnifying_glass/craft/3
+  }
+}
+
+#file: ./magnifying_glass/craft/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:dead_bubble_coral{display:{Name:"{\"text\":\"Magnifying glass\",\"italic\":false}",Lore:["{\"text\":\"Hold to zoom in\",\"color\":\"green\",\"italic\":false}"]},CustomModelData:701004,unnamedDE:{id:"magnifying_glass",NoPlacing:1}} 1
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_magnifying_glass
+
+#file: ./magnifying_glass/craft/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add replacements here
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_magnifying_glass
+
+#file: ./magnifying_glass/craft/3
+
+/replaceitem block ~ ~ ~ container.7 minecraft:air
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+/replaceitem block ~ ~ ~ container.25 minecraft:air
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_magnifying_glass

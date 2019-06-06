@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient": {
+        "item": "minecraft:stick"
+    },
+    "result": "minecraft:blaze_rod",
+    "experience": 1,
+    "cookingtime": 12000
+}
