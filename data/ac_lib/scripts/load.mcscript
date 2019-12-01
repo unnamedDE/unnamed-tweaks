@@ -1,6 +1,0 @@
-
-#file: ./load
-
-// here goes your load content
-
-/scoreboard objectives add ac_temp dummy
