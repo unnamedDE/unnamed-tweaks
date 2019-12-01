@@ -9,6 +9,9 @@
         },
         {
             "item": "minecraft:stripped_acacia_log"
+        },
+        {
+            "item": "minecraft:stripped_acacia_wood"
         }
     ],
     "result": "minecraft:acacia_planks",

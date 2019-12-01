@@ -4,7 +4,7 @@ asat(@e[type=item]) {
   /execute store result score @s ud_age run data get entity @s Age
 }
 
-asat(@a[scores={ud_jump=1..,ud_sneak=1..}]), if('entity @e[tag=ud_grave,distance=...5]') {
+asat(@a[tag=ud_sneak, tag=ud_jump]), positioned('~ ~-.5 ~'), if('entity @e[tag=ud_grave,distance=...5]') {
   /function unnamedde:misc/graves/player_open_grave
 }
 

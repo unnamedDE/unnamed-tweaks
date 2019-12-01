@@ -1,13 +1,3 @@
-#file: ./creative_menu
-
-/tellraw @s {"text":""}
-/tellraw @s {"text":""}
-/tellraw @s [{"text":"<===== ","color":"aqua"},{"text":"Select datapack to display menu","color":"red"},{"text":" =====>","color":"aqua"}]
-/tellraw @s {"text":""}
-/function #unnamedde:creative_menu
-/tellraw @s {"text":""}
-/tellraw @s {"text":""}
-
 #file: ./creative_menu/main
 
 as(@a) {
@@ -16,7 +6,7 @@ as(@a) {
 
 #file: ./creative_menu/select
 
-/tellraw @s [{"text":" ► ","color":"green"},{"text":"unnamed Core","hoverEvent":{"action":"show_text","value":"Click to select"},"clickEvent":{"action":"run_command","value":"/function unnamedde:creative_menu/menu"}}]
+/tellraw @s [{"text":" ► ","color":"green"},{"text":"unnamed tweaks","hoverEvent":{"action":"show_text","value":"Click to select"},"clickEvent":{"action":"run_command","value":"/function unnamedde:creative_menu/menu"}}]
 
 #file: ./creative_menu/menu
 
@@ -27,18 +17,23 @@ as(@a) {
 
 #Content
 #
-#Advanced Crafter
-/tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 11"}},{"text":"] [","color":"reset"},{"text":"16","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 21"}},{"text":"] ","color":"reset"},{"text":"Advanced Crafter"}]
-#Multitool
-/tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 12"}},{"text":"]      ","color":"reset"},{"text":" ","color":"reset"},{"text":"Multitool"}]
+#Wireless Upgrade
+/tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 11"}},{"text":"] [","color":"reset"},{"text":"64","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 21"}},{"text":"] ","color":"reset"},{"text":"Ender Upgrade"}]
+#Wireless Upgrade
+/tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 12"}},{"text":"] [","color":"reset"},{"text":"64","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 22"}},{"text":"] ","color":"reset"},{"text":"Wireless Upgrade"}]
 #XP Container
 /tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 13"}},{"text":"] [","color":"reset"},{"text":"64","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 23"}},{"text":"] ","color":"reset"},{"text":"XP Container"}]
 #Bonsai Upgrade
 /tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 14"}},{"text":"] [","color":"reset"},{"text":"64","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 24"}},{"text":"] ","color":"reset"},{"text":"Bonsai Upgrade"}]
+#Bonsai Upgrade
+/tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 16"}},{"text":"] [","color":"reset"},{"text":"64","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 26"}},{"text":"] ","color":"reset"},{"text":"Storage Upgrade"}]
+
+#Trash Can
+/tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 15"}},{"text":"] [","color":"reset"},{"text":"16","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 25"}},{"text":"] ","color":"reset"},{"text":"Trash Can"}]
 
 
 /tellraw @s {"text":""}
-/tellraw @s [{"text":" ↑ ","color":"red"},{"text":"Return to main menu","hoverEvent":{"action":"show_text","value":"Click to return"},"clickEvent":{"action":"run_command","value":"/function unnamedde:creative_menu"}}]
+/tellraw @s [{"text":" ↑ ","color":"red"},{"text":"Return to main menu","hoverEvent":{"action":"show_text","value":"Click to return"},"clickEvent":{"action":"run_command","value":"/function unnamed_core:creative_menu"}}]
 /tellraw @s {"text":""}
 /tellraw @s {"text":""}
 
@@ -55,11 +50,17 @@ modal creativeMenu(id,item,count = 64) {
   }
 }
 
-#Advanced Crafter
-creativeMenu(1,'minecraft:armor_stand{display:{Name:"{\\"text\\":\\"Advanced Crafter\\",\\"italic\\":false}",Lore:["{\\"translate\\":\\"Right-click to place\\",\\"color\\":\\"dark_green\\",\\"italic\\":false}"]},CustomModelData:701001,ac_lib:{id:"advanced_crafter"},EntityTag:{NoGravity:1b,Invulnerable:1b,Small:1b,Marker:1b,Invisible:1b,PersistenceRequired:1b,Tags:["ac_lib_advanced_crafter","ac_lib_advanced_crafter_init"],DisabledSlots:4144959}}',16)
-#Multitool
-creativeMenu(2,'minecraft:diamond_pickaxe{Unbreakable: 1b, CustomModelData: 854321, display: {Name: "{\\"text\\":\\"Multitool\\",\\"color\\":\\"dark_purple\\",\\"italic\\":\\"false\\"}"}, Enchantments: [{lvl: 10, id: "minecraft:looting"}, {lvl: 10, id: "minecraft:efficiency"}, {lvl: 10, id: "minecraft:silk_touch"}], Damage: 0, AttributeModifiers: [{UUIDMost: 117779, UUIDLeast: 3407, Amount: 100000, Slot: "mainhand", AttributeName: "generic.attackDamage", Operation: 0, Name: "generic.attackDamage"}, {UUIDMost: 151577, UUIDLeast: 445375, Amount: 100000, Slot: "mainhand", AttributeName: "generic.attackSpeed", Operation: 0, Name: "generic.attackSpeed"}]}',1)
+
+
+#Ender Upgrade
+creativeMenu(1,'minecraft:dead_bubble_coral{display:{Name:"{\\"text\\":\\"Ender Upgrade\\",\\"color\\":\\"yellow\\",\\"italic\\":false}",Lore:["{\\"text\\":\\"Put in a item frame on a hopper to\\",\\"color\\":\\"green\\",\\"italic\\":false}","{\\"text\\":\\"enable ender pickup of all items around\\",\\"color\\":\\"green\\",\\"italic\\":false}"]},CustomModelData:701005,unnamedDE:{id:"ender_upgrade"},Enchantments:[{id:"enchant",lvl:1s}]}')
+#Wireless Upgrade
+creativeMenu(2,'minecraft:dead_bubble_coral{display:{Name:"{\\"text\\":\\"Wireless Upgrade\\",\\"color\\":\\"yellow\\",\\"italic\\":false}",Lore:["{\\"text\\":\\"Put in a item frame next to a\\",\\"color\\":\\"green\\",\\"italic\\":false}","{\\"text\\":\\"redstone block\\",\\"color\\":\\"green\\",\\"italic\\":false}"]},CustomModelData:701003,unnamedDE:{id:"wireless_upgrade"},Enchantments:[{id:"enchant",lvl:1s}]}')
 #XP Container
 creativeMenu(3,'minecraft:dead_bubble_coral{CustomModelData:701001,unnamedDE:{id:"xp_container",storedXP:0,NoPlacing:1},display:{Name:"{\\"text\\":\\"XP Container\\",\\"color\\":\\"yellow\\",\\"italic\\":false}",Lore:["{\\"text\\":\\"Used to store XP\\",\\"color\\":\\"dark_green\\",\\"italic\\":false}"]},HideFlags:1,Enchantments:[{id:"minecraft:protection",lvl:1}]}')
 #Bonsai Upgrade
 creativeMenu(4,'minecraft:dead_bubble_coral{display:{Name:"{\\"text\\":\\"Bonsai Upgrade\\",\\"color\\":\\"yellow\\",\\"italic\\":false}",Lore:["{\\"text\\":\\"Put in a item frame next to a\\",\\"color\\":\\"green\\",\\"italic\\":false}","{\\"text\\":\\"block with an inventory and place a flower pot\\",\\"color\\":\\"green\\",\\"italic\\":false}","{\\"text\\":\\"with your desired sapling on top\\",\\"color\\":\\"green\\",\\"italic\\":false}"]},CustomModelData:701002,unnamedDE:{id:"bonsai_upgrade"},Enchantments:[{id:"enchant",lvl:1s}]}')
+#Trash Can
+creativeMenu(5,'minecraft:armor_stand{CustomModelData:701002,unnamedDE:{id:"trash_can_place"},display:{Name:"{\\"translate\\":\\"Trashcan\\",\\"italic\\":\\"false\\"}",Lore:["{\\"translate\\":\\"Right-click to place\\",\\"italic\\":\\"false\\",\\"color\\":\\"dark_green\\"}"]},EntityTag:{NoGravity:1b,Invulnerable:1b,Small:1b,Marker:1b,Invisible:1b,PersistenceRequired:1b,Tags:["ud_trash_can","ud_trash_can_init"]}}', 16)
+#Storage Upgrade
+creativeMenu(6,'minecraft:dead_bubble_coral{display:{Name:"{\\"text\\":\\"Storage Upgrade\\",\\"color\\":\\"yellow\\",\\"italic\\":false}",Lore:["{\\"text\\":\\"Place in a item frame on a\\",\\"color\\":\\"green\\",\\"italic\\":false}","{\\"text\\":\\"stripped wood to have\\",\\"color\\":\\"green\\",\\"italic\\":false}","{\\"text\\":\\"infinite storage\\",\\"color\\":\\"green\\",\\"italic\\":false}"]},CustomModelData:701006,unnamedDE:{id:"storage_upgrade"},Enchantments:[{id:"enchant",lvl:1s}]}')

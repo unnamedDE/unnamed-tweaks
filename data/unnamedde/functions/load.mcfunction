@@ -6,134 +6,96 @@
 ######
 function unnamedde:mcscript/load
 
-scoreboard objectives add installed_packs dummy "Installed Datapacks"
-scoreboard objectives add ud_options dummy {"text":"UnnamedDE's Lib Options","color":"gold"}
-scoreboard objectives add ud_temp dummy "Temporary Score"
-scoreboard objectives add ud_const dummy "Constants"
-scoreboard objectives add money dummy "Player $"
-scoreboard objectives add pay_money trigger "Pay Money"
-scoreboard objectives add check_money trigger "Check Money"
-scoreboard objectives add player_id dummy "Player ID"
-scoreboard objectives add group_id dummy "Group ID"
-scoreboard objectives add ud_owner_id dummy "Owner ID"
-scoreboard objectives add invite_id dummy
-scoreboard objectives add invite_player trigger "Invite Player"
-scoreboard objectives add accept_invite trigger "Accept Invite"
-scoreboard objectives add leave_group trigger "Leave Group"
-scoreboard objectives add kick_player trigger "Kick Player"
-scoreboard objectives add ud_sneak minecraft.custom:minecraft.sneak_time "Sneaking"
-scoreboard objectives add ud_jump minecraft.custom:minecraft.jump "Jumping"
 scoreboard objectives add ud_creative_menu dummy
-scoreboard objectives add ud_misc dummy
-scoreboard objectives add ud_counter dummy "Counter"
-scoreboard objectives add ud_leave minecraft.custom:minecraft.leave_game
-scoreboard objectives add x_pos dummy "X-Position"
-scoreboard objectives add y_pos dummy "Y-Position"
-scoreboard objectives add z_pos dummy "Z-Position"
 scoreboard objectives add death_x dummy "X-Position at Death"
 scoreboard objectives add death_y dummy "Y-Position at Death"
 scoreboard objectives add death_z dummy "Z-Position at Death"
-scoreboard objectives add x_rot dummy "X-Rotation"
-scoreboard objectives add y_rot dummy "Y-Rotation"
-scoreboard objectives add dim dummy "Dimension"
-scoreboard objectives add deaths deathCount "Deaths"
-scoreboard objectives add ud_deaths deathCount "Utility Deaths"
-scoreboard objectives add ud_deathtime minecraft.custom:minecraft.time_since_death "Time since death"
-scoreboard objectives add ud_timeplayed minecraft.custom:minecraft.play_one_minute "Time played"
-scoreboard objectives add ud_deathtime_h dummy
-scoreboard objectives add ud_deathtime_m dummy
-scoreboard objectives add ud_timeplayed_h dummy
-scoreboard objectives add ud_timeplayed_m dummy
 scoreboard objectives add ud_arrowcount dummy
 scoreboard objectives add ud_torchcount dummy
-scoreboard objectives add store_xp trigger "Store XP into container"
-scoreboard objectives add extract_xp trigger "Extract XP from container"
-scoreboard objectives add check_xp trigger "Check XP from container"
-scoreboard objectives add ud_xp dummy "XP"
-scoreboard objectives add ud_stored_xp dummy
+scoreboard objectives add store_in_item trigger "Store value into container"
+scoreboard objectives add extract_out_item trigger "Extract value from container"
+scoreboard objectives add check_item trigger "Check value from container"
+scoreboard objectives add ud_stored_value dummy
 scoreboard objectives add set_frequency trigger "Set Wireless-Redstone Frequency"
 scoreboard objectives add ud_mine_quartz minecraft.mined:minecraft.nether_quartz_ore "Mined Quartz Ore"
 scoreboard objectives add ud_eat_pork_r minecraft.used:minecraft.porkchop "Eat Porkchop"
 scoreboard objectives add ud_eat_pork_c minecraft.used:minecraft.cooked_porkchop "Eat Cooked Porkchop"
-scoreboard objectives add ud_age dummy "Age"
+scoreboard objectives add ud_crossbow minecraft.used:minecraft.crossbow "Shoot Crossbow"
+scoreboard objectives add ud_p_endcrystal minecraft.used:minecraft.end_crystal "Placed end crystal"
+scoreboard objectives add check_drawer trigger "Check item of a drawer"
 team add nopvp "No PvP"
-scoreboard players reset * installed_packs
-scoreboard players set unnamedDE installed_packs 1
-scoreboard players set ac_lib installed_packs 1
-scoreboard players set smash_lib installed_packs 1
-execute unless score money ud_options matches 0.. run scoreboard players set money ud_options 1
+execute unless score command_feedback ud_options matches -1.. run scoreboard players set command_feedback ud_options 0
 
-execute unless score concrete_in_water ud_options matches 0.. run scoreboard players set concrete_in_water ud_options 1
+execute unless score greeting ud_options matches -1.. run scoreboard players set greeting ud_options 1
 
-execute unless score death_books ud_options matches 0.. run scoreboard players set death_books ud_options 1
+execute unless score concrete_in_water ud_options matches -1.. run scoreboard players set concrete_in_water ud_options 1
 
-execute unless score greeting ud_options matches 0.. run scoreboard players set greeting ud_options 1
+execute unless score death_books ud_options matches -1.. run scoreboard players set death_books ud_options 1
 
-execute unless score start_equip ud_options matches 0.. run scoreboard players set start_equip ud_options 0
+execute unless score greeting ud_options matches -1.. run scoreboard players set greeting ud_options 1
 
-execute unless score hopper_minecarts ud_options matches 0.. run scoreboard players set hopper_minecarts ud_options 1
+execute unless score start_equip ud_options matches -1.. run scoreboard players set start_equip ud_options 0
 
-execute unless score nightpvp ud_options matches 0.. run scoreboard players set nightpvp ud_options 1
+execute unless score hopper_minecarts ud_options matches -1.. run scoreboard players set hopper_minecarts ud_options 1
 
-execute unless score silencer ud_options matches 0.. run scoreboard players set silencer ud_options 1
+execute unless score nightpvp ud_options matches -1.. run scoreboard players set nightpvp ud_options 1
 
-execute unless score tooltips ud_options matches 0.. run scoreboard players set tooltips ud_options 1
+execute unless score silencer ud_options matches -1.. run scoreboard players set silencer ud_options 1
 
-execute unless score replant_saplings ud_options matches 0.. run scoreboard players set replant_saplings ud_options 1
+execute unless score tooltips ud_options matches -1.. run scoreboard players set tooltips ud_options 1
 
-execute unless score dispenser_plant ud_options matches 0.. run scoreboard players set dispenser_plant ud_options 1
+execute unless score replant_saplings ud_options matches -1.. run scoreboard players set replant_saplings ud_options 1
 
-execute unless score no_too_expensive ud_options matches 0.. run scoreboard players set no_too_expensive ud_options 0
+execute unless score dispenser_plant ud_options matches -1.. run scoreboard players set dispenser_plant ud_options 1
 
-execute unless score xp_containers ud_options matches 0.. run scoreboard players set xp_containers ud_options 1
+execute unless score no_too_expensive ud_options matches -1.. run scoreboard players set no_too_expensive ud_options 0
 
-execute unless score ender_hoppers ud_options matches 0.. run scoreboard players set ender_hoppers ud_options 1
+execute unless score xp_containers ud_options matches -1.. run scoreboard players set xp_containers ud_options 1
 
-execute unless score plated_elytras ud_options matches 0.. run scoreboard players set plated_elytras ud_options 1
+execute unless score ender_hoppers ud_options matches -1.. run scoreboard players set ender_hoppers ud_options 1
 
-execute unless score bonsai_pots ud_options matches 0.. run scoreboard players set bonsai_pots ud_options 1
+execute unless score plated_elytras ud_options matches -1.. run scoreboard players set plated_elytras ud_options 1
 
-execute unless score wireless_redstone ud_options matches 0.. run scoreboard players set wireless_redstone ud_options 1
+execute unless score bonsai_pots ud_options matches -1.. run scoreboard players set bonsai_pots ud_options 1
 
-execute unless score possessive_pigmen ud_options matches 0.. run scoreboard players set possessive_pigmen ud_options 1
+execute unless score wireless_redstone ud_options matches -1.. run scoreboard players set wireless_redstone ud_options 1
 
-execute unless score graves ud_options matches 0.. run scoreboard players set graves ud_options 1
+execute unless score possessive_pigmen ud_options matches -1.. run scoreboard players set possessive_pigmen ud_options 1
 
-execute unless score player_heads ud_options matches 0.. run scoreboard players set player_heads ud_options 1
+execute unless score graves ud_options matches -1.. run scoreboard players set graves ud_options 1
 
-execute unless score dragon_egg ud_options matches 0.. run scoreboard players set dragon_egg ud_options 1
+execute unless score player_heads ud_options matches -1.. run scoreboard players set player_heads ud_options 1
 
-execute unless score magnifying_glass ud_options matches 0.. run scoreboard players set magnifying_glass ud_options 1
+execute unless score dragon_egg ud_options matches -1.. run scoreboard players set dragon_egg ud_options 1
 
-execute unless score dimension_notifications ud_options matches 0.. run scoreboard players set dimension_notifications ud_options 1
+execute unless score magnifying_glass ud_options matches -1.. run scoreboard players set magnifying_glass ud_options 1
 
-execute unless score arrow_break_bamboo ud_options matches 0.. run scoreboard players set arrow_break_bamboo ud_options 1
+execute unless score dimension_notifications ud_options matches -1.. run scoreboard players set dimension_notifications ud_options 1
 
-execute unless score better_end_portal ud_options matches 0.. run scoreboard players set better_end_portal ud_options 1
+execute unless score arrow_break_bamboo ud_options matches -1.. run scoreboard players set arrow_break_bamboo ud_options 1
 
-execute unless score parcour_boots ud_options matches 0.. run scoreboard players set parcour_boots ud_options 1
+execute unless score better_end_portal ud_options matches -1.. run scoreboard players set better_end_portal ud_options 1
 
-execute unless score bonsai_pots_cool ud_options matches 0.. run scoreboard players set bonsai_pots_cool ud_options 18000
+execute unless score parcour_boots ud_options matches -1.. run scoreboard players set parcour_boots ud_options 0
 
-execute unless score grave_mode ud_options matches 0.. run scoreboard players set grave_mode ud_options 1
+execute unless score ender_beacons ud_options matches -1.. run scoreboard players set ender_beacons ud_options 1
 
-scoreboard players set -1 ud_const -1
-scoreboard players set 1 ud_const 1
-scoreboard players set 2 ud_const 2
-scoreboard players set 4 ud_const 4
-scoreboard players set 5 ud_const 5
-scoreboard players set 8 ud_const 8
-scoreboard players set 10 ud_const 10
-scoreboard players set 16 ud_const 16
-scoreboard players set 32 ud_const 32
-scoreboard players set 64 ud_const 64
-scoreboard players set 100 ud_const 100
-scoreboard players set 128 ud_const 128
-scoreboard players set 240 ud_const 240
-scoreboard players set 256 ud_const 256
-scoreboard players set 1200 ud_const 1200
-scoreboard players set 72000 ud_const 72000
+execute unless score crossbow_bolts ud_options matches -1.. run scoreboard players set crossbow_bolts ud_options 1
+
+execute unless score storage_drawers ud_options matches -1.. run scoreboard players set storage_drawers ud_options 1
+
+execute unless score trash_can ud_options matches -1.. run scoreboard players set trash_can ud_options 1
+
+execute unless score encrypted_books ud_options matches -1.. run scoreboard players set encrypted_books ud_options 1
+
+execute unless score money_additions ud_options matches -1.. run scoreboard players set money_additions ud_options 1
+
+execute unless score functional_stonecutter ud_options matches -1.. run scoreboard players set functional_stonecutter ud_options 1
+
+execute unless score dispenser_planting ud_options matches -1.. run scoreboard players set dispenser_planting ud_options 1
+
+execute unless score bonsai_pots_cool ud_options matches -1.. run scoreboard players set bonsai_pots_cool ud_options 18000
+
+execute unless score grave_mode ud_options matches -1.. run scoreboard players set grave_mode ud_options 1
+
 team modify nopvp friendlyFire true
-#Put this in your looping function and replace PACKNAME with your packname
-#execute unless score PACKNAME installed_packs matches 1 run scoreboard players set PACKNAME installed_packs 1
-execute unless score #startValue money matches 0.. run scoreboard players set #startValue money 1000

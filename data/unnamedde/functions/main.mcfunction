@@ -6,56 +6,17 @@
 ######
 execute unless score player_heads ud_options matches 1.. run kill @e[type=item,nbt={Age:0s,Item:{tag:{DroppedPlayerhead:1b}}}]
 
-execute as @r[tag=!ud_id_set] at @s run function unnamedde:player_id/first_join
-execute as @a[scores={ud_leave=1..}] run function unnamedde:set_scoreboards/on_join
-function unnamedde:set_scoreboards/world
-execute if score dimension_notifications ud_options matches 1.. run function unnamedde:misc/dimension_notifications
-
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 3 60 1 minecraft:end_portal_frame
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 2 60 2 minecraft:end_portal_frame
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 1 60 3 minecraft:end_portal_frame
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 0 60 3 minecraft:end_portal_frame
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock -1 60 3 minecraft:end_portal_frame
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock -2 60 2 minecraft:end_portal_frame
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock -3 60 1 minecraft:end_portal_frame
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock -3 60 0 minecraft:end_portal_frame
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock -3 60 -1 minecraft:end_portal_frame
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock -2 60 -2 minecraft:end_portal_frame
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock -1 60 -3 minecraft:end_portal_frame
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 0 60 -3 minecraft:end_portal_frame
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 1 60 -3 minecraft:end_portal_frame
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 2 60 -2 minecraft:end_portal_frame
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 3 60 -1 minecraft:end_portal_frame
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 3 60 0 minecraft:end_portal_frame
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 3 60 1 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 2 60 2 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 1 60 3 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 0 60 3 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock -1 60 3 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock -2 60 2 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock -3 60 1 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock -3 60 0 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock -3 60 -1 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock -2 60 -2 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock -1 60 -3 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 0 60 -3 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 1 60 -3 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 2 60 -2 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 3 60 -1 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. as @a at @s if entity @s[nbt={Dimension:1}] unless score @s dim matches 1 in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 3 60 0 minecraft:end_portal_frame[eye=true]
-
 execute as @a at @s run function unnamedde:set_scoreboards/player
+function unnamedde:set_scoreboards/reset_item_interactives
 function unnamedde:creative_menu/main
-function unnamedde:player_id/main
-function unnamedde:misc/no_placing/main
 function unnamedde:misc/death_books/main
-execute if score money ud_options matches 1.. run function unnamedde:money/main
-
 execute if score hopper_minecarts ud_options matches 1.. run function unnamedde:misc/hopper_minecarts
 
 execute if score concrete_in_water ud_options matches 1.. run function unnamedde:misc/concrete_in_water
 
 execute if score nightpvp ud_options matches 1.. run function unnamedde:misc/nightpvp/main
+
+execute if score nightpvp ud_options matches 0 run function unnamedde:misc/nightpvp/reset
 
 execute if score tooltips ud_options matches 1.. run function unnamedde:misc/tooltips/main
 
@@ -85,7 +46,21 @@ execute if score magnifying_glass ud_options matches 1.. run function unnamedde:
 
 execute if score arrow_break_bamboo ud_options matches 1.. at @e[type=arrow,nbt={inGround:0b}] if block ~ ~ ~ minecraft:bamboo run setblock ~ ~ ~ air destroy
 
-execute if score parcour_boots ud_options matches 1.. run function unnamedde:misc/parcour_boots/main
+execute if score ender_beacons ud_options matches 1.. run function unnamedde:misc/ender_beacons/main
+
+execute if score crossbow_bolts ud_options matches 1.. run function unnamedde:misc/crossbow_bolts/main
+
+execute if score trash_can ud_options matches 1.. run function unnamedde:misc/trash_can/main
+
+execute if score encrypted_books ud_options matches 1.. run function unnamedde:misc/encrypted_books/main
+
+execute if score money_additions ud_options matches 1.. run function unnamedde:misc/money_additions/main
+
+execute if score functional_stonecutter ud_options matches 1.. run function unnamedde:misc/functional_stonecutter/main
+
+execute if score dispenser_planting ud_options matches 1.. run function unnamedde:misc/dispenser_planting/main
+
+execute if score better_end_portal ud_options matches 1.. run function unnamedde:misc/better_endportal/main
 
 execute as @e[type=item,nbt={Age:0s,Item:{tag:{DroppedPlayerhead:1b}}}] at @s run data remove entity @s Item.tag.DroppedPlayerhead
 function unnamedde:set_scoreboards/reset

@@ -1,0 +1,71 @@
+#file: ./better_endportal/main
+
+asat(@a[nbt={Dimension:1},scores={ud_p_endcrystal=1..}]) {
+  /schedule function unnamedde:misc/better_endportal/repair_portal 3s
+}
+
+#file: ./better_endportal/repair_portal
+
+if('score better_end_portal ud_options matches 1..') {
+  dimension('minecraft:the_end') {
+    if('block 3 60 -1 minecraft:bedrock') {
+      /setblock 3 60 1 minecraft:end_portal_frame
+      /setblock 2 60 2 minecraft:end_portal_frame
+      /setblock 1 60 3 minecraft:end_portal_frame
+      /setblock 0 60 3 minecraft:bedrock
+      /setblock -1 60 3 minecraft:end_portal_frame
+      /setblock -2 60 2 minecraft:end_portal_frame
+      /setblock -3 60 1 minecraft:end_portal_frame
+      /setblock -3 60 0 minecraft:bedrock
+      /setblock -3 60 -1 minecraft:end_portal_frame
+      /setblock -2 60 -2 minecraft:end_portal_frame
+      /setblock -1 60 -3 minecraft:end_portal_frame
+      /setblock 0 60 -3 minecraft:bedrock
+      /setblock 1 60 -3 minecraft:end_portal_frame
+      /setblock 2 60 -2 minecraft:end_portal_frame
+      /setblock 3 60 -1 minecraft:end_portal_frame
+      /setblock 3 60 0 minecraft:bedrock
+    }
+    if('block 1 60 0 minecraft:end_portal') {
+      /setblock 3 60 1 minecraft:end_portal_frame[eye=true]
+      /setblock 2 60 2 minecraft:end_portal_frame[eye=true]
+      /setblock 1 60 3 minecraft:end_portal_frame[eye=true]
+      /setblock 0 60 3 minecraft:bedrock
+      /setblock -1 60 3 minecraft:end_portal_frame[eye=true]
+      /setblock -2 60 2 minecraft:end_portal_frame[eye=true]
+      /setblock -3 60 1 minecraft:end_portal_frame[eye=true]
+      /setblock -3 60 0 minecraft:bedrock
+      /setblock -3 60 -1 minecraft:end_portal_frame[eye=true]
+      /setblock -2 60 -2 minecraft:end_portal_frame[eye=true]
+      /setblock -1 60 -3 minecraft:end_portal_frame[eye=true]
+      /setblock 0 60 -3 minecraft:bedrock
+      /setblock 1 60 -3 minecraft:end_portal_frame[eye=true]
+      /setblock 2 60 -2 minecraft:end_portal_frame[eye=true]
+      /setblock 3 60 -1 minecraft:end_portal_frame[eye=true]
+      /setblock 3 60 0 minecraft:bedrock
+    }
+  }
+}
+
+#file: ./better_endportal/killed_dragon
+/function unnamedde:misc/better_endportal/repair_portal
+/*
+dimension('minecraft:the_end'), if('score better_end_portal ud_options matches 1..') {
+  /setblock 3 60 1 minecraft:end_portal_frame[eye=true]
+  /setblock 2 60 2 minecraft:end_portal_frame[eye=true]
+  /setblock 1 60 3 minecraft:end_portal_frame[eye=true]
+  /setblock 0 60 3 minecraft:bedrock
+  /setblock -1 60 3 minecraft:end_portal_frame[eye=true]
+  /setblock -2 60 2 minecraft:end_portal_frame[eye=true]
+  /setblock -3 60 1 minecraft:end_portal_frame[eye=true]
+  /setblock -3 60 0 minecraft:bedrock
+  /setblock -3 60 -1 minecraft:end_portal_frame[eye=true]
+  /setblock -2 60 -2 minecraft:end_portal_frame[eye=true]
+  /setblock -1 60 -3 minecraft:end_portal_frame[eye=true]
+  /setblock 0 60 -3 minecraft:bedrock
+  /setblock 1 60 -3 minecraft:end_portal_frame[eye=true]
+  /setblock 2 60 -2 minecraft:end_portal_frame[eye=true]
+  /setblock 3 60 -1 minecraft:end_portal_frame[eye=true]
+  /setblock 3 60 0 minecraft:bedrock
+}
+*/

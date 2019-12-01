@@ -1,18 +1,25 @@
 
 {
-  "values":[
-  "ac_lib:advanced_crafter/recipes/test",
-  "unnamedde:misc/death_books/craft_book",
-  "unnamedde:misc/xp_containers/craft",
-  "unnamedde:misc/plated_elytras/craft/leather",
-  "unnamedde:misc/plated_elytras/craft/chainmail",
-  "unnamedde:misc/plated_elytras/craft/iron",
-  "unnamedde:misc/plated_elytras/craft/gold",
-  "unnamedde:misc/plated_elytras/craft/diamond",
-  "unnamedde:misc/plated_elytras/craft/unbreakable",
-  "unnamedde:misc/bonsai_pots/craft",
-  "unnamedde:misc/wireless_redstone/craft",
-  "unnamedde:misc/magnifying_glass/craft",
-  "unnamedde:misc/ender_hoppers/craft"
+  "values": [
+    "unnamedde:misc/bonsai_pots/craft",
+    "unnamedde:misc/crossbow_bolts/craft/bolt",
+    "unnamedde:misc/crossbow_bolts/craft/thunderbolt",
+    "unnamedde:misc/death_books/craft_book",
+    "unnamedde:misc/ender_hoppers/craft",
+    "unnamedde:misc/magnifying_glass/craft",
+    "unnamedde:misc/plated_elytras/craft/leather",
+    "unnamedde:misc/plated_elytras/craft/chainmail",
+    "unnamedde:misc/plated_elytras/craft/gold",
+    "unnamedde:misc/plated_elytras/craft/iron",
+    "unnamedde:misc/plated_elytras/craft/diamond",
+    "unnamedde:misc/plated_elytras/craft/unbreakable",
+    "unnamedde:misc/storage_drawers/craft",
+    "unnamedde:misc/wireless_redstone/craft",
+    "unnamedde:misc/xp_containers/craft",
+    "unnamedde:misc/encrypted_books/encrypt",
+    "unnamedde:misc/encrypted_books/clone_text",
+    "unnamedde:misc/encrypted_books/decrypt",
+    "unnamedde:misc/money_additions/craft/wallet",
+    "unnamedde:misc/money_additions/craft/check"
   ]
 }

@@ -1,0 +1,245 @@
+#file: ./money_additions/main
+
+asat(@a) {
+  if('entity @s[nbt={SelectedItem:{Count:1b,tag:{unnamedDE:{id:"wallet"}}}}]') {
+    /execute store result score @s ud_stored_value run data get entity @s SelectedItem.tag.unnamedDE.storedMoney
+    if('score @s money matches 1..') {
+      /scoreboard players enable @s store_in_item
+    }
+    if('score @s ud_stored_value matches 1..') {
+      /scoreboard players enable @s extract_out_item
+    }
+    /scoreboard players enable @s check_item
+
+    if('score @s check_item matches 1..') {
+      /function unnamedde:misc/money_additions/wallet/check_money
+    }
+    if('score @s extract_out_item matches 1..') {
+      /function unnamedde:misc/money_additions/wallet/extract_money
+    }
+    if('score @s store_in_item matches 1..') {
+      /function unnamedde:misc/money_additions/wallet/store_money
+    }
+
+
+  } else {
+    /scoreboard players reset @s ud_stored_value
+  }
+
+  if('entity @s[nbt={SelectedItem:{Count:1b,tag:{unnamedDE:{id:"check"}}}}]') {
+    if('score @s money matches 1..' && 'entity @s[nbt={SelectedItem:{tag:{unnamedDE:{blank:1}}}}]') {
+      /scoreboard players enable @s store_in_item
+    }
+    if('entity @s[nbt={SelectedItem:{tag:{unnamedDE:{blank:0}}}}]') {
+      /scoreboard players enable @s extract_out_item
+    }
+    if('entity @s[nbt={SelectedItem:{tag:{unnamedDE:{blank:0}}}}]') {
+      /scoreboard players enable @s check_item
+    }
+
+    if('score @s check_item matches 1..') {
+      /function unnamedde:misc/money_additions/check/check_money
+    }
+    if('score @s extract_out_item matches 1..') {
+      /function unnamedde:misc/money_additions/check/extract_money
+    }
+    if('score @s store_in_item matches 1..') {
+      /function unnamedde:misc/money_additions/check/store_money
+    }
+
+
+  }
+}
+
+#file: ./money_additions/wallet/check_money
+
+/execute store result score @s ud_temp run data get entity @s SelectedItem.tag.unnamedDE.storedMoney
+/tellraw @s [{"score":{"name":"@s","objective":"ud_temp"},"color":"green"},{"text":"$","color":"green"},{"text":" are being stored in this wallet","color":"reset"}]
+/scoreboard players reset @s ud_temp
+/scoreboard players reset @s check_item
+
+#file: ./money_additions/wallet/store_money
+
+if('score @s money >= @s store_in_item') {
+  /execute store result score @s ud_temp run data get entity @s SelectedItem.tag.unnamedDE.storedMoney
+  /scoreboard players operation @s ud_temp += @s store_in_item
+  /execute store result entity @s SelectedItem.tag.unnamedDE.storedMoney long 1 run scoreboard players get @s ud_temp
+  /scoreboard players operation @s money -= @s store_in_item
+}
+/scoreboard players reset @s ud_temp
+/scoreboard players reset @s store_in_item
+
+#file: ./money_additions/wallet/extract_money
+
+/execute store result score @s ud_temp run data get entity @s SelectedItem.tag.unnamedDE.storedMoney
+if('score @s ud_temp >= @s extract_out_item') {
+  /scoreboard players operation @s money += @s extract_out_item
+  /scoreboard players operation @s ud_temp -= @s extract_out_item
+}
+/execute store result entity @s SelectedItem.tag.unnamedDE.storedMoney long 1 run scoreboard players get @s ud_temp
+/scoreboard players reset @s ud_temp
+/scoreboard players reset @s extract_out_item
+
+
+#file: ./money_additions/check/check_money
+
+/execute store result score @s ud_temp run data get entity @s SelectedItem.tag.unnamedDE.storedMoney
+/tellraw @s [{"score":{"name":"@s","objective":"ud_temp"},"color":"green"},{"text":"$","color":"green"},{"text":" are being stored in this check","color":"reset"}]
+/scoreboard players reset @s ud_temp
+/scoreboard players reset @s check_item
+
+#file: ./money_additions/check/store_money
+
+if('score @s money >= @s store_in_item') {
+  /execute store result score @s ud_temp run data get entity @s SelectedItem.tag.unnamedDE.storedMoney
+  /scoreboard players operation @s ud_temp += @s store_in_item
+  /execute store result entity @s SelectedItem.tag.unnamedDE.storedMoney long 1 run scoreboard players get @s ud_temp
+  /data modify entity @s SelectedItem.tag.unnamedDE.blank set value 0
+  /scoreboard players operation @s money -= @s store_in_item
+}
+/scoreboard players reset @s ud_temp
+/scoreboard players reset @s store_in_item
+
+#file: ./money_additions/check/extract_money
+
+/execute store result score @s ud_temp run data get entity @s SelectedItem.tag.unnamedDE.storedMoney
+/scoreboard players operation @s money += @s ud_temp
+/replaceitem entity @s weapon.mainhand air
+/scoreboard players reset @s ud_temp
+/scoreboard players reset @s extract_out_item
+
+#file: ./money_additions/craft/wallet
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:leather"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:leather"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:gold_nugget"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b,id:"minecraft:leather"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b,id:"minecraft:leather"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b,id:"minecraft:black_dye"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {
+  /function unnamedde:misc/money_additions/craft/wallet/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_wallet]' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:leather"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:leather"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:gold_nugget"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b,id:"minecraft:leather"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b,id:"minecraft:leather"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b,id:"minecraft:black_dye"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:dead_bubble_coral",tag:{display:{Name:\'{"text":"Wallet","color":"gold","italic":false}\',Lore:[\'{"text":"Stores money","color":"green","italic":false}\']},CustomModelData:701007,unnamedDE:{id: "wallet", NoPlacing: 1, storedMoney: 0}}}]}') {
+  /function unnamedde:misc/money_additions/craft/wallet/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_wallet]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b}]}') {
+    /function unnamedde:misc/money_additions/craft/wallet/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:leather"}]}') {
+    /function unnamedde:misc/money_additions/craft/wallet/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+    /function unnamedde:misc/money_additions/craft/wallet/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b,id:"minecraft:leather"}]}') {
+    /function unnamedde:misc/money_additions/craft/wallet/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:gold_nugget"}]}') {
+    /function unnamedde:misc/money_additions/craft/wallet/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b,id:"minecraft:leather"}]}') {
+    /function unnamedde:misc/money_additions/craft/wallet/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+    /function unnamedde:misc/money_additions/craft/wallet/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b,id:"minecraft:leather"}]}') {
+    /function unnamedde:misc/money_additions/craft/wallet/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+    /function unnamedde:misc/money_additions/craft/wallet/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+    /function unnamedde:misc/money_additions/craft/wallet/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b,id:"minecraft:black_dye"}]}') {
+    /function unnamedde:misc/money_additions/craft/wallet/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+    /function unnamedde:misc/money_additions/craft/wallet/3
+  }
+}
+
+#file: ./money_additions/craft/wallet/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:dead_bubble_coral{display:{Name:'{"text":"Wallet","color":"gold","italic":false}',Lore:['{"text":"Stores money","color":"green","italic":false}']},CustomModelData:701007,unnamedDE:{id: "wallet", NoPlacing: 1, storedMoney: 0}} 1
+//Add here what should happen when you put in the correct recipe
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_wallet
+
+#file: ./money_additions/craft/wallet/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add here what should happen when you take the output out
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_wallet
+
+#file: ./money_additions/craft/wallet/3
+
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+//Add here what should happen if you cancel the recipe
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_wallet
+
+#file: ./money_additions/craft/check
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:paper"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:gold_nugget"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {
+  /function unnamedde:misc/money_additions/craft/check/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_check]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:paper"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:gold_nugget"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:dead_bubble_coral",tag:{display:{Name:\'{"text":"Check","color":"gold","italic":false}\',Lore:[\'{"text":"Stores money once","color":"green","italic":false}\']},CustomModelData:701008,unnamedDE:{id: "check", NoPlacing: 1, storedMoney: 0L, blank: 1}}}]}') {
+  /function unnamedde:misc/money_additions/craft/check/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_check]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:paper"}]}') {
+    /function unnamedde:misc/money_additions/craft/check/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:gold_nugget"}]}') {
+    /function unnamedde:misc/money_additions/craft/check/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+    /function unnamedde:misc/money_additions/craft/check/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}') {
+    /function unnamedde:misc/money_additions/craft/check/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}') {
+    /function unnamedde:misc/money_additions/craft/check/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}') {
+    /function unnamedde:misc/money_additions/craft/check/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+    /function unnamedde:misc/money_additions/craft/check/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
+    /function unnamedde:misc/money_additions/craft/check/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+    /function unnamedde:misc/money_additions/craft/check/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+    /function unnamedde:misc/money_additions/craft/check/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+    /function unnamedde:misc/money_additions/craft/check/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+    /function unnamedde:misc/money_additions/craft/check/3
+  }
+}
+
+#file: ./money_additions/craft/check/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:dead_bubble_coral{display:{Name:'{"text":"Check","color":"gold","italic":false}',Lore:['{"text":"Stores money once","color":"green","italic":false}']},CustomModelData:701008,unnamedDE:{id: "check", NoPlacing: 1, storedMoney: 0L, blank: 1}} 1
+//Add here what should happen when you put in the correct recipe
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_check
+
+#file: ./money_additions/craft/check/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add here what should happen when you take the output out
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_check
+
+#file: ./money_additions/craft/check/3
+
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+//Add here what should happen if you cancel the recipe
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_check

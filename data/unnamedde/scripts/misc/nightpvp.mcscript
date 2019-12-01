@@ -15,3 +15,8 @@ if('score daytime ud_misc matches 0..12999') {
 as(@a[team=,]) {
   /team join nopvp
 }
+
+#file: ./nightpvp/reset
+
+/team empty nopvp
+/scoreboard players set nightpvp ud_options -1

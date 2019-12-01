@@ -2,71 +2,89 @@
 
 asat(@a) {
   if('entity @s[nbt={SelectedItem:{Count:1b,tag:{unnamedDE:{id:"xp_container"}}}}]') {
-    /execute store result score @s ud_stored_xp run data get entity @s SelectedItem.tag.unnamedDE.storedXP
-    if('score @s ud_xp matches 1..') {
-      /scoreboard players enable @s store_xp
+    /execute store result score @s ud_stored_value run data get entity @s SelectedItem.tag.unnamedDE.storedXP
+    if('score @s ud_xp_points matches 1..' || 'score @s ud_xp_levels matches 1..') {
+      /scoreboard players enable @s store_in_item
     }
-    if('score @s ud_stored_xp matches 1..') {
-      /scoreboard players enable @s extract_xp
+    if('score @s ud_stored_value matches 1..') {
+      /scoreboard players enable @s extract_out_item
     }
-    /scoreboard players enable @s check_xp
-    if('score @s store_xp matches 1..' && 'score @s store_xp <= @s ud_xp') {
-      /function unnamedde:misc/xp_containers/store_xp
-    }
-    if('score @s extract_xp matches 1..' && 'score @s extract_xp <= @s ud_stored_xp') {
-      /function unnamedde:misc/xp_containers/extract_xp
-    }
-    if('score @s check_xp matches 1..') {
+    /scoreboard players enable @s check_item
+
+    if('score @s check_item matches 1..') {
       /function unnamedde:misc/xp_containers/check_xp
     }
+    if('score @s extract_out_item matches 1..' && 'score @s extract_out_item <= @s ud_stored_value') {
+      /function unnamedde:misc/xp_containers/extract_xp
+    }
+    if('score @s store_in_item matches 1..') {
+      /function unnamedde:misc/xp_containers/store_xp_init
+    }
+
+
   } else {
-    if('score @s store_xp matches 0') {
-      /scoreboard players reset @s store_xp
-    }
-    if('score @s extract_xp matches 0') {
-      /scoreboard players reset @s extract_xp
-    }
-    if('score @s check_xp matches 0') {
-      /scoreboard players reset @s check_xp
-    }
-    /scoreboard players reset @s ud_stored_xp
+    /scoreboard players reset @s ud_stored_value
   }
 }
 
+#file: ./xp_containers/store_xp_init
+
+/scoreboard players add @s ud_temp 1
+/function unnamedde:misc/xp_containers/store_xp
+
 #file: ./xp_containers/store_xp
 
-/execute store result score @s ud_temp run data get entity @s SelectedItem.tag.unnamedDE.storedXP
-/scoreboard players operation @s ud_temp += @s store_xp
-/execute store result entity @s SelectedItem.tag.unnamedDE.storedXP int 1 run scoreboard players get @s ud_temp
-/scoreboard players reset @s ud_temp
-/scoreboard players operation @s ud_temp = @s store_xp
-/function unnamedde:misc/xp_containers/remove_xp
-/scoreboard players reset @s ud_temp
-/scoreboard players reset @s store_xp
+//execute store result score @s ud_temp run data get entity @s SelectedItem.tag.unnamedDE.storedXP
+//scoreboard players operation @s ud_temp += @s store_in_item
+//execute store result entity @s SelectedItem.tag.unnamedDE.storedXP long 1 run scoreboard players get @s ud_temp
+//scoreboard players reset @s ud_temp
+//scoreboard players operation @s ud_temp = @s store_in_item
+//function unnamedde:misc/xp_containers/remove_xp
+//scoreboard players reset @s ud_temp
+
+if('score @s ud_xp_points matches 1..' || 'score @s ud_xp_levels matches 1..') {
+  if('score @s ud_temp < @s store_xp') {
+    /function unnamedde:misc/xp_containers/remove_xp
+  } else {
+  /function unnamedde:misc/xp_containers/store_xp_finish
+}
+} else {
+  /function unnamedde:misc/xp_containers/store_xp_finish
+}
+
+/scoreboard players reset @s store_in_item
 
 #file: ./xp_containers/remove_xp
 
-/xp add @s -1 levels
-/scoreboard players remove @s ud_temp 1
+/scoreboard players add @s ud_temp 1
+/xp add @s -1
+/execute store result score @s ud_xp_points run xp query @s points
+/execute store result score @s ud_xp_levels run xp query @s levels
+/function unnamedde:misc/xp_containers/store_xp
 
-if('score @s ud_temp matches 1..') {
-  /function unnamedde:misc/xp_containers/remove_xp
-}
+#file: ./xp_containers/store_xp_finish
+
+/execute store result score @s ud_temp2 run data get entity @s SelectedItem.tag.unnamedDE.storedXP
+/scoreboard players operation @s ud_temp += @s ud_temp2
+/execute store result entity @s SelectedItem.tag.unnamedDE.storedXP long 1 run scoreboard players get @s ud_temp
+
+/scoreboard players reset @s ud_temp
+/scoreboard players reset @s ud_temp2
 
 #file: ./xp_containers/extract_xp
 
 /execute store result score @s ud_temp run data get entity @s SelectedItem.tag.unnamedDE.storedXP
-/scoreboard players operation @s ud_temp -= @s extract_xp
-/execute store result entity @s SelectedItem.tag.unnamedDE.storedXP int 1 run scoreboard players get @s ud_temp
+/scoreboard players operation @s ud_temp -= @s extract_out_item
+/execute store result entity @s SelectedItem.tag.unnamedDE.storedXP long 1 run scoreboard players get @s ud_temp
 /scoreboard players reset @s ud_temp
-/scoreboard players operation @s ud_temp = @s extract_xp
+/scoreboard players operation @s ud_temp = @s extract_out_item
 /function unnamedde:misc/xp_containers/add_xp
 /scoreboard players reset @s ud_temp
-/scoreboard players reset @s extract_xp
+/scoreboard players reset @s extract_out_item
 
 #file: ./xp_containers/add_xp
 
-/xp add @s 1 levels
+/xp add @s 1
 /scoreboard players remove @s ud_temp 1
 
 if('score @s ud_temp matches 1..') {
@@ -76,9 +94,9 @@ if('score @s ud_temp matches 1..') {
 #file: ./xp_containers/check_xp
 
 /execute store result score @s ud_temp run data get entity @s SelectedItem.tag.unnamedDE.storedXP
-/tellraw @s [{"score":{"name":"@s","objective":"ud_temp"},"color":"green"},{"text":" levels are being stored in this container","color":"reset"}]
+/tellraw @s [{"score":{"name":"@s","objective":"ud_temp"},"color":"green"},{"text":" experience points are being stored in this container","color":"reset"}]
 /scoreboard players reset @s ud_temp
-/scoreboard players reset @s check_xp
+/scoreboard players reset @s check_item
 
 #file: ./xp_containers/craft
 

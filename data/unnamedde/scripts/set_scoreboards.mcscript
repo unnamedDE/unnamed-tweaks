@@ -1,55 +1,25 @@
 #file: ./set_scoreboards/reset
 
-/scoreboard players reset @a[scores={ud_sneak=1..}] ud_sneak
-/scoreboard players reset @a[scores={ud_jump=1..}] ud_jump
 /scoreboard players reset @a[scores={ud_mine_quartz=1..}] ud_mine_quartz
 /scoreboard players reset @a[scores={ud_eat_pork_c=1..}] ud_eat_pork_c
 /scoreboard players reset @a[scores={ud_eat_pork_r=1..}] ud_eat_pork_r
+/scoreboard players reset @a[scores={ud_p_endcrystal=1..}] ud_p_endcrystal
+
+#file: ./set_scoreboards/reset_item_interactives
+
+as(@a){
+  if('score @s store_in_item matches 0') {
+    /scoreboard players reset @s store_in_item
+  }
+  if('score @s extract_out_item matches 0') {
+    /scoreboard players reset @s extract_out_item
+  }
+  if('score @s check_item matches 0') {
+    /scoreboard players reset @s check_item
+  }
+}
 
 #file: ./set_scoreboards/player
-
-/execute store result score @s x_pos run data get entity @s Pos[0]
-/execute store result score @s y_pos run data get entity @s Pos[1]
-/execute store result score @s z_pos run data get entity @s Pos[2]
-/execute store result score @s x_rot run data get entity @s Rotation[0]
-/execute store result score @s y_rot run data get entity @s Rotation[1]
-/execute store result score @s dim run data get entity @s Dimension
-
-if(!'score @s ud_deathtime_m matches 0..') {
-  /scoreboard players add @s ud_deathtime_m 0
-}
-if(!'score @s ud_deathtime_h matches 0..') {
-  /scoreboard players add @s ud_deathtime_h 0
-}
-if(!'score @s ud_timeplayed_m matches 0..') {
-  /scoreboard players add @s ud_timeplayed_m 0
-}
-if(!'score @s ud_timeplayed_h matches 0..') {
-  /scoreboard players add @s ud_timeplayed_h 0
-}
-
-if('score @s ud_deathtime matches 1200..') {
-  /scoreboard players add @s ud_deathtime_m 1
-  /scoreboard players remove @s ud_deathtime 1200
-  /function unnamedde:misc/tooltips/set_scoreboards
-}
-
-if('score @s ud_deathtime_m matches 60..') {
-  /scoreboard players add @s ud_deathtime_h 1
-  /scoreboard players remove @s ud_deathtime_m 60
-  /function unnamedde:misc/tooltips/set_scoreboards
-}
-if('score @s ud_timeplayed matches 1200..') {
-  /scoreboard players add @s ud_timeplayed_m 1
-  /scoreboard players remove @s ud_timeplayed 1200
-  /function unnamedde:misc/tooltips/set_scoreboards
-}
-
-if('score @s ud_timeplayed_m matches 60..') {
-  /scoreboard players add @s ud_timeplayed_h 1
-  /scoreboard players remove @s ud_timeplayed_m 60
-  /function unnamedde:misc/tooltips/set_scoreboards
-}
 
 /execute store result score @s ud_arrowcount run clear @s minecraft:arrow 0
 /execute store result score @s ud_temp run clear @s minecraft:tipped_arrow 0
@@ -58,30 +28,3 @@ if('score @s ud_timeplayed_m matches 60..') {
 /scoreboard players operation @s ud_arrowcount += @s ud_temp
 /scoreboard players reset @s ud_temp
 /execute store result score @s ud_torchcount run clear @s minecraft:torch 0
-
-/execute store result score @s ud_xp run xp query @s levels
-
-#file: ./set_scoreboards/world
-
-/execute store result score daytime ud_misc run time query daytime
-/execute store result score day ud_misc run time query day
-
-/scoreboard players operation real_daytime ud_misc = daytime ud_misc
-/scoreboard players add real_daytime ud_misc 6000
-if('score real_daytime ud_misc matches 24000..') {
-  /scoreboard players remove real_daytime ud_misc 24000
-}
-/scoreboard players operation real_daytime% ud_misc = real_daytime ud_misc
-/scoreboard players operation real_daytime% ud_misc /= 240 ud_const
-/scoreboard players operation real_day ud_misc = day ud_misc
-/scoreboard players add real_day ud_misc 1
-
-#file: ./set_scoreboards/on_death
-
-/scoreboard players reset @s ud_deathtime_m
-/scoreboard players reset @s ud_deathtime_h
-
-#file: ./set_scoreboards/on_join
-
-/function #unnamedde:on_join
-/scoreboard players reset @s ud_leave

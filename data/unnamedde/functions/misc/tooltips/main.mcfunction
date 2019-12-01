@@ -23,6 +23,6 @@ execute as @a[gamemode=!spectator] at @s if entity @s[nbt={SelectedItem:{id:"min
 execute as @a[gamemode=!spectator] at @s unless entity @s[nbt={SelectedItem:{id:"minecraft:bow"}}] unless entity @s[nbt={SelectedItem:{id:"minecraft:crossbow"}}] run tag @s remove ud_tooltip_bow
 execute as @a[gamemode=!spectator] at @s if entity @s[nbt={SelectedItem:{id:"minecraft:torch"}}] run function unnamedde:misc/tooltips/display/torch
 execute as @a[gamemode=!spectator] at @s unless entity @s[nbt={SelectedItem:{id:"minecraft:torch"}}] run tag @s remove ud_tooltip_torch
-execute as @a[gamemode=!spectator] at @s if entity @s[tag=!ud_tooltip_clock_notify,nbt={Dimension:0b,Inventory:[{id:"minecraft:clock"}]}] if score daytime ud_misc matches 13000.. run function unnamedde:misc/tooltips/notify/clock
+execute as @a[gamemode=!spectator] at @s if entity @s[tag=!ud_tooltip_clock_notify,nbt={Dimension:0,Inventory:[{id:"minecraft:clock"}]}] if score daytime ud_misc matches 13000.. run function unnamedde:misc/tooltips/notify/clock
 execute as @a[gamemode=!spectator] at @s unless score daytime ud_misc matches 13000.. if entity @s[tag=ud_tooltip_clock_notify] run advancement revoke @s only unnamedde:notify/nighttime
 execute as @a[gamemode=!spectator] at @s unless score daytime ud_misc matches 13000.. if entity @s[tag=ud_tooltip_clock_notify] run tag @s remove ud_tooltip_clock_notify

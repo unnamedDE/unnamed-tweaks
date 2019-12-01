@@ -1,0 +1,85 @@
+#file: ./dispenser_planting/main
+
+modal detect(item, block, requiredBlock) {
+  asat(@e[type=item]), if('block ~ ~ ~ air' && !'data entity @s Thrower' && 'entity @s[nbt={Item:{Count:1b,id:"minecraft:$(item)"}}]' && 'block ~ ~-1 ~ $(requiredBlock)') {
+    if('block ~ ~1 ~ minecraft:dispenser[triggered=true]' || 'block ~1 ~ ~ minecraft:dispenser[triggered=true]' || 'block ~-1 ~ ~ minecraft:dispenser[triggered=true]' || 'block ~ ~ ~1 minecraft:dispenser[triggered=true]' || 'block ~ ~ ~-1 minecraft:dispenser[triggered=true]') {
+      /function unnamedde:misc/dispenser_planting/plant/$(item)
+    }
+  }
+}
+
+modal action(item, block, block) {
+  #file: ./dispenser_planting/plant/$(item)
+  /kill @s[type=item]
+  /setblock ~ ~ ~ minecraft:$(block)
+}
+
+detect('acacia_sapling', 'acacia_sapling', '#unnamed_core:tree_plantable')
+detect('birch_sapling', 'birch_sapling', '#unnamed_core:tree_plantable')
+detect('dark_oak_sapling', 'dark_oak_sapling', '#unnamed_core:tree_plantable')
+detect('jungle_sapling', 'jungle_sapling', '#unnamed_core:tree_plantable')
+detect('oak_sapling', 'oak_sapling', '#unnamed_core:tree_plantable')
+detect('spruce_sapling', 'spruce_sapling', '#unnamed_core:tree_plantable')
+
+detect('nether_wart', 'nether_wart', 'minecraft:soul_sand')
+
+detect('wheat_seeds', 'wheat', 'minecraft:farmland')
+detect('carrot', 'carrots', 'minecraft:farmland')
+detect('potato', 'potatoes', 'minecraft:farmland')
+detect('melon_seeds', 'melon_stem', 'minecraft:farmland')
+detect('pumpkin_seeds', 'pumpkin_stem', 'minecraft:farmland')
+detect('beetroot_seeds', 'beetroots', 'minecraft:farmland')
+
+asat(@e[type=item]), if('block ~ ~ ~ air' && !'data entity @s Thrower' && 'entity @s[nbt={Item:{Count:1b,id:"minecraft:cocoa_beans"}}]') {
+  if('block ~ ~ ~-1 minecraft:jungle_log' || 'block ~ ~ ~-1 minecraft:jungle_wood') {
+    if('block ~ ~1 ~ minecraft:dispenser[triggered=true]' || 'block ~1 ~ ~ minecraft:dispenser[triggered=true]' || 'block ~-1 ~ ~ minecraft:dispenser[triggered=true]' || 'block ~ ~ ~1 minecraft:dispenser[triggered=true]' || 'block ~ ~ ~-1 minecraft:dispenser[triggered=true]') {
+      /function unnamedde:misc/dispenser_planting/plant/cocoa_north
+    }
+  }
+  if('block ~ ~ ~1 minecraft:jungle_log' || 'block ~ ~ ~1 minecraft:jungle_wood') {
+    if('block ~ ~1 ~ minecraft:dispenser[triggered=true]' || 'block ~1 ~ ~ minecraft:dispenser[triggered=true]' || 'block ~-1 ~ ~ minecraft:dispenser[triggered=true]' || 'block ~ ~ ~1 minecraft:dispenser[triggered=true]' || 'block ~ ~ ~-1 minecraft:dispenser[triggered=true]') {
+      /function unnamedde:misc/dispenser_planting/plant/cocoa_south
+    }
+  }
+  if('block ~-1 ~ ~ minecraft:jungle_log' || 'block ~-1 ~ ~ minecraft:jungle_wood') {
+    if('block ~ ~1 ~ minecraft:dispenser[triggered=true]' || 'block ~1 ~ ~ minecraft:dispenser[triggered=true]' || 'block ~-1 ~ ~ minecraft:dispenser[triggered=true]' || 'block ~ ~ ~1 minecraft:dispenser[triggered=true]' || 'block ~ ~ ~-1 minecraft:dispenser[triggered=true]') {
+      /function unnamedde:misc/dispenser_planting/plant/cocoa_west
+    }
+  }
+  if('block ~1 ~ ~ minecraft:jungle_log' || 'block ~1 ~ ~ minecraft:jungle_wood') {
+    if('block ~ ~1 ~ minecraft:dispenser[triggered=true]' || 'block ~1 ~ ~ minecraft:dispenser[triggered=true]' || 'block ~-1 ~ ~ minecraft:dispenser[triggered=true]' || 'block ~ ~ ~1 minecraft:dispenser[triggered=true]' || 'block ~ ~ ~-1 minecraft:dispenser[triggered=true]') {
+      /function unnamedde:misc/dispenser_planting/plant/cocoa_east
+    }
+  }
+}
+
+
+
+action('acacia_sapling', 'acacia_sapling', '#unnamed_core:tree_plantable')
+action('birch_sapling', 'birch_sapling', '#unnamed_core:tree_plantable')
+action('dark_oak_sapling', 'dark_oak_sapling', '#unnamed_core:tree_plantable')
+action('jungle_sapling', 'jungle_sapling', '#unnamed_core:tree_plantable')
+action('oak_sapling', 'oak_sapling', '#unnamed_core:tree_plantable')
+action('spruce_sapling', 'spruce_sapling', '#unnamed_core:tree_plantable')
+
+action('nether_wart', 'nether_wart', 'minecraft:soul_sand')
+
+action('wheat_seeds', 'wheat', 'minecraft:farmland')
+action('carrot', 'carrots', 'minecraft:farmland')
+action('potato', 'potatoes', 'minecraft:farmland')
+action('melon_seeds', 'melon_stem', 'minecraft:farmland')
+action('pumpkin_seeds', 'pumpkin_stem', 'minecraft:farmland')
+action('beetroot_seeds', 'beetroots', 'minecraft:farmland')
+
+#file: ./dispenser_planting/plant/cocoa_north
+/kill @s[type=item]
+/setblock ~ ~ ~ minecraft:cocoa[facing=north]
+#file: ./dispenser_planting/plant/cocoa_south
+/kill @s[type=item]
+/setblock ~ ~ ~ minecraft:cocoa[facing=south]
+#file: ./dispenser_planting/plant/cocoa_west
+/kill @s[type=item]
+/setblock ~ ~ ~ minecraft:cocoa[facing=west]
+#file: ./dispenser_planting/plant/cocoa_east
+/kill @s[type=item]
+/setblock ~ ~ ~ minecraft:cocoa[facing=east]

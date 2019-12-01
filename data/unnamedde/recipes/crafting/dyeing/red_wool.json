@@ -7,7 +7,7 @@
     "group": "universal_dyeing_wool",
     "ingredients": [
         {
-            "tag": "unnamedde:wool"
+            "tag": "minecraft:wool"
         },
         {
             "item": "minecraft:red_dye"

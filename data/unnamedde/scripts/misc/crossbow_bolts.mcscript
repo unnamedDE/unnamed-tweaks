@@ -1,0 +1,196 @@
+#file: ./crossbow_bolts/main
+
+asat(@a[scores={ud_crossbow=1..},tag=ud_bolts]) {
+  /function unnamedde:misc/crossbow_bolts/shoot
+}
+
+asat('@a[nbt={SelectedItem:{id:"minecraft:crossbow",tag:{ChargedProjectiles:[{tag:{unnamedDE:{IsBolt:1}}}]}}}]') {
+  if('entity @s[nbt={SelectedItem:{tag:{ChargedProjectiles:[{tag:{unnamedDE:{id:"bolt"}}}]}}}]') {
+    /tag @s add ud_bolts_bolt
+    /tag @s add ud_bolts
+  }
+  if('entity @s[nbt={SelectedItem:{tag:{ChargedProjectiles:[{tag:{unnamedDE:{id:"thunderbolt"}}}]}}}]') {
+    /tag @s add ud_bolts_thunderbolt
+    /tag @s add ud_bolts
+  }
+}
+
+asat(@a[tag=ud_bolts]) {
+  if('entity @s[tag=ud_bolts_bolt]' && !'entity @s[nbt={SelectedItem:{tag:{ChargedProjectiles:[{tag:{unnamedDE:{id:"bolt"}}}]}}}]') {
+    /tag @s remove ud_bolts_bolt
+  }
+  if('entity @s[tag=ud_bolts_thunderbolt]' && !'entity @s[nbt={SelectedItem:{tag:{ChargedProjectiles:[{tag:{unnamedDE:{id:"thunderbolt"}}}]}}}]') {
+    /tag @s remove ud_bolts_thunderbolt
+  }
+
+  if(!'entity @s[nbt={SelectedItem:{id:"minecraft:crossbow",tag:{ChargedProjectiles:[{tag:{unnamedDE:{IsBolt:1}}}]}}}]') {
+    /tag @s remove ud_bolts
+  }
+}
+
+asat(@e[type=arrow,tag=ud_bolts,tag=!ud_inground,nbt={inGround:1b}]) {
+  /function unnamedde:misc/crossbow_bolts/inground
+}
+
+asat(@a[scores={ud_crossbow=1..}]) {
+  /scoreboard players reset @s ud_crossbow
+}
+
+#file: ./crossbow_bolts/shoot
+
+/data modify entity @e[type=arrow,limit=1,sort=nearest,distance=..2] Color set value -1
+
+if('entity @s[tag=ud_bolts_bolt]') {
+  //kill @e[type=arrow,limit=1,sort=nearest,distance=..2]
+  /data modify entity @e[type=arrow,limit=1,sort=nearest,distance=..2] damage set value 4.0d
+}
+if('entity @s[tag=ud_bolts_thunderbolt]') {
+  /tag @e[type=arrow,limit=1,sort=nearest,distance=..2] add ud_bolts
+  /tag @e[type=arrow,limit=1,sort=nearest,distance=..2] add ud_bolts_thunderbolt
+}
+
+#file: ./crossbow_bolts/inground
+
+/tag @s add ud_inground
+
+if('entity @s[tag=ud_bolts_thunderbolt]') {
+  /summon lightning_bolt
+  /kill @s[type=arrow]
+}
+
+
+#file: ./crossbow_bolts/craft/bolt
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:iron_nugget"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:iron_ingot"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/bolt/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_crossbow_bolt]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:iron_nugget"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:iron_ingot"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:8b,id:"minecraft:arrow",tag:{unnamedDE:{IsBolt:1,id:"bolt"},display:{Name:"{\\"text\\":\\"Bolt\\",\\"italic\\":false}",Lore:["{\\"text\\":\\"When used with a bow it acts like a normal arrow\\",\\"color\\":\\"green\\",\\"italic\\":false}"]},CustomModelData:701001}}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/bolt/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_crossbow_bolt]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:iron_nugget"}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/bolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/bolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/bolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/bolt/3
+}
+if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:iron_ingot"}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/bolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/bolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/bolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/bolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/bolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/bolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/bolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/bolt/3
+}
+}
+
+#file: ./crossbow_bolts/craft/bolt/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:arrow{unnamedDE:{IsBolt:1,id:"bolt"},display:{Name:"{\"text\":\"Bolt\",\"italic\":false}",Lore:["{\"text\":\"When used with a bow it acts like a normal arrow\",\"color\":\"green\",\"italic\":false}"]},CustomModelData:701001} 8
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_crossbow_bolt
+
+#file: ./crossbow_bolts/craft/bolt/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add replacements here
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_crossbow_bolt
+
+#file: ./crossbow_bolts/craft/bolt/3
+
+/replaceitem block ~ ~ ~ container.7 minecraft:air
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+/replaceitem block ~ ~ ~ container.25 minecraft:air
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_crossbow_bolt
+
+#file: ./crossbow_bolts/craft/thunderbolt
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:iron_nugget"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:iron_ingot"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b,id:"minecraft:ghast_tear"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/thunderbolt/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_thunderbolt]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:iron_nugget"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:iron_ingot"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b,id:"minecraft:ghast_tear"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:4b,id:"minecraft:arrow",tag:{display:{Name:"{\\"text\\":\\"Thunder-Bolt\\",\\"italic\\":false}",Lore:["{\\"text\\":\\"A lightning bolt will strike where it lands\\",\\"color\\":\\"green\\",\\"italic\\":false}","{\\"text\\":\\"When used with a bow it acts like a normal arrow\\",\\"color\\":\\"green\\",\\"italic\\":false}"]},CustomModelData:701002,unnamedDE:{IsBolt:1,id:"thunderbolt"}}}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/thunderbolt/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_thunderbolt]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:iron_nugget"}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/thunderbolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/thunderbolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/thunderbolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/thunderbolt/3
+}
+if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b,id:"minecraft:iron_ingot"}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/thunderbolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/thunderbolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/thunderbolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/thunderbolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/thunderbolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/thunderbolt/3
+}
+if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b,id:"minecraft:ghast_tear"}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/thunderbolt/3
+}
+if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+/function unnamedde:misc/crossbow_bolts/craft/thunderbolt/3
+}
+}
+
+#file: ./crossbow_bolts/craft/thunderbolt/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:arrow{display:{Name:"{\"text\":\"Thunder-Bolt\",\"italic\":false}",Lore:["{\"text\":\"A lightning bolt will strike where it lands\",\"color\":\"green\",\"italic\":false}","{\"text\":\"When used with a bow it acts like a normal arrow\",\"color\":\"green\",\"italic\":false}"]},CustomModelData:701002,unnamedDE:{IsBolt:1,id:"thunderbolt"}} 4
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_thunderbolt
+
+#file: ./crossbow_bolts/craft/thunderbolt/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add replacements here
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_thunderbolt
+
+#file: ./crossbow_bolts/craft/thunderbolt/3
+
+/replaceitem block ~ ~ ~ container.7 minecraft:air
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+/replaceitem block ~ ~ ~ container.25 minecraft:air
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_thunderbolt

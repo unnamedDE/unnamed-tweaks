@@ -1,0 +1,248 @@
+#file: ./encrypted_books/encrypt
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:written_book"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:ink_sac"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b,id:"minecraft:potion",tag:{Potion:"minecraft:invisibility"}}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {
+  /function unnamedde:misc/encrypted_books/encrypt/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_encrypt_book]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:written_book"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:ink_sac"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b,id:"minecraft:potion",tag:{Potion:"minecraft:invisibility"}}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:written_book",tag:{unnamedDE:{Encrypted:1}}}]}') {
+  /function unnamedde:misc/encrypted_books/encrypt/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_encrypt_book]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:written_book"}]}') {
+    /function unnamedde:misc/encrypted_books/encrypt/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:ink_sac"}]}') {
+    /function unnamedde:misc/encrypted_books/encrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+    /function unnamedde:misc/encrypted_books/encrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}') {
+    /function unnamedde:misc/encrypted_books/encrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}') {
+    /function unnamedde:misc/encrypted_books/encrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}') {
+    /function unnamedde:misc/encrypted_books/encrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+    /function unnamedde:misc/encrypted_books/encrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
+    /function unnamedde:misc/encrypted_books/encrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+    /function unnamedde:misc/encrypted_books/encrypt/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b,id:"minecraft:potion",tag:{Potion:"minecraft:invisibility"}}]}') {
+    /function unnamedde:misc/encrypted_books/encrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+    /function unnamedde:misc/encrypted_books/encrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+    /function unnamedde:misc/encrypted_books/encrypt/3
+  }
+}
+
+#file: ./encrypted_books/encrypt/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:written_book{unnamedDE:{Encrypted:1}} 1
+//Add here what should happen when you put in the correct recipe
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.encrypted.pages set from block ~ ~ ~ Items[{Slot:1b}].tag.pages
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.encrypted.title set from block ~ ~ ~ Items[{Slot:1b}].tag.title
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.encrypted.author set from block ~ ~ ~ Items[{Slot:1b}].tag.author
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.encrypted.key set from block ~ ~ ~ Items[{Slot:2b}].tag.display.Name
+
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.pages set value ['{"text":""}']
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.title set value "Written Book"
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.author set from block ~ ~ ~ Items[{Slot:1b}].tag.author
+
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_encrypt_book
+
+#file: ./encrypted_books/encrypt/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add here what should happen when you take the output out
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_encrypt_book
+
+#file: ./encrypted_books/encrypt/3
+
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+//Add here what should happen if you cancel the recipe
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_encrypt_book
+
+#file: ./encrypted_books/clone_text
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:written_book"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:written_book"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {
+  /function unnamedde:misc/encrypted_books/clone_text/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_encrypt_book_clone]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:written_book"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:written_book"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:written_book"}]}') {
+  /function unnamedde:misc/encrypted_books/clone_text/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_encrypt_book_clone]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:written_book"}]}') {
+    /function unnamedde:misc/encrypted_books/clone_text/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:written_book"}]}') {
+    /function unnamedde:misc/encrypted_books/clone_text/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+    /function unnamedde:misc/encrypted_books/clone_text/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}') {
+    /function unnamedde:misc/encrypted_books/clone_text/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}') {
+    /function unnamedde:misc/encrypted_books/clone_text/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}') {
+    /function unnamedde:misc/encrypted_books/clone_text/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+    /function unnamedde:misc/encrypted_books/clone_text/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
+    /function unnamedde:misc/encrypted_books/clone_text/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+    /function unnamedde:misc/encrypted_books/clone_text/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+    /function unnamedde:misc/encrypted_books/clone_text/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+    /function unnamedde:misc/encrypted_books/clone_text/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+    /function unnamedde:misc/encrypted_books/clone_text/3
+  }
+}
+
+#file: ./encrypted_books/clone_text/1
+
+/replaceitem block ~ ~ ~ container.16 minecraft:written_book 1
+//Add here what should happen when you put in the correct recipe
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.encrypted.pages set from block ~ ~ ~ Items[{Slot:2b}].tag.unnamedDE.encrypted.pages
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.encrypted.title set from block ~ ~ ~ Items[{Slot:2b}].tag.unnamedDE.encrypted.title
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.encrypted.author set from block ~ ~ ~ Items[{Slot:2b}].tag.unnamedDE.encrypted.author
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.encrypted.key set from block ~ ~ ~ Items[{Slot:2b}].tag.unnamedDE.encrypted.key
+
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.Encrypted set from block ~ ~ ~ Items[{Slot:2b}].tag.unnamedDE.Encrypted
+
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.pages set from block ~ ~ ~ Items[{Slot:1b}].tag.pages
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.title set from block ~ ~ ~ Items[{Slot:1b}].tag.title
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.author set from block ~ ~ ~ Items[{Slot:1b}].tag.author
+
+/tag @s add ac_lib_keep_0
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_encrypt_book_clone
+
+#file: ./encrypted_books/clone_text/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add here what should happen when you take the output out
+/tag @s remove ac_lib_keep_0
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_encrypt_book_clone
+
+#file: ./encrypted_books/clone_text/3
+
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+//Add here what should happen if you cancel the recipe
+/tag @s remove ac_lib_keep_0
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_encrypt_book_clone
+
+#file: ./encrypted_books/decrypt
+
+if('entity @s[tag=!ac_lib_advanced_crafter_crafted]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:written_book",tag:{unnamedDE:{Encrypted:1}}}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:ink_sac"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 7b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 25b}]}') {
+  /function unnamedde:misc/encrypted_books/decrypt/1
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_encrypt_book_decrypt]' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:written_book"}]}' && 'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:ink_sac"}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}' && !'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot: 16b,Count:1b,id:"minecraft:written_book"}]}') {
+  /function unnamedde:misc/encrypted_books/decrypt/2
+}
+if('entity @s[tag=ac_lib_advanced_crafter_crafted_encrypt_book_decrypt]' && 'block ~ ~ ~ minecraft:gray_shulker_box') {
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:1b,id:"minecraft:written_book"}]}') {
+    /function unnamedde:misc/encrypted_books/decrypt/3
+  }
+  if(!'block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:2b,id:"minecraft:ink_sac"}]}') {
+    /function unnamedde:misc/encrypted_books/decrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:3b}]}') {
+    /function unnamedde:misc/encrypted_books/decrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:10b}]}') {
+    /function unnamedde:misc/encrypted_books/decrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:11b}]}') {
+    /function unnamedde:misc/encrypted_books/decrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:12b}]}') {
+    /function unnamedde:misc/encrypted_books/decrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:19b}]}') {
+    /function unnamedde:misc/encrypted_books/decrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:20b}]}') {
+    /function unnamedde:misc/encrypted_books/decrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:21b}]}') {
+    /function unnamedde:misc/encrypted_books/decrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:5b}]}') {
+    /function unnamedde:misc/encrypted_books/decrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:14b}]}') {
+    /function unnamedde:misc/encrypted_books/decrypt/3
+  }
+  if('block ~ ~ ~ minecraft:gray_shulker_box{Items:[{Slot:23b}]}') {
+    /function unnamedde:misc/encrypted_books/decrypt/3
+  }
+}
+
+#file: ./encrypted_books/decrypt/1
+
+//Add here what should happen when you put in the correct recipe
+if('data block ~ ~ ~ Items[{Slot:1b}].tag.unnamedDE.encrypted.key') {
+  /data modify block ~ ~ ~ Items[{Slot:1b}].tag.unnamedDE.encrypted.key_test set from block ~ ~ ~ Items[{Slot:1b}].tag.unnamedDE.encrypted.key
+  /execute store success score @s ud_temp run data modify block ~ ~ ~ Items[{Slot:1b}].tag.unnamedDE.encrypted.key_test set from block ~ ~ ~ Items[{Slot:2b}].tag.display.Name
+  if('score @s ud_temp matches 0') {
+    /function unnamedde:misc/encrypted_books/decrypt/decrypt
+  }
+}
+/scoreboard players reset @s ud_temp
+
+
+#file: ./encrypted_books/decrypt/decrypt
+
+//tag @s add unnamedde_crafting_encrypting
+/tag @s add ac_lib_advanced_crafter_crafted
+/tag @s add ac_lib_advanced_crafter_crafted_encrypt_book_decrypt
+
+/replaceitem block ~ ~ ~ container.16 minecraft:written_book 1
+
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.pages set from block ~ ~ ~ Items[{Slot:1b}].tag.unnamedDE.encrypted.pages
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.title set from block ~ ~ ~ Items[{Slot:1b}].tag.unnamedDE.encrypted.title
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.author set from block ~ ~ ~ Items[{Slot:1b}].tag.unnamedDE.encrypted.author
+
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.encrypted set from block ~ ~ ~ Items[{Slot:1b}].tag.unnamedDE.encrypted
+
+/data modify block ~ ~ ~ Items[{Slot:16b}].tag.unnamedDE.Encrypt set value 0
+
+#file: ./encrypted_books/decrypt/2
+
+/function ac_lib:advanced_crafter/crafted
+//Add here what should happen when you take the output out
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_encrypt_book_decrypt
+
+#file: ./encrypted_books/decrypt/3
+
+/replaceitem block ~ ~ ~ container.16 minecraft:air
+//Add here what should happen if you cancel the recipe
+/tag @s remove ac_lib_advanced_crafter_crafted
+/tag @s remove ac_lib_advanced_crafter_crafted_encrypt_book_decrypt

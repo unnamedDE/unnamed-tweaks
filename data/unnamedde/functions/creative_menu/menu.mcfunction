@@ -10,15 +10,19 @@ tellraw @s [{"text":"<===== ","color":"aqua"},{"text":"unnamed Core","color":"re
 tellraw @s {"text":""}
 #Content
 
-#Advanced Crafter
-tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 11"}},{"text":"] [","color":"reset"},{"text":"16","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 21"}},{"text":"] ","color":"reset"},{"text":"Advanced Crafter"}]
-#Multitool
-tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 12"}},{"text":"]      ","color":"reset"},{"text":" ","color":"reset"},{"text":"Multitool"}]
+#Wireless Upgrade
+tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 11"}},{"text":"] [","color":"reset"},{"text":"64","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 21"}},{"text":"] ","color":"reset"},{"text":"Ender Upgrade"}]
+#Wireless Upgrade
+tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 12"}},{"text":"] [","color":"reset"},{"text":"64","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 22"}},{"text":"] ","color":"reset"},{"text":"Wireless Upgrade"}]
 #XP Container
 tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 13"}},{"text":"] [","color":"reset"},{"text":"64","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 23"}},{"text":"] ","color":"reset"},{"text":"XP Container"}]
 #Bonsai Upgrade
 tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 14"}},{"text":"] [","color":"reset"},{"text":"64","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 24"}},{"text":"] ","color":"reset"},{"text":"Bonsai Upgrade"}]
+#Bonsai Upgrade
+tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 16"}},{"text":"] [","color":"reset"},{"text":"64","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 26"}},{"text":"] ","color":"reset"},{"text":"Storage Upgrade"}]
+#Trash Can
+tellraw @s [{"text":"► ["},{"text":"1","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 15"}},{"text":"] [","color":"reset"},{"text":"16","color":"green","clickEvent":{"action":"run_command","value":"/scoreboard players set @s ud_creative_menu 25"}},{"text":"] ","color":"reset"},{"text":"Trash Can"}]
 tellraw @s {"text":""}
-tellraw @s [{"text":" ↑ ","color":"red"},{"text":"Return to main menu","hoverEvent":{"action":"show_text","value":"Click to return"},"clickEvent":{"action":"run_command","value":"/function unnamedde:creative_menu"}}]
+tellraw @s [{"text":" ↑ ","color":"red"},{"text":"Return to main menu","hoverEvent":{"action":"show_text","value":"Click to return"},"clickEvent":{"action":"run_command","value":"/function unnamed_core:creative_menu"}}]
 tellraw @s {"text":""}
 tellraw @s {"text":""}

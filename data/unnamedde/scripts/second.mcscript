@@ -1,0 +1,5 @@
+#file: ./second
+
+if('score ender_beacons ud_options matches 1..') {
+  /function unnamedde:misc/ender_beacons/second
+}

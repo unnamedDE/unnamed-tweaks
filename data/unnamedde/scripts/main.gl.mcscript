@@ -3,72 +3,21 @@
 // here goes your main content
 // executes 20 times a second
 
+
 if(!'score player_heads ud_options matches 1..') {
   /kill @e[type=item,nbt={Age:0s,Item:{tag:{DroppedPlayerhead:1b}}}]
-}
-
-asat(@r[tag=!ud_id_set]) {
-  /function unnamedde:player_id/first_join
-}
-as(@a[scores={ud_leave=1..}]) {
-  /function unnamedde:set_scoreboards/on_join
-}
-
-/function unnamedde:set_scoreboards/world
-
-if('score dimension_notifications ud_options matches 1..') {
-  /function unnamedde:misc/dimension_notifications
-}
-if('score better_end_portal ud_options matches 1..') {
-  asat(@a), if('entity @s[nbt={Dimension:1}]' && !'score @s dim matches 1') {
-    /execute in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 3 60 1 minecraft:end_portal_frame
-    /execute in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 2 60 2 minecraft:end_portal_frame
-    /execute in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 1 60 3 minecraft:end_portal_frame
-    /execute in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 0 60 3 minecraft:end_portal_frame
-    /execute in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock -1 60 3 minecraft:end_portal_frame
-    /execute in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock -2 60 2 minecraft:end_portal_frame
-    /execute in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock -3 60 1 minecraft:end_portal_frame
-    /execute in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock -3 60 0 minecraft:end_portal_frame
-    /execute in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock -3 60 -1 minecraft:end_portal_frame
-    /execute in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock -2 60 -2 minecraft:end_portal_frame
-    /execute in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock -1 60 -3 minecraft:end_portal_frame
-    /execute in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 0 60 -3 minecraft:end_portal_frame
-    /execute in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 1 60 -3 minecraft:end_portal_frame
-    /execute in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 2 60 -2 minecraft:end_portal_frame
-    /execute in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 3 60 -1 minecraft:end_portal_frame
-    /execute in minecraft:the_end if block 3 60 0 minecraft:bedrock run setblock 3 60 0 minecraft:end_portal_frame
-
-    /execute in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 3 60 1 minecraft:end_portal_frame[eye=true]
-    /execute in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 2 60 2 minecraft:end_portal_frame[eye=true]
-    /execute in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 1 60 3 minecraft:end_portal_frame[eye=true]
-    /execute in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 0 60 3 minecraft:end_portal_frame[eye=true]
-    /execute in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock -1 60 3 minecraft:end_portal_frame[eye=true]
-    /execute in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock -2 60 2 minecraft:end_portal_frame[eye=true]
-    /execute in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock -3 60 1 minecraft:end_portal_frame[eye=true]
-    /execute in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock -3 60 0 minecraft:end_portal_frame[eye=true]
-    /execute in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock -3 60 -1 minecraft:end_portal_frame[eye=true]
-    /execute in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock -2 60 -2 minecraft:end_portal_frame[eye=true]
-    /execute in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock -1 60 -3 minecraft:end_portal_frame[eye=true]
-    /execute in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 0 60 -3 minecraft:end_portal_frame[eye=true]
-    /execute in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 1 60 -3 minecraft:end_portal_frame[eye=true]
-    /execute in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 2 60 -2 minecraft:end_portal_frame[eye=true]
-    /execute in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 3 60 -1 minecraft:end_portal_frame[eye=true]
-    /execute in minecraft:the_end if block 1 60 0 minecraft:end_portal run setblock 3 60 0 minecraft:end_portal_frame[eye=true]
-  }
 }
 
 asat(@a) {
   /function unnamedde:set_scoreboards/player
 }
 
+/function unnamedde:set_scoreboards/reset_item_interactives
+
+
 /function unnamedde:creative_menu/main
-/function unnamedde:player_id/main
-/function unnamedde:misc/no_placing/main
 /function unnamedde:misc/death_books/main
 
-if('score money ud_options matches 1..') {
-  /function unnamedde:money/main
-}
 if('score hopper_minecarts ud_options matches 1..') {
   /function unnamedde:misc/hopper_minecarts
 }
@@ -77,6 +26,9 @@ if('score concrete_in_water ud_options matches 1..') {
 }
 if('score nightpvp ud_options matches 1..') {
   /function unnamedde:misc/nightpvp/main
+}
+if('score nightpvp ud_options matches 0') {
+  /function unnamedde:misc/nightpvp/reset
 }
 if('score tooltips ud_options matches 1..') {
   /function unnamedde:misc/tooltips/main
@@ -124,8 +76,32 @@ if('score arrow_break_bamboo ud_options matches 1..') {
     /setblock ~ ~ ~ air destroy
   }
 }
-if('score parcour_boots ud_options matches 1..') {
-  /function unnamedde:misc/parcour_boots/main
+if('score ender_beacons ud_options matches 1..') {
+  /function unnamedde:misc/ender_beacons/main
+}
+if('score crossbow_bolts ud_options matches 1..') {
+  /function unnamedde:misc/crossbow_bolts/main
+}
+//if('score reverse_rotate ud_options matches 1..') {
+//  /function unnamedde:misc/reverse_rotate/main
+//}
+if('score trash_can ud_options matches 1..') {
+  /function unnamedde:misc/trash_can/main
+}
+if('score encrypted_books ud_options matches 1..') {
+  /function unnamedde:misc/encrypted_books/main
+}
+if('score money_additions ud_options matches 1..') {
+  /function unnamedde:misc/money_additions/main
+}
+if('score functional_stonecutter ud_options matches 1..') {
+  /function unnamedde:misc/functional_stonecutter/main
+}
+if('score dispenser_planting ud_options matches 1..') {
+  /function unnamedde:misc/dispenser_planting/main
+}
+if('score better_end_portal ud_options matches 1..') {
+  /function unnamedde:misc/better_endportal/main
 }
 
 asat(@e[type=item,nbt={Age:0s,Item:{tag:{DroppedPlayerhead:1b}}}]) {

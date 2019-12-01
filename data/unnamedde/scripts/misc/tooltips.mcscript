@@ -54,7 +54,7 @@ asat(@a[gamemode=!spectator]) {
     /tag @s remove ud_tooltip_torch
   }
 
-  if('entity @s[tag=!ud_tooltip_clock_notify,nbt={Dimension:0b,Inventory:[{id:"minecraft:clock"}]}]' && 'score daytime ud_misc matches 13000..') {
+  if('entity @s[tag=!ud_tooltip_clock_notify,nbt={Dimension:0,Inventory:[{id:"minecraft:clock"}]}]' && 'score daytime ud_misc matches 13000..') {
     /function unnamedde:misc/tooltips/notify/clock
   }
   if(!'score daytime ud_misc matches 13000..' && 'entity @s[tag=ud_tooltip_clock_notify]') {

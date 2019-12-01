@@ -1,0 +1,686 @@
+#file: ./functional_stonecutter/main
+
+asat(@e[type=item_frame]), if('data entity @s Item') {
+  if('entity @s[nbt={Rotation:[0.0f, 0.0f]}]' && 'block ~ ~ ~-1 minecraft:stonecutter[facing=south]') {
+    positioned('~ ~ ~-1') {
+      /function unnamedde:misc/functional_stonecutter/position
+    }
+  }
+  if('entity @s[nbt={Rotation:[270.0f, 0.0f]}]' && 'block ~-1 ~ ~ minecraft:stonecutter[facing=east]') {
+    positioned('~-1 ~ ~') {
+      /function unnamedde:misc/functional_stonecutter/position
+    }
+  }
+  if('entity @s[nbt={Rotation:[180.0f, 0.0f]}]' && 'block ~ ~ ~1 minecraft:stonecutter[facing=north]') {
+    positioned('~ ~ ~1') {
+      /function unnamedde:misc/functional_stonecutter/position
+    }
+  }
+  if('entity @s[nbt={Rotation:[90.0f, 0.0f]}]' && 'block ~1 ~ ~ minecraft:stonecutter[facing=west]') {
+    positioned('~1 ~ ~') {
+      /function unnamedde:misc/functional_stonecutter/position
+    }
+  }
+}
+
+#file: ./functional_stonecutter/position
+
+# Vanilla
+
+if('entity @s[nbt={Item:{id:"minecraft:chiseled_stone_bricks"}}]' && 'block ~ ~1 ~ minecraft:stone') {
+  /setblock ~ ~1 ~ minecraft:chiseled_stone_bricks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stone_brick_slab"}}]' && 'block ~ ~1 ~ minecraft:stone') {
+  /setblock ~ ~1 ~ minecraft:stone_brick_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stone_brick_stairs"}}]' && 'block ~ ~1 ~ minecraft:stone') {
+  /setblock ~ ~1 ~ minecraft:stone_brick_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stone_brick_wall"}}]' && 'block ~ ~1 ~ minecraft:stone') {
+  /setblock ~ ~1 ~ minecraft:stone_brick_wall replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stone_slab"}}]' && 'block ~ ~1 ~ minecraft:stone') {
+  /setblock ~ ~1 ~ minecraft:stone_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stone_stairs"}}]' && 'block ~ ~1 ~ minecraft:stone') {
+  /setblock ~ ~1 ~ minecraft:stone_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stone_bricks"}}]' && 'block ~ ~1 ~ minecraft:stone') {
+  /setblock ~ ~1 ~ minecraft:stone_bricks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:smooth_stone_slab"}}]' && 'block ~ ~1 ~ minecraft:smooth_stone') {
+  /setblock ~ ~1 ~ minecraft:smooth_stone_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stone_brick_slab"}}]' && 'block ~ ~1 ~ minecraft:stone_bricks') {
+  /setblock ~ ~1 ~ minecraft:stone_brick_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stone_brick_stairs"}}]' && 'block ~ ~1 ~ minecraft:stone_bricks') {
+  /setblock ~ ~1 ~ minecraft:stone_brick_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stone_brick_wall"}}]' && 'block ~ ~1 ~ minecraft:stone_bricks') {
+  /setblock ~ ~1 ~ minecraft:stone_brick_wall replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:chiseled_stone_bricks"}}]' && 'block ~ ~1 ~ minecraft:stone_bricks') {
+  /setblock ~ ~1 ~ minecraft:chiseled_stone_bricks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:mossy_stone_brick_slab"}}]' && 'block ~ ~1 ~ minecraft:mossy_stone_bricks') {
+  /setblock ~ ~1 ~ minecraft:mossy_stone_brick_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:mossy_stone_brick_stairs"}}]' && 'block ~ ~1 ~ minecraft:mossy_stone_bricks') {
+  /setblock ~ ~1 ~ minecraft:mossy_stone_brick_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:mossy_stone_brick_wall"}}]' && 'block ~ ~1 ~ minecraft:mossy_stone_bricks') {
+  /setblock ~ ~1 ~ minecraft:mossy_stone_brick_wall replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:granite_slab"}}]' && 'block ~ ~1 ~ minecraft:granite') {
+  /setblock ~ ~1 ~ minecraft:granite_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:granite_stairs"}}]' && 'block ~ ~1 ~ minecraft:granite') {
+  /setblock ~ ~1 ~ minecraft:granite_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:granite_wall"}}]' && 'block ~ ~1 ~ minecraft:granite') {
+  /setblock ~ ~1 ~ minecraft:granite_wall replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:polished_granite"}}]' && 'block ~ ~1 ~ minecraft:granite') {
+  /setblock ~ ~1 ~ minecraft:polished_granite replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:polished_granite_slab"}}]' && 'block ~ ~1 ~ minecraft:granite') {
+  /setblock ~ ~1 ~ minecraft:polished_granite_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:polished_granite_stairs"}}]' && 'block ~ ~1 ~ minecraft:granite') {
+  /setblock ~ ~1 ~ minecraft:polished_granite_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:polished_granite_slab"}}]' && 'block ~ ~1 ~ minecraft:polished_granite') {
+  /setblock ~ ~1 ~ minecraft:polished_granite_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:polished_granite_stairs"}}]' && 'block ~ ~1 ~ minecraft:polished_granite') {
+  /setblock ~ ~1 ~ minecraft:polished_granite_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:diorite_slab"}}]' && 'block ~ ~1 ~ minecraft:diorite') {
+  /setblock ~ ~1 ~ minecraft:diorite_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:diorite_stairs"}}]' && 'block ~ ~1 ~ minecraft:diorite') {
+  /setblock ~ ~1 ~ minecraft:diorite_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:diorite_wall"}}]' && 'block ~ ~1 ~ minecraft:diorite') {
+  /setblock ~ ~1 ~ minecraft:diorite_wall replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:polished_diorite"}}]' && 'block ~ ~1 ~ minecraft:diorite') {
+  /setblock ~ ~1 ~ minecraft:polished_diorite replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:polished_diorite_slab"}}]' && 'block ~ ~1 ~ minecraft:diorite') {
+  /setblock ~ ~1 ~ minecraft:polished_diorite_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:polished_diorite_stairs"}}]' && 'block ~ ~1 ~ minecraft:diorite') {
+  /setblock ~ ~1 ~ minecraft:polished_diorite_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:polished_diorite_slab"}}]' && 'block ~ ~1 ~ minecraft:polished_diorite') {
+  /setblock ~ ~1 ~ minecraft:polished_diorite_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:polished_diorite_stairs"}}]' && 'block ~ ~1 ~ minecraft:polished_diorite') {
+  /setblock ~ ~1 ~ minecraft:polished_diorite_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:andesite_slab"}}]' && 'block ~ ~1 ~ minecraft:andesite') {
+  /setblock ~ ~1 ~ minecraft:andesite_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:andesite_stairs"}}]' && 'block ~ ~1 ~ minecraft:andesite') {
+  /setblock ~ ~1 ~ minecraft:andesite_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:andesite_wall"}}]' && 'block ~ ~1 ~ minecraft:andesite') {
+  /setblock ~ ~1 ~ minecraft:andesite_wall replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:polished_andesite"}}]' && 'block ~ ~1 ~ minecraft:andesite') {
+  /setblock ~ ~1 ~ minecraft:polished_andesite replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:polished_andesite_slab"}}]' && 'block ~ ~1 ~ minecraft:andesite') {
+  /setblock ~ ~1 ~ minecraft:polished_andesite_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:polished_andesite_stairs"}}]' && 'block ~ ~1 ~ minecraft:andesite') {
+  /setblock ~ ~1 ~ minecraft:polished_andesite_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:polished_andesite_slab"}}]' && 'block ~ ~1 ~ minecraft:polished_andesite') {
+  /setblock ~ ~1 ~ minecraft:polished_andesite_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:polished_andesite_stairs"}}]' && 'block ~ ~1 ~ minecraft:polished_andesite') {
+  /setblock ~ ~1 ~ minecraft:polished_andesite_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:cobblestone_slab"}}]' && 'block ~ ~1 ~ minecraft:cobblestone') {
+  /setblock ~ ~1 ~ minecraft:cobblestone_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:cobblestone_stairs"}}]' && 'block ~ ~1 ~ minecraft:cobblestone') {
+  /setblock ~ ~1 ~ minecraft:cobblestone_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:cobblestone_wall"}}]' && 'block ~ ~1 ~ minecraft:cobblestone') {
+  /setblock ~ ~1 ~ minecraft:cobblestone_wall replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:mossy_cobblestone_slab"}}]' && 'block ~ ~1 ~ minecraft:mossy_cobblestone') {
+  /setblock ~ ~1 ~ minecraft:mossy_cobblestone_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:mossy_cobblestone_stairs"}}]' && 'block ~ ~1 ~ minecraft:mossy_cobblestone') {
+  /setblock ~ ~1 ~ minecraft:mossy_cobblestone_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:mossy_cobblestone_wall"}}]' && 'block ~ ~1 ~ minecraft:mossy_cobblestone') {
+  /setblock ~ ~1 ~ minecraft:mossy_cobblestone_wall replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:sandstone_slab"}}]' && 'block ~ ~1 ~ minecraft:sandstone') {
+  /setblock ~ ~1 ~ minecraft:sandstone_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:sandstone_stairs"}}]' && 'block ~ ~1 ~ minecraft:sandstone') {
+  /setblock ~ ~1 ~ minecraft:sandstone_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:sandstone_wall"}}]' && 'block ~ ~1 ~ minecraft:sandstone') {
+  /setblock ~ ~1 ~ minecraft:sandstone_wall replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:cut_sandstone"}}]' && 'block ~ ~1 ~ minecraft:sandstone') {
+  /setblock ~ ~1 ~ minecraft:cut_sandstone replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:cut_sandstone_slab"}}]' && 'block ~ ~1 ~ minecraft:sandstone') {
+  /setblock ~ ~1 ~ minecraft:cut_sandstone_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:chiseled_sandstone"}}]' && 'block ~ ~1 ~ minecraft:sandstone') {
+  /setblock ~ ~1 ~ minecraft:chiseled_sandstone replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:cut_sandstone_slab"}}]' && 'block ~ ~1 ~ minecraft:cut_sandstone') {
+  /setblock ~ ~1 ~ minecraft:cut_sandstone_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:smooth_sandstone_slab"}}]' && 'block ~ ~1 ~ minecraft:smooth_sandstone') {
+  /setblock ~ ~1 ~ minecraft:smooth_sandstone_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:smooth_sandstone_stairs"}}]' && 'block ~ ~1 ~ minecraft:smooth_sandstone') {
+  /setblock ~ ~1 ~ minecraft:smooth_sandstone_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:red_sandstone_slab"}}]' && 'block ~ ~1 ~ minecraft:red_sandstone') {
+  /setblock ~ ~1 ~ minecraft:red_sandstone_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:red_sandstone_stairs"}}]' && 'block ~ ~1 ~ minecraft:red_sandstone') {
+  /setblock ~ ~1 ~ minecraft:red_sandstone_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:red_sandstone_wall"}}]' && 'block ~ ~1 ~ minecraft:red_sandstone') {
+  /setblock ~ ~1 ~ minecraft:red_sandstone_wall replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:cut_red_sandstone"}}]' && 'block ~ ~1 ~ minecraft:red_sandstone') {
+  /setblock ~ ~1 ~ minecraft:cut_red_sandstone replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:cut_red_sandstone_slab"}}]' && 'block ~ ~1 ~ minecraft:red_sandstone') {
+  /setblock ~ ~1 ~ minecraft:cut_red_sandstone_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:chiseled_red_sandstone"}}]' && 'block ~ ~1 ~ minecraft:red_sandstone') {
+  /setblock ~ ~1 ~ minecraft:chiseled_red_sandstone replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:cut_red_sandstone_slab"}}]' && 'block ~ ~1 ~ minecraft:cut_red_sandstone') {
+  /setblock ~ ~1 ~ minecraft:cut_red_sandstone_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:smooth_red_sandstone_slab"}}]' && 'block ~ ~1 ~ minecraft:smooth_red_sandstone') {
+  /setblock ~ ~1 ~ minecraft:smooth_red_sandstone_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:smooth_red_sandstone_stairs"}}]' && 'block ~ ~1 ~ minecraft:smooth_red_sandstone') {
+  /setblock ~ ~1 ~ minecraft:smooth_red_sandstone_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:prismarine_slab"}}]' && 'block ~ ~1 ~ minecraft:prismarine') {
+  /setblock ~ ~1 ~ minecraft:prismarine_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:prismarine_stairs"}}]' && 'block ~ ~1 ~ minecraft:prismarine') {
+  /setblock ~ ~1 ~ minecraft:prismarine_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:prismarine_wall"}}]' && 'block ~ ~1 ~ minecraft:prismarine') {
+  /setblock ~ ~1 ~ minecraft:prismarine_wall replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:prismarine_brick_slab"}}]' && 'block ~ ~1 ~ minecraft:prismarine_bricks') {
+  /setblock ~ ~1 ~ minecraft:prismarine_brick_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:prismarine_brick_stairs"}}]' && 'block ~ ~1 ~ minecraft:prismarine_bricks') {
+  /setblock ~ ~1 ~ minecraft:prismarine_brick_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:dark_prismarine_slab"}}]' && 'block ~ ~1 ~ minecraft:dark_prismarine') {
+  /setblock ~ ~1 ~ minecraft:dark_prismarine_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:dark_prismarine_stairs"}}]' && 'block ~ ~1 ~ minecraft:dark_prismarine') {
+  /setblock ~ ~1 ~ minecraft:dark_prismarine_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:quartz_slab"}}]' && 'block ~ ~1 ~ minecraft:quartz_block') {
+  /setblock ~ ~1 ~ minecraft:quartz_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:quartz_stairs"}}]' && 'block ~ ~1 ~ minecraft:quartz_block') {
+  /setblock ~ ~1 ~ minecraft:quartz_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:chiseled_quartz_block"}}]' && 'block ~ ~1 ~ minecraft:quartz_block') {
+  /setblock ~ ~1 ~ minecraft:chiseled_quartz_block replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:quartz_pillar"}}]' && 'block ~ ~1 ~ minecraft:quartz_block') {
+  /setblock ~ ~1 ~ minecraft:quartz_pillar replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:smooth_quartz_slab"}}]' && 'block ~ ~1 ~ minecraft:smooth_quartz') {
+  /setblock ~ ~1 ~ minecraft:smooth_quartz_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:smooth_quartz_stairs"}}]' && 'block ~ ~1 ~ minecraft:smooth_quartz') {
+  /setblock ~ ~1 ~ minecraft:smooth_quartz_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:purpur_slab"}}]' && 'block ~ ~1 ~ minecraft:purpur_block') {
+  /setblock ~ ~1 ~ minecraft:purpur_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:purpur_stairs"}}]' && 'block ~ ~1 ~ minecraft:purpur_block') {
+  /setblock ~ ~1 ~ minecraft:purpur_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:purpur_pillar"}}]' && 'block ~ ~1 ~ minecraft:purpur_block') {
+  /setblock ~ ~1 ~ minecraft:purpur_pillar replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:brick_slab"}}]' && 'block ~ ~1 ~ minecraft:bricks') {
+  /setblock ~ ~1 ~ minecraft:brick_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:brick_stairs"}}]' && 'block ~ ~1 ~ minecraft:bricks') {
+  /setblock ~ ~1 ~ minecraft:brick_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:brick_wall"}}]' && 'block ~ ~1 ~ minecraft:bricks') {
+  /setblock ~ ~1 ~ minecraft:brick_wall replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:nether_brick_slab"}}]' && 'block ~ ~1 ~ minecraft:nether_bricks') {
+  /setblock ~ ~1 ~ minecraft:nether_brick_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:nether_brick_stairs"}}]' && 'block ~ ~1 ~ minecraft:nether_bricks') {
+  /setblock ~ ~1 ~ minecraft:nether_brick_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:nether_brick_wall"}}]' && 'block ~ ~1 ~ minecraft:nether_bricks') {
+  /setblock ~ ~1 ~ minecraft:nether_brick_wall replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:red_nether_brick_slab"}}]' && 'block ~ ~1 ~ minecraft:red_nether_bricks') {
+  /setblock ~ ~1 ~ minecraft:red_nether_brick_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:red_nether_brick_stairs"}}]' && 'block ~ ~1 ~ minecraft:red_nether_bricks') {
+  /setblock ~ ~1 ~ minecraft:red_nether_brick_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:red_nether_brick_wall"}}]' && 'block ~ ~1 ~ minecraft:red_nether_bricks') {
+  /setblock ~ ~1 ~ minecraft:red_nether_brick_wall replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:end_stone_bricks"}}]' && 'block ~ ~1 ~ minecraft:end_stone') {
+  /setblock ~ ~1 ~ minecraft:end_stone_bricks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:end_stone_brick_slab"}}]' && 'block ~ ~1 ~ minecraft:end_stone') {
+  /setblock ~ ~1 ~ minecraft:end_stone_brick_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:end_stone_brick_stairs"}}]' && 'block ~ ~1 ~ minecraft:end_stone') {
+  /setblock ~ ~1 ~ minecraft:end_stone_brick_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:end_stone_brick_wall"}}]' && 'block ~ ~1 ~ minecraft:end_stone') {
+  /setblock ~ ~1 ~ minecraft:end_stone_brick_wall replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:end_stone_brick_slab"}}]' && 'block ~ ~1 ~ minecraft:end_stone_bricks') {
+  /setblock ~ ~1 ~ minecraft:end_stone_brick_slab replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:end_stone_brick_stairs"}}]' && 'block ~ ~1 ~ minecraft:end_stone_bricks') {
+  /setblock ~ ~1 ~ minecraft:end_stone_brick_stairs replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:end_stone_brick_wall"}}]' && 'block ~ ~1 ~ minecraft:end_stone_bricks') {
+  /setblock ~ ~1 ~ minecraft:end_stone_brick_wall replace
+}
+
+# Unnamed Tweaks
+
+if('entity @s[nbt={Item:{id:"minecraft:black_carpet"}}]' && 'block ~ ~1 ~ minecraft:black_wool') {
+  /setblock ~ ~1 ~ minecraft:black_carpet replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:blue_carpet"}}]' && 'block ~ ~1 ~ minecraft:blue_wool') {
+  /setblock ~ ~1 ~ minecraft:blue_carpet replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:brown_carpet"}}]' && 'block ~ ~1 ~ minecraft:brown_wool') {
+  /setblock ~ ~1 ~ minecraft:brown_carpet replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:cyan_carpet"}}]' && 'block ~ ~1 ~ minecraft:cyan_wool') {
+  /setblock ~ ~1 ~ minecraft:cyan_carpet replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:gray_carpet"}}]' && 'block ~ ~1 ~ minecraft:gray_wool') {
+  /setblock ~ ~1 ~ minecraft:gray_carpet replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:green_carpet"}}]' && 'block ~ ~1 ~ minecraft:green_wool') {
+  /setblock ~ ~1 ~ minecraft:green_carpet replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:light_blue_carpet"}}]' && 'block ~ ~1 ~ minecraft:light_blue_wool') {
+  /setblock ~ ~1 ~ minecraft:light_blue_carpet replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:light_gray_carpet"}}]' && 'block ~ ~1 ~ minecraft:light_gray_wool') {
+  /setblock ~ ~1 ~ minecraft:light_gray_carpet replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:lime_carpet"}}]' && 'block ~ ~1 ~ minecraft:lime_wool') {
+  /setblock ~ ~1 ~ minecraft:lime_carpet replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:magenta_carpet"}}]' && 'block ~ ~1 ~ minecraft:magenta_wool') {
+  /setblock ~ ~1 ~ minecraft:magenta_carpet replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:orange_carpet"}}]' && 'block ~ ~1 ~ minecraft:orange_wool') {
+  /setblock ~ ~1 ~ minecraft:orange_carpet replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:pink_carpet"}}]' && 'block ~ ~1 ~ minecraft:pink_wool') {
+  /setblock ~ ~1 ~ minecraft:pink_carpet replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:purple_carpet"}}]' && 'block ~ ~1 ~ minecraft:purple_wool') {
+  /setblock ~ ~1 ~ minecraft:purple_carpet replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:red_carpet"}}]' && 'block ~ ~1 ~ minecraft:red_wool') {
+  /setblock ~ ~1 ~ minecraft:red_carpet replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:white_carpet"}}]' && 'block ~ ~1 ~ minecraft:white_wool') {
+  /setblock ~ ~1 ~ minecraft:white_carpet replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:yellow_carpet"}}]' && 'block ~ ~1 ~ minecraft:yellow_wool') {
+  /setblock ~ ~1 ~ minecraft:yellow_carpet replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:bell"}}]' && 'block ~ ~1 ~ minecraft:gold_block') {
+  /setblock ~ ~1 ~ minecraft:bell replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:carved_pumpkin"}}]' && 'block ~ ~1 ~ minecraft:pumpkin') {
+  /setblock ~ ~1 ~ minecraft:carved_pumpkin replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:acacia_fence"}}]' && 'block ~ ~1 ~ minecraft:acacia_log') {
+  /setblock ~ ~1 ~ minecraft:acacia_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:acacia_planks"}}]' && 'block ~ ~1 ~ minecraft:acacia_log') {
+  /setblock ~ ~1 ~ minecraft:acacia_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_acacia_log"}}]' && 'block ~ ~1 ~ minecraft:acacia_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_acacia_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_acacia_wood"}}]' && 'block ~ ~1 ~ minecraft:acacia_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_acacia_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:acacia_wood"}}]' && 'block ~ ~1 ~ minecraft:acacia_log') {
+  /setblock ~ ~1 ~ minecraft:acacia_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:birch_fence"}}]' && 'block ~ ~1 ~ minecraft:birch_log') {
+  /setblock ~ ~1 ~ minecraft:birch_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:birch_planks"}}]' && 'block ~ ~1 ~ minecraft:birch_log') {
+  /setblock ~ ~1 ~ minecraft:birch_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_birch_log"}}]' && 'block ~ ~1 ~ minecraft:birch_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_birch_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_birch_wood"}}]' && 'block ~ ~1 ~ minecraft:birch_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_birch_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:birch_wood"}}]' && 'block ~ ~1 ~ minecraft:birch_log') {
+  /setblock ~ ~1 ~ minecraft:birch_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:dark_oak_fence"}}]' && 'block ~ ~1 ~ minecraft:dark_oak_log') {
+  /setblock ~ ~1 ~ minecraft:dark_oak_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:dark_oak_planks"}}]' && 'block ~ ~1 ~ minecraft:dark_oak_log') {
+  /setblock ~ ~1 ~ minecraft:dark_oak_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_dark_oak_log"}}]' && 'block ~ ~1 ~ minecraft:dark_oak_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_dark_oak_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_dark_oak_wood"}}]' && 'block ~ ~1 ~ minecraft:dark_oak_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_dark_oak_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:dark_oak_wood"}}]' && 'block ~ ~1 ~ minecraft:dark_oak_log') {
+  /setblock ~ ~1 ~ minecraft:dark_oak_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:jungle_fence"}}]' && 'block ~ ~1 ~ minecraft:jungle_log') {
+  /setblock ~ ~1 ~ minecraft:jungle_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:jungle_planks"}}]' && 'block ~ ~1 ~ minecraft:jungle_log') {
+  /setblock ~ ~1 ~ minecraft:jungle_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_jungle_log"}}]' && 'block ~ ~1 ~ minecraft:jungle_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_jungle_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_jungle_wood"}}]' && 'block ~ ~1 ~ minecraft:jungle_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_jungle_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:jungle_wood"}}]' && 'block ~ ~1 ~ minecraft:jungle_log') {
+  /setblock ~ ~1 ~ minecraft:jungle_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:oak_fence"}}]' && 'block ~ ~1 ~ minecraft:oak_log') {
+  /setblock ~ ~1 ~ minecraft:oak_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:oak_planks"}}]' && 'block ~ ~1 ~ minecraft:oak_log') {
+  /setblock ~ ~1 ~ minecraft:oak_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_oak_log"}}]' && 'block ~ ~1 ~ minecraft:oak_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_oak_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_oak_wood"}}]' && 'block ~ ~1 ~ minecraft:oak_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_oak_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:oak_wood"}}]' && 'block ~ ~1 ~ minecraft:oak_log') {
+  /setblock ~ ~1 ~ minecraft:oak_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:spruce_fence"}}]' && 'block ~ ~1 ~ minecraft:spruce_log') {
+  /setblock ~ ~1 ~ minecraft:spruce_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:spruce_planks"}}]' && 'block ~ ~1 ~ minecraft:spruce_log') {
+  /setblock ~ ~1 ~ minecraft:spruce_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_spruce_log"}}]' && 'block ~ ~1 ~ minecraft:spruce_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_spruce_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_spruce_wood"}}]' && 'block ~ ~1 ~ minecraft:spruce_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_spruce_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:spruce_wood"}}]' && 'block ~ ~1 ~ minecraft:spruce_log') {
+  /setblock ~ ~1 ~ minecraft:spruce_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:acacia_fence"}}]' && 'block ~ ~1 ~ minecraft:acacia_wood') {
+  /setblock ~ ~1 ~ minecraft:acacia_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:acacia_fence"}}]' && 'block ~ ~1 ~ minecraft:stripped_acacia_log') {
+  /setblock ~ ~1 ~ minecraft:acacia_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:acacia_fence"}}]' && 'block ~ ~1 ~ minecraft:stripped_acacia_wood') {
+  /setblock ~ ~1 ~ minecraft:acacia_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:birch_fence"}}]' && 'block ~ ~1 ~ minecraft:birch_wood') {
+  /setblock ~ ~1 ~ minecraft:birch_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:birch_fence"}}]' && 'block ~ ~1 ~ minecraft:stripped_birch_log') {
+  /setblock ~ ~1 ~ minecraft:birch_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:birch_fence"}}]' && 'block ~ ~1 ~ minecraft:stripped_birch_wood') {
+  /setblock ~ ~1 ~ minecraft:birch_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:dark_oak_fence"}}]' && 'block ~ ~1 ~ minecraft:dark_oak_wood') {
+  /setblock ~ ~1 ~ minecraft:dark_oak_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:dark_oak_fence"}}]' && 'block ~ ~1 ~ minecraft:stripped_dark_oak_log') {
+  /setblock ~ ~1 ~ minecraft:dark_oak_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:dark_oak_fence"}}]' && 'block ~ ~1 ~ minecraft:stripped_dark_oak_wood') {
+  /setblock ~ ~1 ~ minecraft:dark_oak_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:jungle_fence"}}]' && 'block ~ ~1 ~ minecraft:jungle_wood') {
+  /setblock ~ ~1 ~ minecraft:jungle_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:jungle_fence"}}]' && 'block ~ ~1 ~ minecraft:stripped_jungle_log') {
+  /setblock ~ ~1 ~ minecraft:jungle_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:jungle_fence"}}]' && 'block ~ ~1 ~ minecraft:stripped_jungle_wood') {
+  /setblock ~ ~1 ~ minecraft:jungle_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:oak_fence"}}]' && 'block ~ ~1 ~ minecraft:oak_wood') {
+  /setblock ~ ~1 ~ minecraft:oak_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:oak_fence"}}]' && 'block ~ ~1 ~ minecraft:stripped_oak_log') {
+  /setblock ~ ~1 ~ minecraft:oak_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:oak_fence"}}]' && 'block ~ ~1 ~ minecraft:stripped_oak_wood') {
+  /setblock ~ ~1 ~ minecraft:oak_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:spruce_fence"}}]' && 'block ~ ~1 ~ minecraft:spruce_wood') {
+  /setblock ~ ~1 ~ minecraft:spruce_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:spruce_fence"}}]' && 'block ~ ~1 ~ minecraft:stripped_spruce_log') {
+  /setblock ~ ~1 ~ minecraft:spruce_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:spruce_fence"}}]' && 'block ~ ~1 ~ minecraft:stripped_spruce_wood') {
+  /setblock ~ ~1 ~ minecraft:spruce_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:acacia_fence"}}]' && 'block ~ ~1 ~ minecraft:acacia_planks') {
+  /setblock ~ ~1 ~ minecraft:acacia_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:birch_fence"}}]' && 'block ~ ~1 ~ minecraft:birch_planks') {
+  /setblock ~ ~1 ~ minecraft:birch_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:dark_oak_fence"}}]' && 'block ~ ~1 ~ minecraft:dark_oak_planks') {
+  /setblock ~ ~1 ~ minecraft:dark_oak_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:jungle_fence"}}]' && 'block ~ ~1 ~ minecraft:jungle_planks') {
+  /setblock ~ ~1 ~ minecraft:jungle_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:oak_fence"}}]' && 'block ~ ~1 ~ minecraft:oak_planks') {
+  /setblock ~ ~1 ~ minecraft:oak_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:spruce_fence"}}]' && 'block ~ ~1 ~ minecraft:spruce_planks') {
+  /setblock ~ ~1 ~ minecraft:spruce_fence replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:acacia_planks"}}]' && 'block ~ ~1 ~ minecraft:acacia_wood') {
+  /setblock ~ ~1 ~ minecraft:acacia_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:acacia_planks"}}]' && 'block ~ ~1 ~ minecraft:stripped_acacia_log') {
+  /setblock ~ ~1 ~ minecraft:acacia_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:acacia_planks"}}]' && 'block ~ ~1 ~ minecraft:stripped_acacia_wood') {
+  /setblock ~ ~1 ~ minecraft:acacia_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:birch_planks"}}]' && 'block ~ ~1 ~ minecraft:birch_wood') {
+  /setblock ~ ~1 ~ minecraft:birch_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:birch_planks"}}]' && 'block ~ ~1 ~ minecraft:stripped_birch_log') {
+  /setblock ~ ~1 ~ minecraft:birch_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:birch_planks"}}]' && 'block ~ ~1 ~ minecraft:stripped_birch_wood') {
+  /setblock ~ ~1 ~ minecraft:birch_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:jungle_planks"}}]' && 'block ~ ~1 ~ minecraft:jungle_wood') {
+  /setblock ~ ~1 ~ minecraft:jungle_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:jungle_planks"}}]' && 'block ~ ~1 ~ minecraft:stripped_jungle_log') {
+  /setblock ~ ~1 ~ minecraft:jungle_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:jungle_planks"}}]' && 'block ~ ~1 ~ minecraft:stripped_jungle_wood') {
+  /setblock ~ ~1 ~ minecraft:jungle_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:oak_planks"}}]' && 'block ~ ~1 ~ minecraft:oak_wood') {
+  /setblock ~ ~1 ~ minecraft:oak_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:oak_planks"}}]' && 'block ~ ~1 ~ minecraft:stripped_oak_log') {
+  /setblock ~ ~1 ~ minecraft:oak_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:oak_planks"}}]' && 'block ~ ~1 ~ minecraft:stripped_oak_wood') {
+  /setblock ~ ~1 ~ minecraft:oak_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:spruce_planks"}}]' && 'block ~ ~1 ~ minecraft:spruce_wood') {
+  /setblock ~ ~1 ~ minecraft:spruce_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:spruce_planks"}}]' && 'block ~ ~1 ~ minecraft:stripped_spruce_log') {
+  /setblock ~ ~1 ~ minecraft:spruce_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:spruce_planks"}}]' && 'block ~ ~1 ~ minecraft:stripped_spruce_wood') {
+  /setblock ~ ~1 ~ minecraft:spruce_planks replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_acacia_log"}}]' && 'block ~ ~1 ~ minecraft:acacia_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_acacia_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_acacia_wood"}}]' && 'block ~ ~1 ~ minecraft:acacia_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_acacia_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_acacia_log"}}]' && 'block ~ ~1 ~ minecraft:acacia_wood') {
+  /setblock ~ ~1 ~ minecraft:stripped_acacia_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_acacia_wood"}}]' && 'block ~ ~1 ~ minecraft:acacia_wood') {
+  /setblock ~ ~1 ~ minecraft:stripped_acacia_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_birch_log"}}]' && 'block ~ ~1 ~ minecraft:birch_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_birch_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_birch_wood"}}]' && 'block ~ ~1 ~ minecraft:birch_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_birch_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_birch_log"}}]' && 'block ~ ~1 ~ minecraft:birch_wood') {
+  /setblock ~ ~1 ~ minecraft:stripped_birch_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_birch_wood"}}]' && 'block ~ ~1 ~ minecraft:birch_wood') {
+  /setblock ~ ~1 ~ minecraft:stripped_birch_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_dark_oak_log"}}]' && 'block ~ ~1 ~ minecraft:dark_oak_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_dark_oak_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_dark_oak_wood"}}]' && 'block ~ ~1 ~ minecraft:dark_oak_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_dark_oak_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_dark_oak_log"}}]' && 'block ~ ~1 ~ minecraft:dark_oak_wood') {
+  /setblock ~ ~1 ~ minecraft:stripped_dark_oak_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_dark_oak_wood"}}]' && 'block ~ ~1 ~ minecraft:dark_oak_wood') {
+  /setblock ~ ~1 ~ minecraft:stripped_dark_oak_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_jungle_log"}}]' && 'block ~ ~1 ~ minecraft:jungle_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_jungle_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_jungle_wood"}}]' && 'block ~ ~1 ~ minecraft:jungle_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_jungle_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_jungle_log"}}]' && 'block ~ ~1 ~ minecraft:jungle_wood') {
+  /setblock ~ ~1 ~ minecraft:stripped_jungle_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_jungle_wood"}}]' && 'block ~ ~1 ~ minecraft:jungle_wood') {
+  /setblock ~ ~1 ~ minecraft:stripped_jungle_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_oak_log"}}]' && 'block ~ ~1 ~ minecraft:oak_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_oak_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_oak_wood"}}]' && 'block ~ ~1 ~ minecraft:oak_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_oak_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_oak_log"}}]' && 'block ~ ~1 ~ minecraft:oak_wood') {
+  /setblock ~ ~1 ~ minecraft:stripped_oak_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_oak_wood"}}]' && 'block ~ ~1 ~ minecraft:oak_wood') {
+  /setblock ~ ~1 ~ minecraft:stripped_oak_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_spruce_log"}}]' && 'block ~ ~1 ~ minecraft:spruce_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_spruce_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_spruce_wood"}}]' && 'block ~ ~1 ~ minecraft:spruce_log') {
+  /setblock ~ ~1 ~ minecraft:stripped_spruce_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_spruce_log"}}]' && 'block ~ ~1 ~ minecraft:spruce_wood') {
+  /setblock ~ ~1 ~ minecraft:stripped_spruce_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:stripped_spruce_wood"}}]' && 'block ~ ~1 ~ minecraft:spruce_wood') {
+  /setblock ~ ~1 ~ minecraft:stripped_spruce_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:acacia_wood"}}]' && 'block ~ ~1 ~ minecraft:acacia_log') {
+  /setblock ~ ~1 ~ minecraft:acacia_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:acacia_log"}}]' && 'block ~ ~1 ~ minecraft:acacia_wood') {
+  /setblock ~ ~1 ~ minecraft:acacia_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:birch_wood"}}]' && 'block ~ ~1 ~ minecraft:birch_log') {
+  /setblock ~ ~1 ~ minecraft:birch_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:birch_log"}}]' && 'block ~ ~1 ~ minecraft:birch_wood') {
+  /setblock ~ ~1 ~ minecraft:birch_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:dark_oak_wood"}}]' && 'block ~ ~1 ~ minecraft:dark_oak_log') {
+  /setblock ~ ~1 ~ minecraft:dark_oak_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:dark_oak_log"}}]' && 'block ~ ~1 ~ minecraft:dark_oak_wood') {
+  /setblock ~ ~1 ~ minecraft:dark_oak_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:jungle_wood"}}]' && 'block ~ ~1 ~ minecraft:jungle_log') {
+  /setblock ~ ~1 ~ minecraft:jungle_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:jungle_log"}}]' && 'block ~ ~1 ~ minecraft:jungle_wood') {
+  /setblock ~ ~1 ~ minecraft:jungle_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:oak_wood"}}]' && 'block ~ ~1 ~ minecraft:oak_log') {
+  /setblock ~ ~1 ~ minecraft:oak_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:oak_log"}}]' && 'block ~ ~1 ~ minecraft:oak_wood') {
+  /setblock ~ ~1 ~ minecraft:oak_log replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:spruce_wood"}}]' && 'block ~ ~1 ~ minecraft:spruce_log') {
+  /setblock ~ ~1 ~ minecraft:spruce_wood replace
+}
+if('entity @s[nbt={Item:{id:"minecraft:spruce_log"}}]' && 'block ~ ~1 ~ minecraft:spruce_wood') {
+  /setblock ~ ~1 ~ minecraft:spruce_log replace
+}

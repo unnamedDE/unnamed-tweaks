@@ -1,34 +1,38 @@
-#file: ./dimension_notifications
+#file: ./dimension_notifications/overworld
 
-asat(@a) {
-  if('entity @s[nbt={Dimension:0}]' && !'score @s dim matches 0') {
-    /tellraw @s [{"text":"You entered the overworld","color":"yellow"}]
-    /tellraw @a[nbt={Dimension:0},distance=.1..] [{"selector":"@s","color":"aqua"},{"text":" entered the overworld","color":"yellow"}]
-    if('score @s dim matches -1') {
-      /tellraw @a[nbt={Dimension:-1}] [{"selector":"@s","color":"aqua"},{"text":" left the nether","color":"yellow"}]
-    }
-    if('score @s dim matches 1') {
-      /tellraw @a[nbt={Dimension:1}] [{"selector":"@s","color":"aqua"},{"text":" left the end","color":"yellow"}]
-    }
+if('score dimension_notifications ud_options matches 1..') {
+  /tellraw @s [{"text":"You entered the overworld","color":"yellow"}]
+  /tellraw @a[nbt={Dimension:0},distance=.1..] [{"selector":"@s","color":"aqua"},{"text":" entered the overworld","color":"yellow"}]
+  if('score @s dim matches -1') {
+    /tellraw @a[nbt={Dimension:-1}] [{"selector":"@s","color":"aqua"},{"text":" left the nether","color":"yellow"}]
   }
-  if('entity @s[nbt={Dimension:-1}]' && !'score @s dim matches -1') {
-    /tellraw @s [{"text":"You entered the nether","color":"yellow"}]
-    /tellraw @a[nbt={Dimension:-1},distance=.1..] [{"selector":"@s","color":"aqua"},{"text":" entered the nether","color":"yellow"}]
-    if('score @s dim matches 0') {
-      /tellraw @a[nbt={Dimension:0}] [{"selector":"@s","color":"aqua"},{"text":" left the overworld","color":"yellow"}]
-    }
-    if('score @s dim matches 1') {
-      /tellraw @a[nbt={Dimension:1}] [{"selector":"@s","color":"aqua"},{"text":" left the end","color":"yellow"}]
-    }
+  if('score @s dim matches 1') {
+    /tellraw @a[nbt={Dimension:1}] [{"selector":"@s","color":"aqua"},{"text":" left the end","color":"yellow"}]
   }
-  if('entity @s[nbt={Dimension:1}]' && !'score @s dim matches 1') {
-    /tellraw @s [{"text":"You entered the end","color":"yellow"}]
-    /tellraw @a[nbt={Dimension:1},distance=.1..] [{"selector":"@s","color":"aqua"},{"text":" entered the end","color":"yellow"}]
-    if('score @s dim matches -1') {
-      /tellraw @a[nbt={Dimension:-1}] [{"selector":"@s","color":"aqua"},{"text":" left the nether","color":"yellow"}]
-    }
-    if('score @s dim matches 0') {
-      /tellraw @a[nbt={Dimension:0}] [{"selector":"@s","color":"aqua"},{"text":" left the overworld","color":"yellow"}]
-    }
+}
+
+#file: ./dimension_notifications/nether
+
+if('score dimension_notifications ud_options matches 1..') {
+  /tellraw @s [{"text":"You entered the nether","color":"yellow"}]
+  /tellraw @a[nbt={Dimension:-1},distance=.1..] [{"selector":"@s","color":"aqua"},{"text":" entered the nether","color":"yellow"}]
+  if('score @s dim matches 0') {
+    /tellraw @a[nbt={Dimension:0}] [{"selector":"@s","color":"aqua"},{"text":" left the overworld","color":"yellow"}]
+  }
+  if('score @s dim matches 1') {
+    /tellraw @a[nbt={Dimension:1}] [{"selector":"@s","color":"aqua"},{"text":" left the end","color":"yellow"}]
+  }
+}
+
+#file: ./dimension_notifications/end
+
+if('score dimension_notifications ud_options matches 1..') {
+  /tellraw @s [{"text":"You entered the end","color":"yellow"}]
+  /tellraw @a[nbt={Dimension:1},distance=.1..] [{"selector":"@s","color":"aqua"},{"text":" entered the end","color":"yellow"}]
+  if('score @s dim matches -1') {
+    /tellraw @a[nbt={Dimension:-1}] [{"selector":"@s","color":"aqua"},{"text":" left the nether","color":"yellow"}]
+  }
+  if('score @s dim matches 0') {
+    /tellraw @a[nbt={Dimension:0}] [{"selector":"@s","color":"aqua"},{"text":" left the overworld","color":"yellow"}]
   }
 }

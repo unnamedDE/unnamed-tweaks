@@ -1,24 +1,3 @@
-#file: ./death_books/main
-
-asat(@a[scores={ud_deaths=1..},nbt={DeathTime:0s}]) {
-  if('entity @s[tag=is_dead]') {
-    /function unnamedde:misc/death_books/after_death
-  } else {
-    /function unnamedde:misc/death_books/on_death
-  }
-}
-
-#file: ./death_books/on_death
-
-/tag @s add is_dead
-/function #unnamedde:on_death
-
-#file: ./death_books/after_death
-
-/tag @s remove is_dead
-/scoreboard players reset @s ud_deaths
-/function #unnamedde:after_death
-
 #file: ./death_books/death_sound
 
 if('score death_books ud_options matches 1..') {

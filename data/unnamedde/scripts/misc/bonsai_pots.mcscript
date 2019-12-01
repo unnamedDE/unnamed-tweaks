@@ -15,22 +15,22 @@ asat(@e[type=item_frame,nbt={Item:{tag:{unnamedDE:{id:"bonsai_upgrade"}}}},tag=u
   /scoreboard players add @s ud_counter 1
   if('score @s ud_counter >= bonsai_pots_cool ud_options') {
     if('entity @s[nbt={Rotation:[0.0f,0.0f]}]') {
-      positioned('~ ~ ~-1'), if('block ~ ~ ~ #unnamedde:has_inventory' && 'block ~ ~1 ~ #minecraft:flower_pots') {
+      positioned('~ ~ ~-1'), if('block ~ ~ ~ #unnamed_core:has_inventory' && 'block ~ ~1 ~ #minecraft:flower_pots') {
         /function unnamedde:misc/bonsai_pots/action
       }
     }
     if('entity @s[nbt={Rotation:[90.0f,0.0f]}]') {
-      positioned('~1 ~ ~'), if('block ~ ~ ~ #unnamedde:has_inventory' && 'block ~ ~1 ~ #minecraft:flower_pots') {
+      positioned('~1 ~ ~'), if('block ~ ~ ~ #unnamed_core:has_inventory' && 'block ~ ~1 ~ #minecraft:flower_pots') {
         /function unnamedde:misc/bonsai_pots/action
       }
     }
     if('entity @s[nbt={Rotation:[180.0f,0.0f]}]') {
-      positioned('~ ~ ~1'), if('block ~ ~ ~ #unnamedde:has_inventory' && 'block ~ ~1 ~ #minecraft:flower_pots') {
+      positioned('~ ~ ~1'), if('block ~ ~ ~ #unnamed_core:has_inventory' && 'block ~ ~1 ~ #minecraft:flower_pots') {
         /function unnamedde:misc/bonsai_pots/action
       }
     }
     if('entity @s[nbt={Rotation:[270.0f,0.0f]}]') {
-      positioned('~-1 ~ ~'), if('block ~ ~ ~ #unnamedde:has_inventory' && 'block ~ ~1 ~ #minecraft:flower_pots') {
+      positioned('~-1 ~ ~'), if('block ~ ~ ~ #unnamed_core:has_inventory' && 'block ~ ~1 ~ #minecraft:flower_pots') {
         /function unnamedde:misc/bonsai_pots/action
       }
     }

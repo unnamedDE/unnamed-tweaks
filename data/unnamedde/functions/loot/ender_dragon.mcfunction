@@ -8,19 +8,4 @@ loot give @s loot unnamedde:entities/ender_dragon
 tellraw @a [{"selector":"@s","color":"aqua"},{"text":" killed the Enderdragon","color":"yellow"}]
 execute if score dragon_egg ud_options matches 1.. in minecraft:the_end run setblock 0 64 0 minecraft:dragon_egg keep
 
-execute if score better_end_portal ud_options matches 1.. in minecraft:the_end run setblock 3 60 1 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. in minecraft:the_end run setblock 2 60 2 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. in minecraft:the_end run setblock 1 60 3 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. in minecraft:the_end run setblock 0 60 3 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. in minecraft:the_end run setblock -1 60 3 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. in minecraft:the_end run setblock -2 60 2 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. in minecraft:the_end run setblock -3 60 1 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. in minecraft:the_end run setblock -3 60 0 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. in minecraft:the_end run setblock -3 60 -1 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. in minecraft:the_end run setblock -2 60 -2 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. in minecraft:the_end run setblock -1 60 -3 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. in minecraft:the_end run setblock 0 60 -3 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. in minecraft:the_end run setblock 1 60 -3 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. in minecraft:the_end run setblock 2 60 -2 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. in minecraft:the_end run setblock 3 60 -1 minecraft:end_portal_frame[eye=true]
-execute if score better_end_portal ud_options matches 1.. in minecraft:the_end run setblock 3 60 0 minecraft:end_portal_frame[eye=true]
+schedule function unnamedde:misc/better_endportal/killed_dragon 25s

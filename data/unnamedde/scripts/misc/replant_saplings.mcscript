@@ -2,7 +2,7 @@
 
 asat(@e[type=item,nbt={Item:{id:"minecraft:oak_sapling",Count:1b}}]) {
   if('score @s ud_counter matches 600..') {
-    if('block ~ ~-1 ~ #unnamedde:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
+    if('block ~ ~-1 ~ #unnamed_core:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
       /function unnamedde:misc/replant_saplings/replant
     }
   } else {
@@ -11,7 +11,7 @@ asat(@e[type=item,nbt={Item:{id:"minecraft:oak_sapling",Count:1b}}]) {
 }
 asat(@e[type=item,nbt={Item:{id:"minecraft:spruce_sapling",Count:1b}}]) {
   if('score @s ud_counter matches 600..') {
-    if('block ~ ~-1 ~ #unnamedde:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
+    if('block ~ ~-1 ~ #unnamed_core:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
       /function unnamedde:misc/replant_saplings/replant
     }
   } else {
@@ -20,7 +20,7 @@ asat(@e[type=item,nbt={Item:{id:"minecraft:spruce_sapling",Count:1b}}]) {
 }
 asat(@e[type=item,nbt={Item:{id:"minecraft:birch_sapling",Count:1b}}]) {
   if('score @s ud_counter matches 600..') {
-    if('block ~ ~-1 ~ #unnamedde:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
+    if('block ~ ~-1 ~ #unnamed_core:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
       /function unnamedde:misc/replant_saplings/replant
     }
   } else {
@@ -29,7 +29,7 @@ asat(@e[type=item,nbt={Item:{id:"minecraft:birch_sapling",Count:1b}}]) {
 }
 asat(@e[type=item,nbt={Item:{id:"minecraft:jungle_sapling",Count:1b}}]) {
   if('score @s ud_counter matches 600..') {
-    if('block ~ ~-1 ~ #unnamedde:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
+    if('block ~ ~-1 ~ #unnamed_core:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
       /function unnamedde:misc/replant_saplings/replant
     }
   } else {
@@ -38,7 +38,7 @@ asat(@e[type=item,nbt={Item:{id:"minecraft:jungle_sapling",Count:1b}}]) {
 }
 asat(@e[type=item,nbt={Item:{id:"minecraft:acacia_sapling",Count:1b}}]) {
   if('score @s ud_counter matches 600..') {
-    if('block ~ ~-1 ~ #unnamedde:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
+    if('block ~ ~-1 ~ #unnamed_core:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
       /function unnamedde:misc/replant_saplings/replant
     }
   } else {
@@ -47,7 +47,7 @@ asat(@e[type=item,nbt={Item:{id:"minecraft:acacia_sapling",Count:1b}}]) {
 }
 asat(@e[type=item,nbt={Item:{id:"minecraft:dark_oak_sapling",Count:1b}}]) {
   if('score @s ud_counter matches 600..') {
-    if('block ~ ~-1 ~ #unnamedde:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
+    if('block ~ ~-1 ~ #unnamed_core:tree_plantable' && 'block ~ ~ ~ minecraft:air') {
       /function unnamedde:misc/replant_saplings/replant
     }
   } else {

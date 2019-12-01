@@ -9,6 +9,9 @@
         },
         {
             "item": "minecraft:stripped_spruce_log"
+        },
+        {
+            "item": "minecraft:stripped_spruce_wood"
         }
     ],
     "result": "minecraft:spruce_planks",

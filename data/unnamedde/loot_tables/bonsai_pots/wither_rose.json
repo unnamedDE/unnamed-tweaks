@@ -6,7 +6,7 @@
         {
           "type": "item",
           "name": "minecraft:black_dye",
-          "weight": 1,
+          "weight": 24,
           "functions": [
             {
               "function": "set_count",
@@ -14,6 +14,17 @@
                 "min": 1,
                 "max": 2
               }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:wither_skeleton_skull",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
             }
           ]
         }
